@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    {{ form_start(duration_form) }}
+    <div id="default">
+        Duration: {{ form_widget(duration_form.duration, {'attr': {'class': 'Order'}}) }}</br>
+        </br>
+        <button class="btn btn-primary">Change cost</button>
+    </div>
+    {{ form_end(duration_form) }}
+{% endblock %}
