@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    
+    <div id ="default">
+    <h1>Edit Profile</h1>
+        {{ form_start(form) }}
+        <label>First name:</label> {{ form_widget(form.firstname, {'value' : app.user.firstName }) }}<br/>
+        <label>Last name:</label>  {{ form_widget(form.lastname, {'value' : app.user.lastName }) }}<br/>
+        <label>Email:</label>  {{ form_widget(form.email, {'value' : app.user.email }) }}<br/>
+        <label>Phone Number:</label>  {{ form_widget(form.phoneNumber, {'value' : app.user.phoneNumber }) }}<br/>
+<button class="btn btn-primary" style="width: 200px;">Edit</button>
+<br>
+     <a href="{{ path('profile_index') }}">Back to list</a>
+    </div>
+    
+    {{ form_end(form) }}
+
+   
+
+
+
+    {% endblock %}

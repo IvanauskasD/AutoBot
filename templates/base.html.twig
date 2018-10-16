@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+            {% block title %}<title>Autobot system</title>{% endblock %}
+        
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
+            <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+        {% endblock %}
+        {% block navigation %}
+
+        <div class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a href={{ path('homepage') }} class="navbar-brand">Home</a>
+
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+
+
+                    <ul class="nav navbar-nav ml-auto">
+                        {% if is_granted('ROLE_USER') %}
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="{{ path('profile_index') }}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ app.user.firstName  }}</a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ path('profile_index') }}">Profile</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="/logout">Log out</a>
+                                </div>
+                            </li>
+                            <div id="mySidenav" class="sidenav">
+                                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                            </div>
+
+                            {% elseif is_granted('ROLE_COMPANY') %}
+                                <li class="nav-item">
+                                    <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ app.user.email  }}</a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ path('companyProfile') }}">Profile</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="/company/services">My services</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="/logout">Log out</a>
+                                </div>
+                                    </li>
+                                {% else %}
+                        <li class="nav-item">
+                            <button type="button" class="btn btn-secondary" onclick="location.href = '/login'">Login</button>
+                        </li>
+                            <li class="nav-item">
+                                <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#RegisterModal">Register</button>
+                                <div id="RegisterModal" class="modal fade" role="dialog">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-body" >
+                                                <button id="log_reg_user"><a href="{{ path('signupUser') }}">Register as user</a></button>
+                                                <button id="log_reg_company"><a href="{{ path('signupCompany') }}">Register as company</a></button>
+                                            </div>
+                                            <div class="modal-footer">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </li>
+                        {% endif %}
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+        {% endblock %}
+
+        <div class="bg-light" style="height: ">
+        {% block overlap %}
+        <div class="container" style="height: 60px">
+        </div>
+        {% endblock %}
+    </head>
+    <body>
+        {% block body  %}
+
+        {% endblock %}
+        <div style="height: 800px">
+        </div>
+
+
+
+
+
+        {% block footer %}
+        <div class="footer bg-dark">
+            <div class="container">
+                <div class="row">
+                    <div class="col"> </div>
+                    <div class="col">Made by AutoBot team </div>
+                    <div class="col"> </div>
+                </div>
+
+            </div>
+        </div>
+        {% endblock %}
+        {% block javascripts %}
+            <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+            <script src={{ asset('scripts/sweetalert2.all.js') }}></script>
+            <script>
+                function openNav() {
+                    document.getElementById("mySidenav").style.width = "250px";
+                }
+
+                function closeNav() {
+                    document.getElementById("mySidenav").style.width = "0";
+                }
+            </script>
+
+        {% endblock %}
+
+        </div>
+    </body>
+
+</html>
