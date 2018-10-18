@@ -186,7 +186,7 @@ class OrdersController extends Controller
                 $this->renderView(
                     'email/confirmation.html.twig',
                     array(
-                        'firstname' => $user->getUsername()
+                        'firstnames' => $user->getUsername()
                     )
                 ),
                 'text/html'

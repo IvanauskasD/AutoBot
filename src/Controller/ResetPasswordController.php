@@ -44,7 +44,7 @@ class ResetPasswordController extends Controller
                             'email/resetPassword.html.twig',
                             array(
                                 'token' => $passwordResetToken,
-                                'firstname' => $user->getUsername()
+                                'firstnames' => $user->getUsername()
                             )
                         ),
                         'text/html'

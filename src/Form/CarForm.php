@@ -48,8 +48,8 @@ class CarForm extends AbstractType
             ->add('city', TextType::class, array(
                 'label' => 'city'
             ))
-            ->add('comment', TextType::class, array(
-                'label' => 'comment'
+            ->add('comments', TextType::class, array(
+                'label' => 'comments'
             ))
             ->add('serviceName', ChoiceType::class, array(
                 'label' => 'serviceName',

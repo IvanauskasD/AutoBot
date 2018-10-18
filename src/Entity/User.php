@@ -24,7 +24,7 @@ class User implements UserInterface, \Serializable
     /**
      * @var string
      *
-     * @ORM\Column(name="firstname", type="string", length=255, nullable=false)
+     * @ORM\Column(name="firstnames", type="string", length=255, nullable=false)
      */
     private $firstname;
 
@@ -88,6 +88,96 @@ class User implements UserInterface, \Serializable
      */
     private $orders;
 
+    /**
+     * @ORM\Column(name="city", type="string", length=255, nullable=true)
+     */
+    private $city;
+
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Administrator", inversedBy="user")
+     * @ORM\JoinColumn(name="administrator_id", referencedColumnName="id")
+     */
+    private $administrator;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Comment", mappedBy="user")
+     */
+    private $comments;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Contract", mappedBy="userId")
+     */
+    private $contracts;
+
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\Profile", mappedBy="user")
+     */
+    private $profile;
+
+    /**
+     * @return mixed
+     */
+    public function getProfile()
+    {
+        return $this->profile;
+    }
+
+    /**
+     * @param mixed $profile
+     */
+    public function setProfile($profile)
+    {
+        $this->profile = $profile;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getContracts()
+    {
+        return $this->contracts;
+    }
+
+    /**
+     * @param mixed $contracts
+     */
+    public function setContracts($contracts)
+    {
+        $this->contracts = $contracts;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getComments()
+    {
+        return $this->comments;
+    }
+
+    /**
+     * @param mixed $comments
+     */
+    public function setComments($comments)
+    {
+        $this->comments = $comments;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAdministrator()
+    {
+        return $this->administrator;
+    }
+
+    /**
+     * @param mixed $administrator
+     */
+    public function setAdministrator($administrator)
+    {
+        $this->administrator = $administrator;
+    }
 
     /**
      * @return mixed
@@ -272,6 +362,24 @@ class User implements UserInterface, \Serializable
     }
 
     /**
+     * @return mixed
+     */
+    public function getCity()
+    {
+        return $this->city;
+    }
+
+    /**
+     * @param mixed $city
+     */
+    public function setCity($city)
+    {
+        $this->city = $city;
+    }
+
+
+
+    /**
      * Returns the salt that was originally used to encode the password.
      *
      * This can return null if the password was not encoded using a salt.
@@ -284,7 +392,7 @@ class User implements UserInterface, \Serializable
     }
 
     /**
-     * Removes sensitive data from the user.
+     * Removes sensitive data from the company.
      *
      * This is important if, at any given point, sensitive information like
      * the plain-text password is stored on this object.

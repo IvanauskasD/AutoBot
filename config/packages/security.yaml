@@ -27,8 +27,8 @@ security:
     providers:
         chain_provider:
             chain:
-                providers: [user, company]
-        user:
+                providers: [company, company]
+        company:
             entity: { class: App\Entity\User }
         company:
             entity: { class: App\Entity\Company, property: email }

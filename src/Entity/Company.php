@@ -55,6 +55,13 @@ class Company implements UserInterface
      * @ORM\Column(name="address", type="string", length=255)
      */
     private $adress;
+
+    /**
+     * @ORM\Column(name="city", type="string", length=255)
+     */
+    private $city;
+
+
     /**
      * @Assert\Regex(
      *     pattern = "/^[0-9]$/",
@@ -64,7 +71,110 @@ class Company implements UserInterface
      */
     private $phoneNumber;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Administrator", inversedBy="company")
+     * @ORM\JoinColumn(name="administrator_id", referencedColumnName="id")
+     */
+    private $administrator;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Employee", mappedBy="company")
+     */
+    private $employee;
+
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\CompanyProfile", mappedBy="company")
+     */
+    private $profile;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Contract", mappedBy="companyId")
+     */
+    private $contract;
+
+
+
+
+    /**
+     * @return mixed
+     */
+    public function getContract()
+    {
+        return $this->contract;
+    }
+
+    /**
+     * @param mixed $contract
+     */
+    public function setContract($contract)
+    {
+        $this->contract = $contract;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getProfile()
+    {
+        return $this->profile;
+    }
+
+    /**
+     * @param mixed $profile
+     */
+    public function setProfile($profile)
+    {
+        $this->profile = $profile;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEmployee()
+    {
+        return $this->employee;
+    }
+
+    /**
+     * @param mixed $employee
+     */
+    public function setEmployee($employee)
+    {
+        $this->employee = $employee;
+    }
+
+
+    /**
+     * @return mixed
+     */
+    public function getAdministrator()
+    {
+        return $this->administrator;
+    }
+
+    /**
+     * @param mixed $administrator
+     */
+    public function setAdministrator($administrator)
+    {
+        $this->administrator = $administrator;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCity()
+    {
+        return $this->city;
+    }
+
+    /**
+     * @param mixed $city
+     */
+    public function setCity($city)
+    {
+        $this->city = $city;
+    }
 
 
     /**
@@ -186,7 +296,7 @@ class Company implements UserInterface
 
 
     /**
-     * Returns the roles granted to the user.
+     * Returns the roles granted to the company.
      *
      * <code>
      * public function getRoles()
@@ -196,10 +306,10 @@ class Company implements UserInterface
      * </code>
      *
      * Alternatively, the roles might be stored on a ``roles`` property,
-     * and populated in any number of different ways when the user object
+     * and populated in any number of different ways when the company object
      * is created.
      *
-     * @return (Role|string)[] The user roles
+     * @return (Role|string)[] The company roles
      */
     public function getRoles()
     {
@@ -221,7 +331,7 @@ class Company implements UserInterface
     }
 
     /**
-     * Removes sensitive data from the user.
+     * Removes sensitive data from the company.
      *
      * This is important if, at any given point, sensitive information like
      * the plain-text password is stored on this object.
@@ -232,7 +342,7 @@ class Company implements UserInterface
     }
 
     /**
-     * Returns the username used to authenticate the user.
+     * Returns the username used to authenticate the company.
      *
      * @return string The username
      */

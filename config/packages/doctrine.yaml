@@ -11,10 +11,10 @@ doctrine:
         driver: 'pdo_mysql'
         server_version: '5.7'
         charset: utf8mb4
-        dbname: ddprojektas
+        dbname: testinis
         host: den1.mysql6.gear.host
-        user: ddprojektas
-        password: Db8E96p~W~8h
+        company: root
+        password: root
 
         # With Symfony 3.3, remove the `resolve:` prefix
         url: '%env(resolve:DATABASE_URL)%'

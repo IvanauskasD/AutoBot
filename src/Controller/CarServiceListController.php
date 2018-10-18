@@ -17,7 +17,7 @@ use Symfony\Component\HttpFoundation\Request;
 class CarServiceListController extends Controller
 {
     /**
-     * @Route("/user/carServices/{id}", name="carServices")
+     * @Route("/company/carServices/{id}", name="carServices")
      */
     public function index(AuthorizationCheckerInterface $authorizationChecker, string $id)
     {
@@ -37,7 +37,7 @@ class CarServiceListController extends Controller
     }
 
 //    /**
-//     * @Route("/user/test", name="VisitTime")
+//     * @Route("/company/test", name="VisitTime")
 //     */
 //    public function selectTime(Request $request, AuthorizationCheckerInterface $authorizationChecker, int $id)
 //    {
@@ -51,7 +51,7 @@ class CarServiceListController extends Controller
 //    }
 
     /**
-     * @Route("/user/carServices/car={car_id}&&company={company_id}", name="RegisterCarService")
+     * @Route("/company/carServices/car={car_id}&&company={company_id}", name="RegisterCarService")
      */
     public function Register(Request $request, AuthorizationCheckerInterface $authorizationChecker, string $car_id, int $company_id)
     {

@@ -3,10 +3,10 @@
 {% block body %}
     <h1>Profile</h1>
     <div id="user" style="font-weight: bold">
-        Company name: {{ app.user.companyName  }}<br/>
-        Company e-mail: {{ app.user.email  }}<br/>
-        Company phone: {{ app.user.companyName  }}<br/>
-        Company address: {{ app.user.adress  }}<br/>
+        Company name: {{ app.company.companyName  }}<br/>
+        Company e-mail: {{ app.company.email  }}<br/>
+        Company phone: {{ app.company.companyName  }}<br/>
+        Company address: {{ app.company.adress  }}<br/>
     <br/>
     <br/>
             <h2>Client list</h2>
@@ -22,13 +22,13 @@
                 </tr>
                 {% for order in orders %}
                         <tr>
-                            <td>{{ order.car.user.id }}</td>
+                            <td>{{ order.car.company.id }}</td>
                             <td></td>
-                            <td>{{order.car.user.firstName}} {{order.car.user.lastName}}</td>
+                            <td>{{order.car.company.firstName}} {{order.car.company.lastName}}</td>
                             <td></td>
-                            <td>{{order.car.user.email}}</td>
+                            <td>{{order.car.company.email}}</td>
                             <td></td>
-                            <td>{{order.car.user.phoneNumber}}</td>
+                            <td>{{order.car.company.phoneNumber}}</td>
                         </tr>
                 {% endfor %}
             </table>

@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 class RegisterServiceController extends Controller
 {
     /**
-     * @Route("/user/registerService", name="registerService")
+     * @Route("/company/registerService", name="registerService")
      */
     public function index(Request $request, AuthorizationCheckerInterface $authChecker)
     {

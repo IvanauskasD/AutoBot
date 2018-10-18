@@ -23,22 +23,55 @@ class Service
      */
     private $companyId;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=false)
-     */
-    private $serviceCategory;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=false)
      */
     private $serviceName;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=false)
+     */
+    private $serviceCategory;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Company")
-     * @ORM\JoinColumn(name="company_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Administrator", inversedBy="service")
+     * @ORM\JoinColumn(name="admin_id", referencedColumnName="id")
      */
-    private $company;
+    private $administrator;
+
+
+
+    /**
+     * @ORM\Column(type="float", length=255, nullable=false)
+     */
+    private $cost;
+
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\Work", mappedBy="services")
+     */
+    private $works;
+
+    /**
+     * @return mixed
+     */
+    public function getWorks()
+    {
+        return $this->works;
+    }
+
+    /**
+     * @param mixed $works
+     */
+    public function setWorks($works)
+    {
+        $this->works = $works;
+    }
+
+    /**
+     * @ORM\Column(type="integer", length=255, nullable=false)
+     */
+    private $serviceTime;
 
     public function getId()
     {
@@ -112,6 +145,70 @@ class Service
     public function setCompany($company)
     {
         $this->company = $company;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAdministrator()
+    {
+        return $this->administrator;
+    }
+
+    /**
+     * @param mixed $administrator
+     */
+    public function setAdministrator($administrator)
+    {
+        $this->administrator = $administrator;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAdministratorType()
+    {
+        return $this->administratorType;
+    }
+
+    /**
+     * @param mixed $administratorType
+     */
+    public function setAdministratorType($administratorType)
+    {
+        $this->administratorType = $administratorType;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCost()
+    {
+        return $this->cost;
+    }
+
+    /**
+     * @param mixed $cost
+     */
+    public function setCost($cost)
+    {
+        $this->cost = $cost;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getServiceTime()
+    {
+        return $this->serviceTime;
+    }
+
+    /**
+     * @param mixed $serviceTime
+     */
+    public function setServiceTime($serviceTime)
+    {
+        $this->serviceTime = $serviceTime;
     }
 
 

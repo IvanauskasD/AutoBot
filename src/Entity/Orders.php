@@ -24,6 +24,9 @@ class Orders
      */
     private $company;
 
+
+
+
     /**
      * @ORM\Column(name="startDate", type="datetime", nullable=true)
      * @Assert\DateTime()
@@ -45,7 +48,7 @@ class Orders
     private $status;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Car")
+     * @ORM\OneToOne(targetEntity="App\Entity\Car", inversedBy="orders")
      * @ORM\JoinColumn(name="car_id", referencedColumnName="id")
      */
     private $car;
@@ -55,6 +58,72 @@ class Orders
      * @Assert\Type("string")
      */
     private $cost;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="orders")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    private $user;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Employee", inversedBy="orders")
+     * @ORM\JoinColumn(name="employee_id", referencedColumnName="id")
+     */
+    private $employee;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Profile", inversedBy="orders")
+     * @ORM\JoinColumn(name="profile_id", referencedColumnName="id")
+     */
+    private $profile;
+
+    /**
+     * @return mixed
+     */
+    public function getProfile()
+    {
+        return $this->profile;
+    }
+
+    /**
+     * @param mixed $profile
+     */
+    public function setProfile($profile)
+    {
+        $this->profile = $profile;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEmployee()
+    {
+        return $this->employee;
+    }
+
+    /**
+     * @param mixed $employee
+     */
+    public function setEmployee($employee)
+    {
+        $this->employee = $employee;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param mixed $user
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
+    }
 
     /**
      * @return mixed
@@ -88,21 +157,6 @@ class Orders
         $this->startDate = $startDate;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getFinishDate()
-    {
-        return $this->finishDate;
-    }
-
-    /**
-     * @param mixed $finishDate
-     */
-    public function setFinishDate($finishDate)
-    {
-        $this->finishDate = $finishDate;
-    }
 
     /**
      * @return mixed
@@ -183,6 +237,7 @@ class Orders
     {
         $this->cost = $cost;
     }
+
 
 
 

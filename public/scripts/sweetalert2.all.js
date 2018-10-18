@@ -717,10 +717,10 @@
 "      box-sizing: border-box;\n" +
 "      -webkit-animation: swal2-rotate-loading 1.5s linear 0s infinite normal;\n" +
 "              animation: swal2-rotate-loading 1.5s linear 0s infinite normal;\n" +
-"      -webkit-user-select: none;\n" +
-"         -moz-user-select: none;\n" +
-"          -ms-user-select: none;\n" +
-"              user-select: none; }\n" +
+"      -webkit-company-select: none;\n" +
+"         -moz-company-select: none;\n" +
+"          -ms-company-select: none;\n" +
+"              company-select: none; }\n" +
 "    .swal2-popup .swal2-actions.swal2-loading .swal2-styled.swal2-cancel {\n" +
 "      margin-right: 30px;\n" +
 "      margin-left: 30px; }\n" +
@@ -944,10 +944,10 @@
 "  line-height: 5em;\n" +
 "  cursor: default;\n" +
 "  box-sizing: content-box;\n" +
-"  -webkit-user-select: none;\n" +
-"     -moz-user-select: none;\n" +
-"      -ms-user-select: none;\n" +
-"          user-select: none;\n" +
+"  -webkit-company-select: none;\n" +
+"     -moz-company-select: none;\n" +
+"      -ms-company-select: none;\n" +
+"          company-select: none;\n" +
 "  zoom: normal; }\n" +
 "  .swal2-icon-text {\n" +
 "    font-size: 3.75em; }\n" +

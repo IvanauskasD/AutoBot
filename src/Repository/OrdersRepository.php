@@ -25,7 +25,7 @@ class OrdersRepository extends ServiceEntityRepository
             ->addSelect('r') // to make Doctrine actually use the join
             ->leftJoin('c.car', 'r')
             ->addSelect('u') // to make Doctrine actually use the join
-            ->leftJoin('r.user', 'u')
+            ->leftJoin('r.company', 'u')
             ->where('c.status = :Wait')->setParameter('Wait', 'Waiting')
             ->andwhere('c.company = :id')->setParameter('id', $id)
             ->getQuery()
@@ -39,7 +39,7 @@ class OrdersRepository extends ServiceEntityRepository
             ->addSelect('r') // to make Doctrine actually use the join
             ->leftJoin('c.car', 'r')
             ->addSelect('u') // to make Doctrine actually use the join
-            ->leftJoin('r.user', 'u')
+            ->leftJoin('r.company', 'u')
             ->andwhere('c.company = :id')->setParameter('id', $id)
             ->getQuery()
             ->getResult();
@@ -52,7 +52,7 @@ class OrdersRepository extends ServiceEntityRepository
             ->addSelect('r') // to make Doctrine actually use the join
             ->leftJoin('c.car', 'r')
             ->addSelect('u') // to make Doctrine actually use the join
-            ->leftJoin('r.user', 'u')
+            ->leftJoin('r.company', 'u')
             ->where('c.status = :Wait')->setParameter('Wait', 'Accepted')
             ->andwhere('c.company = :id')->setParameter('id', $id)
             ->getQuery()
@@ -65,7 +65,7 @@ class OrdersRepository extends ServiceEntityRepository
             ->addSelect('r') // to make Doctrine actually use the join
             ->leftJoin('c.car', 'r')
             ->addSelect('u') // to make Doctrine actually use the join
-            ->leftJoin('r.user', 'u')
+            ->leftJoin('r.company', 'u')
             ->where('c.id = :id')->setParameter('id', $id)
             ->getQuery()
             ->getOneOrNullResult();

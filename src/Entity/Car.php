@@ -66,10 +66,10 @@ class Car
      * )
      * @ORM\Column(type="string", length=255)
      */
-    private $city;
+    private $carBody;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\User")
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="cars")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id", unique=false)
      */
     private $user;
@@ -86,9 +86,15 @@ class Car
      *     pattern = "/^[a-zA-Z0-9 ]$/",
      *     match = false,
      * )
-     * @ORM\Column(name="comment",type="string", length=255)
+     * @ORM\Column(name="comments",type="string", length=255)
      */
     private $comment;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Profile", inversedBy="cars")
+     * @ORM\JoinColumn(name="profile_id", referencedColumnName="id")
+     */
+    private $profile;
 
     /**
      * @ORM\Column(name="orderCat",type="string", length=255, nullable=false)
@@ -119,17 +125,17 @@ class Car
     /**
      * @return mixed
      */
-    public function getCity()
+    public function getProfile()
     {
-        return $this->city;
+        return $this->profile;
     }
 
     /**
-     * @param mixed $city
+     * @param mixed $profile
      */
-    public function setCity($city)
+    public function setProfile($profile)
     {
-        $this->city = $city;
+        $this->profile = $profile;
     }
 
     /**
@@ -252,6 +258,24 @@ class Car
     {
         return $this->orders;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getCarBody()
+    {
+        return $this->carBody;
+    }
+
+    /**
+     * @param mixed $carBody
+     */
+    public function setCarBody($carBody)
+    {
+        $this->carBody = $carBody;
+    }
+
+
 
     /**
      * @param mixed $orders

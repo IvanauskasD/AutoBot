@@ -28,7 +28,7 @@
                     {% for order in pendingOrders %}
                         <tr>
                             <th scope="row">{{i + 1}}</th>
-                            <td>{{order.car.user.firstName}}  {{order.car.user.lastName}}</td>
+                            <td>{{order.car.company.firstName}}  {{order.car.company.lastName}}</td>
                             <td>{{order.car.carId}}</td>
                             <td>{{order.car.serviceCategory}}</td>
                             <td>{{order.car.serviceName}}</td>
@@ -64,7 +64,7 @@
                     {% for order in acceptedOrders %}
                         <tr>
                             <th scope="row">{{i + 1}}</th>
-                            <td>{{order.car.user.firstName}}  {{order.car.user.lastName}}</td>
+                            <td>{{order.car.company.firstName}}  {{order.car.company.lastName}}</td>
                             <td>{{order.car.carId}}</td>
                             <td>{{order.car.serviceCategory}}</td>
                             <td>{{order.car.serviceName}}</td>
