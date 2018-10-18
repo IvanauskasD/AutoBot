@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    {{ form_start(car_form) }}
+    <div id="default">
+    <label>Car ID: </label> {{ form_widget(car_form.carId, {'attr': {'class': 'Car'}}) }}</br>
+    <label>Maker:</label> {{ form_widget(car_form.maker, {'attr': {'class': 'Car', 'style' : 'width: 60.3%'}}) }}</br>
+    <label>Model:</label> {{ form_widget(car_form.model, {'attr': {'class': 'Car'}}) }}</br>
+    <label>Car Year:</label> {{ form_widget(car_form.carYear, {'attr': {'class': 'Car', 'style' : 'width: 60.3%'}}) }}</br>
+    <label>Transmission:</label> {{ form_widget(car_form.transmission, {'attr': {'class': 'Car', 'style' : 'width: 60.3%'}}) }}</br>
+    <label>Engine volume:</label> {{ form_widget(car_form.engineVolume, {'attr': {'class': 'Car'}}) }}</br>
+    <label>City: </label>{{ form_widget(car_form.city, {'attr': {'class': 'Car'}}) }}</br>
+    <label>Service name: </label> {{ form_widget(car_form.serviceName, {'attr': {'class': 'Car', 'style' : 'width: 60.3%'}}) }}</br>
+    <label>Comment: </label>{{ form_widget(car_form.comments, {'attr': {'class': 'Car'}}) }}</br>
+    <button class="btn btn-primary" style="width: 200px;">Register car</button>
+    </div>
+    
+
+    {{ form_end(car_form) }}
+{% endblock %}

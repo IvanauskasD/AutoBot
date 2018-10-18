@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Profile</h1>
+    <div id="user" style="font-weight: bold">
+        Company name: {{ app.company.companyName  }}<br/>
+        Company e-mail: {{ app.company.email  }}<br/>
+        Company phone: {{ app.company.companyName  }}<br/>
+        Company address: {{ app.company.adress  }}<br/>
+    <br/>
+    <br/>
+            <h2>Client list</h2>
+            <table align="center">
+                <tr style="border-bottom: 3px solid #ddd;">
+                    <th width="80px">User ID</th>
+                    <th></th>
+                    <th width="120px">Fullname</th>
+                    <th></th>
+                    <th width="200px">Email</th>
+                    <th></th>
+                    <th width="200px">Phone Number</th>
+                </tr>
+                {% for order in orders %}
+                        <tr>
+                            <td>{{ order.car.company.id }}</td>
+                            <td></td>
+                            <td>{{order.car.company.firstName}} {{order.car.company.lastName}}</td>
+                            <td></td>
+                            <td>{{order.car.company.email}}</td>
+                            <td></td>
+                            <td>{{order.car.company.phoneNumber}}</td>
+                        </tr>
+                {% endfor %}
+            </table>
+    </div>
+
+{% endblock %}

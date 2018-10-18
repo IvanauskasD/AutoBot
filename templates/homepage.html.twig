@@ -1,0 +1,84 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col"></div>
+            {% if (is_granted('ROLE_USER') == false and is_granted('ROLE_COMPANY') == false) %}
+                <div class="col-13"><h1 style="font-size: 70px">Autoservisų paieškos sistema</h1></div>
+            {% endif %}
+            <div class="col"></div>
+
+        </div>
+        
+            {% if (is_granted('ROLE_COMPANY')) == true %}
+            <h1> Pending Jobs </h1>
+            <table class="table">
+            <thead>
+                <tr>
+                <th scope="col">#</th>
+                <th scope="col">Client</th>
+                <th scope="col">Car Id</th>
+                <th scope="col">Service category</th>
+                <th scope="col">Service</th>
+                <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                    {% set i = 0 %}
+                    {% for order in pendingOrders %}
+                        <tr>
+                            <th scope="row">{{i + 1}}</th>
+                            <td>{{order.car.company.firstName}}  {{order.car.company.lastName}}</td>
+                            <td>{{order.car.carId}}</td>
+                            <td>{{order.car.serviceCategory}}</td>
+                            <td>{{order.car.serviceName}}</td>
+                            <td><button type="button" class="btn btn-info" onclick="location.href = '{{ path('orderDetails', {id: order.id}) }}'" >Details</button> </td>
+                            {% set i = i + 1 %}
+                        </tr>
+                        
+                    {% endfor %}
+            </tbody>
+            </table>
+            <div style="height:50px;"></div>
+
+
+
+
+            <h1> Current Jobs </h1>
+            <table class="table">
+            <thead>
+                <tr>
+                <th scope="col">#</th>
+                <th scope="col">Client</th>
+                <th scope="col">Car Id</th>
+                <th scope="col">Service category</th>
+                <th scope="col">Service</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+
+                </tr>
+            </thead>
+            <tbody>
+                    {% set i = 0 %}
+                    {% for order in acceptedOrders %}
+                        <tr>
+                            <th scope="row">{{i + 1}}</th>
+                            <td>{{order.car.company.firstName}}  {{order.car.company.lastName}}</td>
+                            <td>{{order.car.carId}}</td>
+                            <td>{{order.car.serviceCategory}}</td>
+                            <td>{{order.car.serviceName}}</td>
+                            <td><button type="button" class="btn btn-info" onclick="location.href = '{{ path('orderDetails', {id: order.id}) }}'" >Details</button> </td>
+                            <td><button type="button" class="btn btn-info" onclick="location.href = '{{ path('orderCost', {id: order.id}) }}'" >Cost</button> </td>
+                            <td><button type="button" class="btn btn-info" onclick="location.href = '{{ path('orderDuration', {id: order.id}) }}'" >Duration</button> </td>
+                            {% set i = i + 1 %}
+                        </tr>
+                        
+                    {% endfor %}
+            </tbody>
+            </table>
+            {% endif %}
+
+    
+    </div>
+{% endblock %}
