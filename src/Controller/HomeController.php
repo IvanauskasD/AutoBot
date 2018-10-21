@@ -25,12 +25,12 @@ class HomeController extends AbstractController
             $user = $this->getUser();
             $em = $this->getDoctrine()->getManager();
             dump($user->getId());
-            $pendingOrders = $em->getRepository(Orders::class)->findWaitingByCompany($user->getId());
-            $acceptedOrders = $em->getRepository(Orders::class)->findCurrentByCompany($user->getId());
-            dump($pendingOrders);
+//            $pendingOrders = $em->getRepository(Orders::class)->findWaitingByCompany($user->getId());
+//            $acceptedOrders = $em->getRepository(Orders::class)->findCurrentByCompany($user->getId());
+//            dump($pendingOrders);
             return $this->render('homepage.html.twig', [
-                'pendingOrders' => $pendingOrders,
-                'acceptedOrders' => $acceptedOrders
+//                'pendingOrders' => $pendingOrders,
+//                'acceptedOrders' => $acceptedOrders
             ]);
         }
         else

@@ -29,6 +29,9 @@ class CompanyForm extends AbstractType
             ->add('adress', TextType::class, [
                 'label' => 'Company Adress'
             ])
+            ->add('city', TextType::class, [
+                'label' => 'Company City'
+            ])
             ->add('plainPassword', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'first_options'  => [

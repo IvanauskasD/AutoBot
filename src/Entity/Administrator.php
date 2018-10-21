@@ -20,7 +20,7 @@ class Administrator
     private $id;
 
     /**
-     * @ORM\Column(name="role", type="integer", length=255, nullable=false)
+     * @ORM\OneToOne(targetEntity="App\Entity\Administrator", mappedBy="userRole")
      */
     private $adminType;
 
