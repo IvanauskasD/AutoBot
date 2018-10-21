@@ -20,10 +20,10 @@ class ClientListController extends Controller
         }
         $user = $this->getUser();
         $users = $this->getDoctrine()->getManager()->getRepository(User::class)->findAll();
-        $orders = $this->getDoctrine()->getManager()->getRepository(Orders::class)->findByCompany($user->getId());
-        dump($orders);
+//        $orders = $this->getDoctrine()->getManager()->getRepository(Orders::class)->findByCompany($user->getId());
+//        dump($orders);
         return $this->render('profile/clientList.html.twig', [
-            'orders' => $orders,
+//            'orders' => $orders,
         ]);
     }
     

@@ -116,6 +116,27 @@ class User implements UserInterface, \Serializable
     private $profile;
 
     /**
+     * @ORM\OneToOne(targetEntity="App\Entity\Administrator", inversedBy="adminType")
+     */
+    private $userRole;
+
+    /**
+     * @return mixed
+     */
+    public function getUserRole()
+    {
+        return $this->userRole;
+    }
+
+    /**
+     * @param mixed $userRole
+     */
+    public function setUserRole($userRole)
+    {
+        $this->userRole = $userRole;
+    }
+
+    /**
      * @return mixed
      */
     public function getProfile()
