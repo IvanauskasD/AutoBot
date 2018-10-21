@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Company;
 use App\Entity\User;
+use App\Entity\Employee;
 use App\Utils\Errors;
 use Symfony\Component\HttpFoundation\Response;
 use App\Events;
@@ -19,6 +20,7 @@ use Symfony\Component\EventDispatcher\GenericEvent;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Form\CompanyForm;
+use App\Form\EmployeeForm;
 
 class SignupCompanyController extends AbstractController
 {
@@ -73,6 +75,48 @@ class SignupCompanyController extends AbstractController
         }
         return $this->render('Registration/registrationCompanies.html.twig', array('error' => $error, 'success' => false, 'tried' => $tried,
             'registration_form' => $form->createView()));
+    }
+
+    /**
+     * @Route("/company/registerEmployee", name="registerEmployee")
+     */
+    public function registerEmployee(Request $request, UserPasswordEncoderInterface $encoder){
+        $employee = new Employee();
+        $company = new Company();
+
+        $form = $this->createForm(EmployeeForm::class, $employee);
+
+        $form->handleRequest($request);
+
+        $repository = $this->getDoctrine()->getRepository(Company::class);
+        $companyExists = $repository->findBy(['email' => $employee->getEmail()]);
+
+        $repository = $this->getDoctrine()->getRepository(User::class);
+        $userExists = $repository->findBy(['email' => $employee->getEmail()]);
+
+        if($form->isSubmitted() && $form->isValid() && !$companyExists && !$userExists)
+        {
+            $user = $this->getUser();
+            $company = $user;
+            $password = $encoder
+                ->encodePassword(
+                    $employee,
+                    $employee->getPlainPassword()
+                );
+
+            $employee->setPassword($password);
+            $employee->setCompany($company);
+            $em = $this->getDoctrine()->getManager();
+
+            $em->persist($employee);
+            $em->flush();
+
+            return $this->redirectToRoute('companyProfile');
+        }
+
+        return $this->render('Registration/registrationEmployee.html.twig', array(
+            'registration_form' => $form->createView()));
+
     }
 }
 

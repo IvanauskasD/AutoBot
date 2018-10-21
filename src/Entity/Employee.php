@@ -10,7 +10,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\EmployeeRepository")
  */
-class Employee
+class Employee implements UserInterface
 {
     /**
      * @ORM\Id()
@@ -317,7 +317,7 @@ class Employee
      */
     public function getUsername()
     {
-        return $this->username;
+        return null;
     }
 
     /**
@@ -328,5 +328,50 @@ class Employee
         $this->username = $username;
     }
 
+    /**
+     * Returns the salt that was originally used to encode the password.
+     *
+     * This can return null if the password was not encoded using a salt.
+     *
+     * @return string|null The salt
+     */
+    public function getSalt()
+    {
+        return null;
+    }
+
+    /**
+     * Removes sensitive data from the company.
+     *
+     * This is important if, at any given point, sensitive information like
+     * the plain-text password is stored on this object.
+     */
+    public function eraseCredentials()
+    {
+        $this->plainPassword = null;
+    }
+
+    /**
+     * Returns the roles granted to the company.
+     *
+     * <code>
+     * public function getRoles()
+     * {
+     *     return array('ROLE_USER');
+     * }
+     * </code>
+     *
+     * Alternatively, the roles might be stored on a ``roles`` property,
+     * and populated in any number of different ways when the company object
+     * is created.
+     *
+     * @return (Role|string)[] The company roles
+     */
+    public function getRoles()
+    {
+        return [
+            'ROLE_EMPLOYEE',
+        ];
+    }
 
 }
