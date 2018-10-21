@@ -2,6 +2,7 @@ security:
     encoders:
         App\Entity\User: bcrypt
         App\Entity\Company: bcrypt
+        App\Entity\Employee: bcrypt
 
     firewalls:
         dev:
@@ -23,15 +24,18 @@ security:
     access_control:
         - { path: ^/main, roles: IS_AUTHENTICATED_FULLY }
         - { path: ^/company/, role: ROLE_COMPANY }
+        - { path: ^/employee/, role: ROLE_EMPLOYEE }
 
     providers:
         chain_provider:
             chain:
-                providers: [user, company]
+                providers: [user, company, employee]
         user:
             entity: { class: App\Entity\User }
         company:
             entity: { class: App\Entity\Company, property: email }
+        employee:
+            entity: { class: App\Entity\Employee, property: email }
 
 
 

@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Entity\Employee;
 use App\Entity\Orders;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -20,10 +21,11 @@ class ClientListController extends Controller
         }
         $user = $this->getUser();
         $users = $this->getDoctrine()->getManager()->getRepository(User::class)->findAll();
+        $employee = $this->getDoctrine()->getManager()->getRepository(Employee::class)->findByCompany($user->getId());
 //        $orders = $this->getDoctrine()->getManager()->getRepository(Orders::class)->findByCompany($user->getId());
-//        dump($orders);
+        dump($employee);
         return $this->render('profile/clientList.html.twig', [
-//            'orders' => $orders,
+            'employees' => $employee,
         ]);
     }
     
