@@ -5,13 +5,14 @@
     <div id ="default">
     <h2>Edit Car</h2>
         {{ form_start(form) }}
-        <label>Car ID:</label> {{ form_widget(form.carId) }}<br/>
-        <label>Maker:</label>  {{ form_widget(form.maker,{'attr':{'style' : 'width: 60.3%'}}) }}<br/>
-        <label>Model:</label>  {{ form_widget(form.model) }}<br/>
-        <label>Car year:</label>  {{ form_widget(form.carYear,{'attr':{'style' : 'width: 60.3%'}}) }}<br/>
-        <label>Transmission:</label>  {{ form_widget(form.transmission,{'attr':{'style' : 'width: 60.3%'}}) }}<br/>
-        <label>Engine volume:</label>  {{ form_widget(form.engineVolume) }}<br/>
-        <label>Comment</label>{{ form_widget(form.comments) }}
+        <label>Car ID: </label> {{ form_widget(form.carId, {'attr': {'class': 'Car'}}) }}</br>
+        <label>Maker:</label> {{ form_widget(form.maker, {'attr': {'class': 'Car', 'style' : 'width: 60.3%'}}) }}</br>
+        <label>Model:</label> {{ form_widget(form.model, {'attr': {'class': 'Car'}}) }}</br>
+        <label>Car Year:</label> {{ form_widget(form.carYear, {'attr': {'class': 'Car', 'style' : 'width: 60.3%'}}) }}</br>
+        <label>Transmission:</label> {{ form_widget(form.transmission, {'attr': {'class': 'Car', 'style' : 'width: 60.3%'}}) }}</br>
+        <label>Engine volume:</label> {{ form_widget(form.engineVolume, {'attr': {'class': 'Car'}}) }}</br>
+        <label>Car Body:</label> {{ form_widget(form.carBody, {'attr': {'class': 'Car'}}) }}</br>
+        <label>Comment: </label>{{ form_widget(form.comments, {'attr': {'class': 'Car'}}) }}</br>
         <br>
     <button style="width: 200px;" class="btn btn-primary">Edit</button>
     <br>

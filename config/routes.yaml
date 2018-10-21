@@ -36,7 +36,7 @@ editService:
     defaults:
         template: serviceList.html.twig
 carServices:
-    path: /company/carServices/{id}"
+    path: /user/carServices/{id}"
     controller: App\Controller\CarServiceListController::index
     defaults:
         template: carServiceList.html.twig

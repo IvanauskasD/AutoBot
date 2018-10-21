@@ -34,7 +34,7 @@ class CarRepository extends ServiceEntityRepository
             ->addSelect('r') // to make Doctrine actually use the join
             
             ->leftJoin('c.orders', 'r')
-            ->where('c.company = :id')->setParameter('id', $id)
+            ->where('c.user = :id')->setParameter('id', $id)
             ->getQuery()
             ->getResult();
         ;

@@ -15,8 +15,7 @@ class CarForm extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        
-        $this->serviceChoices = $options['service_choices'];
+
         $builder
             ->add('carId', TextType::class, array(
                 'label' => 'carId'
@@ -45,36 +44,19 @@ class CarForm extends AbstractType
             ->add('engineVolume', TextType::class, array(
                 'label' => 'engineVolume'
             ))
-            ->add('city', TextType::class, array(
-                'label' => 'city'
+            ->add('carBody', TextType::class, array(
+                'label' => 'carBody'
             ))
             ->add('comments', TextType::class, array(
                 'label' => 'comments'
-            ))
-            ->add('serviceName', ChoiceType::class, array(
-                'label' => 'serviceName',
-                'choices' =>$this->serviceChoices,
-                'choice_label' => function($service, $key, $index) {
-                    /** @var Service $service */
-                    return $service->getServiceName();
-                },
-                'group_by' => function($service, $key, $index) {
-                    if ($service->getServiceCategory() == 'Varikliai')  return 'Varikliai';
-                    if ($service->getServiceCategory() == 'Salonas')  return 'Salonas';
-                    if ($service->getServiceCategory() == 'Padangos')  return 'Padangos';
-                },
-                
-            ))
-            
-            ;
+            ));
 
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => Car::class,
-            'service_choices' => null
+            'data_class' => Car::class
         ));
     }
 }

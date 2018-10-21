@@ -97,16 +97,6 @@ class Car
     private $profile;
 
     /**
-     * @ORM\Column(name="orderCat",type="string", length=255, nullable=false)
-     */
-    private $serviceCategory;
-
-    /**
-     * @ORM\Column(name="orderName",type="string", length=255, nullable=false)
-     */
-    private $serviceName;
-
-    /**
      * @return mixed
      */
     public function getCarYear()
@@ -202,22 +192,6 @@ class Car
         $this->model = $model;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getService()
-    {
-        return $this->service;
-    }
-
-    /**
-     * @param mixed $service
-     */
-    public function setService($service)
-    {
-        $this->service = $service;
-    }
-
 
     /**
      * @return mixed
@@ -286,41 +260,9 @@ class Car
     }
 
     /**
-     * @return string
-     */
-    public function getServiceCategory()
-    {
-        return $this->serviceCategory;
-    }
-
-    /**
-     * @param string $serviceCategory
-     */
-    public function setServiceCategory($serviceCategory)
-    {
-        $this->serviceCategory = $serviceCategory;
-    }
-
-    /**
-     * @return string
-     */
-    public function getServiceName()
-    {
-        return $this->serviceName;
-    }
-
-    /**
-     * @param string $serviceName
-     */
-    public function setServiceName($serviceName)
-    {
-        $this->serviceName = $serviceName;
-    }
-
-    /**
      * @return mixed
      */
-    public function getComment()
+    public function getComments()
     {
         return $this->comment;
     }
@@ -328,7 +270,7 @@ class Car
     /**
      * @param mixed $comment
      */
-    public function setComment($comment)
+    public function setComments($comment)
     {
         $this->comment = $comment;
     }

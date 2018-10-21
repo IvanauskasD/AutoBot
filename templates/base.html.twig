@@ -22,7 +22,7 @@
                         {% if is_granted('ROLE_USER') %}
 
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="{{ path('profile_index') }}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ app.company.firstName  }}</a>
+                                <a class="nav-link dropdown-toggle" href="{{ path('profile_index') }}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ app.user.Firstnames  }}</a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ path('profile_index') }}">Profile</a>
                                     <div class="dropdown-divider"></div>
@@ -55,8 +55,7 @@
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-body" >
-                                                <button id="log_reg_user"><a href="{{ path('signupUser') }}">Register as company</a></button>
-                                                <button id="log_reg_company"><a href="{{ path('signupCompany') }}">Register as company</a></button>
+                                                <button id="log_reg_user"><a href="{{ path('signupUser') }}">Register as user</a></button>
                                             </div>
                                             <div class="modal-footer">
                                             </div>
