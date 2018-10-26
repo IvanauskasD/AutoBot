@@ -57,8 +57,6 @@ class ProfileController extends Controller
         ]);
     }
 
-
-
     /**
      * @Route("/{id}/editCar", name="editCar")
      */

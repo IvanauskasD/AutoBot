@@ -40,8 +40,6 @@ class Service
      */
     private $administrator;
 
-
-
     /**
      * @ORM\Column(type="float", length=255, nullable=false)
      */

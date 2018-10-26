@@ -23,7 +23,7 @@ class Job
     private $administrator;
 
     /**
-     * @ORM\Column(name="jobsName", type="string", length=255)
+     * @ORM\Column(name="jobName", type="string", length=255)
      */
     private $jobName;
 
@@ -32,12 +32,12 @@ class Job
      */
     private $description;
     /**
-     * @ORM\Column(name="cost", type="float", length=255)
+     * @ORM\Column(name="cost", type="string", length=255)
      */
     private $cost;
 
     /**
-     * @ORM\Column(name="jobName", type="string", length=255)
+     * @ORM\Column(name="jobTime", type="string", length=255)
      */
     private $jobTime;
 

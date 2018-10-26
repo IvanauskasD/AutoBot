@@ -24,9 +24,6 @@ class Orders
      */
     private $company;
 
-
-
-
     /**
      * @ORM\Column(name="startDate", type="datetime", nullable=true)
      * @Assert\DateTime()

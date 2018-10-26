@@ -11,6 +11,7 @@
         {% endblock %}
         {% block navigation %}
 
+
         <div id="mainHeader" class="navbar navbar navbar-expand-lg navbar-light bg-light">
             <div class="container">
                 {%  if is_granted('ROLE_EMPLOYEE') %}
@@ -21,9 +22,13 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
 
 
-                    <ul class="nav navbar-nav ml-auto">
-                        {% if is_granted('ROLE_USER') %}
+               {# <div class="collapse navbar-collapse" id="navbarResponsive">#}
 
+
+                        <div class="navbar navbar-expand-lg navbar-dark bg-dark">
+                            <div class="container">
+            <ul class="nav navbar-nav ml-auto">
+                        {% if is_granted('ROLE_USER') %}
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="{{ path('profile_index') }}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ app.user.Firstnames  }}</a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -37,6 +42,10 @@
                             </div>
 
                             {% elseif is_granted('ROLE_COMPANY') %}
+                                <a href={{ path('homepage') }} class="navbar-brand">Home</a>
+                                <a href={{ path('partsPrice') }} class="navbar-brand">Parts_Price</a>
+                                <a href={{ path('employee') }} class="navbar-brand">Employee</a>
+                                <a href={{ path('companyJobs') }} class="navbar-brand">Opened_Jobs</a>
                                 <li class="nav-item">
                                     <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ app.user.email  }}</a>
@@ -47,6 +56,8 @@
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="/logout">Log out</a>
                                 </div>
+                            </div>
+                        </div>
                                     </li>
                             {% elseif is_granted('ROLE_EMPLOYEE') %}
                             <li class="nav-item dropdown">
