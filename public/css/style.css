@@ -116,9 +116,11 @@ a{
 }
 
 body {
-    background-color: lightblue;
+    background-color: darkslateblue;
 	
 }
+
+
 
 header nav {
     width: 100%;
@@ -219,6 +221,15 @@ header .nav-login a:hover{
     width: 40%;
 }
 
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+#mainHeader{
+    background-color: #4CAF50;
+}
+
 /*signup.php*/
 
 .signup-form{
@@ -256,6 +267,51 @@ header .nav-login a:hover{
      cursor: pointer;
 	 border-radius: 50%
  }
+
+.navbar-brand{
+
+    display:inline-block;
+    padding:0.35em 1.2em;
+    margin:0 0.3em 0.3em 0;
+    border-radius:0.12em;
+    box-sizing: border-box;
+    text-decoration:none;
+    font-family:'Roboto',sans-serif;
+    font-weight:300;
+    color:#000000;
+    text-align:center;
+    transition: all 0.2s;
+}
+
+.navbar-brand:hover{
+    color:black !important;
+}
+
+div a.dropdown-item:hover{
+    background-color:#000000;
+}
+
+#btn-current-orders{
+    position: absolute;
+    right:20.5%;
+    background-color:#e9ecef;
+    display:inline-block;
+    padding:0.35em 1.2em;
+    margin:0 0.3em 0.3em 0;
+    border-radius:0.12em;
+    box-sizing: border-box;
+    text-decoration:none;
+    font-family:'Roboto',sans-serif;
+    font-weight:300;
+    color:#000000;
+    text-align:center;
+    transition: all 0.2s;
+}
+
+#btn-current-orders:hover{
+    color:#FFFFFF;
+    background-color:#000000;
+}
  
 
 .signup-form button:hover{
@@ -366,7 +422,7 @@ div[id=profile]{
     padding: 20px;
 }
 button[id=Menu]{
-    background-color: #557BE4;
+    background-color: black;
     position: fixed;
     left: 2%;
     top: 2%;
@@ -379,7 +435,7 @@ button[id=Menu]:hover{
     transition-duration: 0.4s;
 }
 button[id=Edit-car]{
-    background-color: #557BE4;
+    background-color: black;
     border-radius: 8px;
     font-weight: bold;
 }
@@ -389,7 +445,7 @@ button[id=Edit-car]:hover{
     transition-duration: 0.4s;
 }
 button[id=Delete-car]{
-    background-color: #557BE4;
+    background-color: black;
     border-radius: 8px;
     font-weight: bold;
 }
