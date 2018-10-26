@@ -1,4 +1,9 @@
 {% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+ <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+{% endblock %}
 {% block body %}
     <div class="container">
         <div class="row">
@@ -9,7 +14,33 @@
             <div class="col"></div>
 
         </div>
-        
+
+        {% if is_granted('ROLE_USER') == true %}
+        <div class="bd-search">
+            <input type="text" name="search" placeholder="search">
+            <button type="submit" name="submit-search">Search</button>
+        </div>
+        {%  endif %}
+
+        {% if is_granted('ROLE_EMPLOYEE') == true %}
+
+                <table class="table" align="center">
+                    <thead class="thead-dark">
+
+                    <tr style="border-bottom: 3px solid #ddd;">
+                        <th scope="col">Order Name</th>
+                        <th></th>
+                        <th scope="col">Car</th>
+                        <th></th>
+                        <th scope="col">Phone Number</th>
+                        <th></th>
+                        <th scope="col">Work Status(%)</th>
+                    </tr>
+                    </thead>
+                </table>
+            <a href={{ path('currentJobs') }} class="btn-more-options" id="btn-current-orders">More Options</a>
+
+        {%  endif %}
             {#{% if (is_granted('ROLE_COMPANY')) == true %}#}
             {#<h1> Pending Jobs </h1>#}
             {#<table class="table">#}
@@ -39,7 +70,6 @@
                     {#{% endfor %}#}
             {#</tbody>#}
             {#</table>#}
-            <div style="height:50px;"></div>
 
 
 

@@ -92,8 +92,26 @@ class Company implements UserInterface
      */
     private $contract;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Service", mappedBy="companyId")
+     */
+    private $service;
 
+    /**
+     * @return mixed
+     */
+    public function getService()
+    {
+        return $this->service;
+    }
 
+    /**
+     * @param mixed $service
+     */
+    public function setService($service)
+    {
+        $this->service = $service;
+    }
 
     /**
      * @return mixed
