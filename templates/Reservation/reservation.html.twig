@@ -17,13 +17,13 @@
             <td>Car1</td>
             <td>Autoservice1</td>
             <td style="color: yellow">Pending</td>
-            <td><button class="btn"style="background-color: red">Decline</button></td>
+            <td><button class="btn"style="background-color: red"onclick="location.href = '{{ path('cancelreservation') }}'">Decline</button></td>
         </tr>
         <tr>
             <td>Car1</td>
             <td>Autoservice1</td>
             <td id="Canceled" style="color: red">Canceled</td>
-            <td><button class="btn"style="background-color: red;">Decline</button></td>
+            <td><button class="btn"style="background-color: red;"onclick="location.href = '{{ path('cancelreservation') }}'">Decline</button></td>
         </tr>
     </table>
 {% endblock %}

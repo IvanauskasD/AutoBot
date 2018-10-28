@@ -14,6 +14,9 @@
         <br/>
         <br/>
         <button type="button" id="Edit-profile" onclick="location.href = '{{ path('CarRegistration') }}'" >Add your car</button>
+        <button type="button" id="Edit-profile" onclick="location.href = '{{ path('feedback') }}'" >Feedback</button>
+        <button type="button" id="Edit-profile" onclick="location.href = '{{ path('carservice') }}'" >Car registration for service</button>
+        <button type="button" id="Edit-profile" onclick="location.href = '{{ path('reservation') }}'" >Reservation</button>
         <br/>
         <br/>
         <br/>
@@ -66,7 +69,7 @@
                         {#<button type="button" id="Edit-car" onclick="location.href = '{{ path('editCar', {id: car.carId}) }}'" >Edit</button>#}
                         {#<button type="button" id="Delete-car" onclick="location.href = '{{ path('deleteCar', {id: car.carId}) }}'" >Delete</button>#}
                     {#</td>#}
-                </tr>
+               {# </tr>#}
                 {#{% else %}#}
                 {#<tr>#}
                     {#<td>{{ car.carId }}</td>#}
@@ -100,7 +103,6 @@
                         {#<td>Not registered</td>#}
                     {#{% endif %}#}
 
-                    <td style="text-align: right">
                     {#{% if car.orders %}#}
                         {#{% if car.orders.status != "Dismissed" %}#}
                             {#<button type="button" id="Service-car" disabled onclick="location.href = '{{ path('carServices', {id: car.carId}) }}'" >Services</button>#}
@@ -111,9 +113,8 @@
                             {#<button type="button" id="Service-car" onclick="location.href = '{{ path('carServices', {id: car.carId}) }}'" >Services</button>#}
                     {#{% endif %}#}
 
-                        <button type="button" id="Edit-car" onclick="location.href = '{{ path('editCar', {id: car.carId}) }}'" >Edit</button>
-                        <button type="button" id="Delete-car" onclick="location.href = '{{ path('deleteCar', {id: car.carId}) }}'" >Delete</button>
-                    </td>
+                <td style="width: 400px"><button type="button" id="Edit-car" onclick="location.href = '{{ path('editCar', {id: car.carId}) }}'" >Edit</button>
+                <button type="button" id="Delete-car" onclick="location.href = '{{ path('deleteCar', {id: car.carId}) }}'" >Delete</button></td>
                 </tr>
                 {#{% endif %}#}
             {% endfor %}
