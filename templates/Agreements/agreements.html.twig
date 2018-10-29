@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <button id="log_reg_employee"><a href="{{ path('agreements') }}">Register agreement</a></button>
+    <h2 xmlns="http://www.w3.org/1999/html">Agreements</h2>
+    <table align="center">
+        <tr style="border-bottom: 3px solid #ddd;">
+            <th width="120px">ID</th>
+            <th></th>
+            <th width="120px">Posting Date</th>
+            <th></th>
+            <th width="200px">Remaining</th>
+            <th></th>
+            <th width="200px">Customer No.</th>
+            <th></th>
+            <th width="200px">Company No.</th>
+            <th></th>
+            <th>
+                <button type="submit" name="/">Delete</button>
+            <th></th>
+
+            {# <?php
+       if(isset($_POST['role'])) {
+         echo "selected role: ".htmlspecialchars($_POST['role']);
+       }
+       ?>#}
+            </th>
+            {# <form id="s" method="post">
+                    <select name="size">
+                        <option value="small">Suspend</option>
+                        <option value="medium">Delete</option>
+                    </select>
+
+                </form>#}
+
+
+            {# {% for user in users %}
+                   <tr>
+                       <td>{{ employee.firstname }}</td>
+                       <td></td>
+                       <td>{{employee.lastname}}</td>
+                       <td></td>
+                       <td>{{employee.phoneNumber}}</td>
+                       <td></td>
+                       <td>{{employee.email}}</td>
+                       <td></td>
+                       <td>{{employee.position}}</td>
+                   </tr>
+               {% endfor %}#}
+    </table>
+
+{% endblock %}
