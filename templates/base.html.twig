@@ -41,11 +41,27 @@
                                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                             </div>
 
-                            {% elseif is_granted('ROLE_COMPANY') %}
+                            {% elseif is_granted('ROLE_ADMINISTRATOR') %}
+
+                                <a href={{ path('usersList') }} class="navbar-brand">Users</a>
+                                <a href={{ path('agreements') }} class="navbar-brand">Agreements</a>
+                                <a href={{ path('complaints') }} class="navbar-brand">Complaints</a>
+                                <li class="nav-item">
+                                    <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ app.user.email  }}</a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ path('companyProfile') }}">Profile</a>
+                                    <div class="dropdown-divider"></div>
+                                    {#<a class="dropdown-item" href="/company/services">My services</a>#}
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="/logout">Log out</a>
+                                </div>
+
+                                {% elseif is_granted('ROLE_COMPANY') %}
                                 <a href={{ path('homepage') }} class="navbar-brand">Home</a>
-                                <a href={{ path('partsPrice') }} class="navbar-brand">Parts_Price</a>
-                                <a href={{ path('employee') }} class="navbar-brand">Employee</a>
-                                <a href={{ path('companyJobs') }} class="navbar-brand">Opened_Jobs</a>
+                                <a href={{ path('partsPrice') }} class="navbar-brand">Parts Price</a>
+                                <a href={{ path('employee') }} class="navbar-brand">Workers</a>
+                                <a href={{ path('companyJobs') }} class="navbar-brand">Jobs</a>
                                 <li class="nav-item">
                                     <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ app.user.email  }}</a>
