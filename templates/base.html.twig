@@ -46,7 +46,7 @@
                                 <a href={{ path('partsPrice') }} class="navbar-brand">Parts_Price</a>
                                 <a href={{ path('employee') }} class="navbar-brand">Employee</a>
                                 <a href={{ path('companyJobs') }} class="navbar-brand">Opened_Jobs</a>
-                                <li class="nav-item">
+                                {#<li class="nav-item">#}
                                     <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ app.user.email  }}</a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -56,10 +56,12 @@
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="/logout">Log out</a>
                                 </div>
-                            </div>
-                        </div>
+
+
                                     </li>
                             {% elseif is_granted('ROLE_EMPLOYEE') %}
+                            <a href={{ path('pendingJobs') }} class="navbar-brand">Pending</a>
+                            <a href={{ path('currentJobs') }} class="navbar-brand">Current</a>
                             <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ app.user.email  }}</a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
