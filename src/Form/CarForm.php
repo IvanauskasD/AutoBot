@@ -46,10 +46,10 @@ class CarForm extends AbstractType
             ))
             ->add('carBody', TextType::class, array(
                 'label' => 'carBody'
-            ))
-            ->add('comments', TextType::class, array(
-                'label' => 'comments'
             ));
+//            ->add('comments', TextType::class, array(
+//                'label' => 'comments'
+//            ));
 
     }
 

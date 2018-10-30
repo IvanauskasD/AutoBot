@@ -1,13 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}<title>Add Job</title>{% endblock %}
+{% block title %}<title>Pridėti darbą</title>{% endblock %}
 {% block body %}
     <body>
     <div class="container">
         <div class="row">
             <div class="col"></div>
             <div class="col-5">
-                <h1>Add Job</h1>
+                <h1>Pridėti darbą</h1>
                 <div style="color: red">
                     {#{% for message in error %}#}
                     {#{{ message }}<br>#}
@@ -15,11 +15,11 @@
                 </div>
                 <div id="default">
                     {{ form_start(registration_form) }}
-                    Job name: {{ form_widget(registration_form.jobName, {'attr': {'class': 'Job'}}) }}</br>
-                    Description: {{ form_widget(registration_form.description, {'attr': {'class': 'Job'}}) }}</br>
-                    Cost: {{ form_widget(registration_form.cost, {'attr': {'class': 'Job'}}) }}</br>
-                    Job time: {{ form_widget(registration_form.jobTime, {'attr': {'class': 'Job'}}) }}</br>
-                    <button class="btn btn-primary">Save</button>
+                    Darbo pavadinimas: {{ form_widget(registration_form.jobName, {'attr': {'class': 'Job'}}) }}</br>
+                    Aprašymas: {{ form_widget(registration_form.description, {'attr': {'class': 'Job'}}) }}</br>
+                    Kaina: {{ form_widget(registration_form.cost, {'attr': {'class': 'Job'}}) }}</br>
+                    Darbo trukmė: {{ form_widget(registration_form.jobTime, {'attr': {'class': 'Job'}}) }}</br>
+                    <button class="btn btn-primary">Išsaugoti</button>
                     {{ form_end(registration_form) }}
                 </div>
             </div>

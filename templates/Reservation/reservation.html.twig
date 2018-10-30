@@ -3,27 +3,27 @@
 {% block body %}
     <table style="width: 70%">
         <tr>
-            <th style="width:250px">Car</th>
-            <th style="width:250px">Autoservice</th>
-            <th style="width: 250px">Accepted/Pending/Declined</th>
+            <th style="width:250px">Mašina</th>
+            <th style="width:250px">Servisas</th>
+            <th style="width: 250px">Priimta/Laukiama/Atmesta</th>
         </tr>
         <tr>
             <td>Car1</td>
             <td>Autoservice1</td>
-            <td style="color: green">Accepted</td>
-            <td><button class="btn"style="background-color: red;cursor: not-allowed;">Decline</button></td>
+            <td style="color: green">Priimta</td>
+            <td><button class="btn"style="background-color: red;cursor: not-allowed;">Atmesta</button></td>
         </tr>
         <tr>
             <td>Car1</td>
             <td>Autoservice1</td>
-            <td style="color: yellow">Pending</td>
-            <td><button class="btn"style="background-color: red"onclick="location.href = '{{ path('cancelreservation') }}'">Decline</button></td>
+            <td style="color: yellow">Laukiama</td>
+            <td><button class="btn"style="background-color: red"onclick="location.href = '{{ path('cancelreservation') }}'">Atšaukti</button></td>
         </tr>
         <tr>
             <td>Car1</td>
             <td>Autoservice1</td>
-            <td id="Canceled" style="color: red">Canceled</td>
-            <td><button class="btn"style="background-color: red;"onclick="location.href = '{{ path('cancelreservation') }}'">Decline</button></td>
+            <td id="Canceled" style="color: red">Atmesta</td>
+            <td><button class="btn"style="background-color: red;"onclick="location.href = '{{ path('cancelreservation') }}'">Atšaukti</button></td>
         </tr>
     </table>
 {% endblock %}

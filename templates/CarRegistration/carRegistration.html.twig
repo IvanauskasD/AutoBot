@@ -2,14 +2,14 @@
 {% block body %}
     {{ form_start(car_form) }}
     <div id="default">
-    <label>Car ID: </label> {{ form_widget(car_form.carId, {'attr': {'class': 'Car'}}) }}</br>
-    <label>Maker:</label> {{ form_widget(car_form.maker, {'attr': {'class': 'Car', 'style' : 'width: 60.3%'}}) }}</br>
-    <label>Model:</label> {{ form_widget(car_form.model, {'attr': {'class': 'Car'}}) }}</br>
-    <label>Car Year:</label> {{ form_widget(car_form.carYear, {'attr': {'class': 'Car', 'style' : 'width: 60.3%'}}) }}</br>
-    <label>Transmission:</label> {{ form_widget(car_form.transmission, {'attr': {'class': 'Car', 'style' : 'width: 60.3%'}}) }}</br>
-    <label>Engine volume:</label> {{ form_widget(car_form.engineVolume, {'attr': {'class': 'Car'}}) }}</br>
-    <label>Car Body:</label> {{ form_widget(car_form.carBody, {'attr': {'class': 'Car'}}) }}</br>
-    <label>Comment: </label>{{ form_widget(car_form.comments, {'attr': {'class': 'Car'}}) }}</br>
+    <label>Mašinos numeris: </label> {{ form_widget(car_form.carId, {'attr': {'class': 'Car'}}) }}</br>
+    <label>Markė:</label> {{ form_widget(car_form.maker, {'attr': {'class': 'Car', 'style' : 'width: 60.3%'}}) }}</br>
+    <label>Modelis:</label> {{ form_widget(car_form.model, {'attr': {'class': 'Car'}}) }}</br>
+    <label>Metai:</label> {{ form_widget(car_form.carYear, {'attr': {'class': 'Car', 'style' : 'width: 60.3%'}}) }}</br>
+    <label>Pavarų dėžė:</label> {{ form_widget(car_form.transmission, {'attr': {'class': 'Car', 'style' : 'width: 60.3%'}}) }}</br>
+    <label>Variklio tūris:</label> {{ form_widget(car_form.engineVolume, {'attr': {'class': 'Car'}}) }}</br>
+    <label>Kėbulo tipas:</label> {{ form_widget(car_form.carBody, {'attr': {'class': 'Car'}}) }}</br>
+    {#<label>C: </label>{{ form_widget(car_form.comments, {'attr': {'class': 'Car'}}) }}</br>#}
     <button class="btn btn-primary" style="width: 200px;">Register car</button>
     </div>
     
