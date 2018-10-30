@@ -18,8 +18,8 @@ class Service
     private $id;
 
     /**
-     * @Assert\Type("integer")
-     * @ORM\Column(name="company_id", type="integer", nullable=false)
+     * @ORM\ManyToOne(targetEntity="App\Entity\Company", inversedBy="service")
+     * @ORM\JoinColumn(name="company_id", referencedColumnName="id")
      */
     private $companyId;
 

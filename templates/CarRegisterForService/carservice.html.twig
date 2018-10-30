@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <script>
+        function myFunction() {
+            var x = document.getElementById("myDIV");
+              x.style.visibility="visible";
+        }
+    </script>
+    <div class="dropdown"id="carserviceDropDown">
+        <button class="dropbtn">Select Car</button>
+        <div class="dropdown-content"id="carserviceDropDown">
+            <a href="#">Car 1</a>
+            <a href="#">Car 2</a>
+            <a href="#">Car 3</a>
+        </div>
+    </div>
+    <form>
+       <textarea id="komentaras1"placeholder="Problem..."></textarea>
+    </form>
+    <div class="dropdown"id="carserviceDropDown">
+        <button class="dropbtn">Problems that we fix</button>
+        <div class="dropdown-content"id="carserviceDropDown">
+            <a href="#">Problem 1</a>
+            <a href="#">Problem 2</a>
+            <a href="#">Problem 3</a>
+        </div>
+    </div>
+    <div class="row">
+        <button class="btn btn-lg btn-primary" onclick="myFunction()">Search</button>
+    </div>
+    <div id="myDIV" style="visibility: hidden">
+    <table style="width: 70%">
+        <tr>
+            <th style="width:250px">Autoservice name</th>
+            <th style="width:250px">City</th>
+            <th style="width:250px">Cost</th>
+        </tr>
+        <tr>
+            <td>Peter</td>
+            <td>Griffin</td>
+            <td>$100</td>
+            <td><button class="btn btn-sm"style="background-color: cornflowerblue">Select</button></td>
+        </tr>
+        <tr>
+            <td>Lois</td>
+            <td>Griffin</td>
+            <td>$150</td>
+            <td><button class="btn btn-sm"style="background-color: cornflowerblue">Select</button></td>
+        </tr>
+        <tr>
+            <td>Joe</td>
+            <td>Swanson</td>
+            <td>$300</td>
+            <td><button class="btn btn-sm"style="background-color: cornflowerblue">Select</button></td>
+        </tr>
+        <tr>
+            <td>Cleveland</td>
+            <td>Brown</td>
+            <td>$250</td>
+            <td><button class="btn btn-sm"style="background-color: cornflowerblue">Select</button></td>
+        </tr>
+    </table>
+    </div>
+
+{% endblock %}
