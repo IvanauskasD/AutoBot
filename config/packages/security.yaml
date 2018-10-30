@@ -3,6 +3,7 @@ security:
         App\Entity\User: bcrypt
         App\Entity\Company: bcrypt
         App\Entity\Employee: bcrypt
+        App\Entity\Administrator: bcrypt
 
     firewalls:
         dev:
@@ -21,6 +22,7 @@ security:
                 target: /
 
 
+
     access_control:
         - { path: ^/main, roles: IS_AUTHENTICATED_FULLY }
         - { path: ^/company/, role: ROLE_COMPANY }
@@ -36,8 +38,3 @@ security:
             entity: { class: App\Entity\Company, property: email }
         employee:
             entity: { class: App\Entity\Employee, property: email }
-
-
-
-
-

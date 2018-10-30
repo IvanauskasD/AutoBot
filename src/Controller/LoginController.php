@@ -5,7 +5,7 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Events;
-
+use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 class LoginController extends Controller
 {
 

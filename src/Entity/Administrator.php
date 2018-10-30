@@ -10,7 +10,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\AdministratorRepository")
  */
-class Administrator
+class Administrator implements UserInterface
 {
     /**
      * @ORM\Id()
@@ -80,13 +80,24 @@ class Administrator
      */
     private $job;
 
+
+    /**
+     * @Assert\Regex(
+     *     pattern = "/^[a-zA-Z0-9]$/",
+     *     match = false,
+     * )
+     * @ORM\Column(name="username", type="string", length=255, nullable=true)
+     */
+    private $username;
     /**
      * @return mixed
      */
+
     public function getJob()
     {
         return $this->job;
     }
+
 
     /**
      * @param mixed $job
@@ -274,6 +285,53 @@ class Administrator
     {
         $this->plainPassword = $plainPassword;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getUsername()
+    {
+        return $this->username;
+    }
+
+    /**
+     * @param mixed $username
+     */
+    public function setUsername($username)
+    {
+        $this->username = $username;
+    }
+
+    /**
+     * Returns the salt that was originally used to encode the password.
+     *
+     * This can return null if the password was not encoded using a salt.
+     *
+     * @return string|null The salt
+     */
+    public function getSalt()
+    {
+        return null;
+    }
+
+    /**
+     * Removes sensitive data from the company.
+     *
+     * This is important if, at any given point, sensitive information like
+     * the plain-text password is stored on this object.
+     */
+    public function eraseCredentials()
+    {
+        $this->plainPassword = null;
+    }
+
+    public function getRoles()
+    {
+        return [
+            'ROLE_ADMIN',
+        ];
+    }
+
 
 
 }

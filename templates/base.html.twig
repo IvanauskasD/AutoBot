@@ -11,7 +11,6 @@
         {% endblock %}
         {% block navigation %}
 
-
        {# <div id="mainHeader" class="navbar navbar navbar-expand-lg navbar-light bg-light">
             <div class="container">
                 {%  if is_granted('ROLE_EMPLOYEE') %}
@@ -22,9 +21,11 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
 
 
+
+
                {# <div class="collapse navbar-collapse" id="navbarResponsive">#}
 
-                        <div class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
                             <div class="container">
                            <a href={{ path('homepage') }} class="navbar-brand">Home</a>
             <ul class="nav navbar-nav ml-auto">
@@ -41,7 +42,7 @@
                                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                             </div>
 
-                            {% elseif is_granted('ROLE_ADMINISTRATOR') %}
+                            {% elseif is_granted('ROLE_ADMIN') %}
 
                                 <a href={{ path('usersList') }} class="navbar-brand">Users</a>
                                 <a href={{ path('agreements') }} class="navbar-brand">Agreements</a>
@@ -58,16 +59,16 @@
                                 </div>
 
                                 {% elseif is_granted('ROLE_COMPANY') %}
-                                <a href={{ path('homepage') }} class="navbar-brand">Home</a>
+                                {#<a href={{ path('homepage') }} class="navbar-brand">Home</a>#}
 
-                                <a href={{ path('partsPrice') }} class="navbar-brand">Parts_Price</a>
-                                <a href={{ path('employee') }} class="navbar-brand">Employee</a>
-                                <a href={{ path('companyJobs') }} class="navbar-brand">Opened_Jobs</a>
+                                {#<a href={{ path('partsPrice') }} class="navbar-brand">Parts_Price</a>#}
+                                {#<a href={{ path('employee') }} class="navbar-brand">Employee</a>#}
+                                {#<a href={{ path('companyJobs') }} class="navbar-brand">Opened_Jobs</a>#}
                                 {#<li class="nav-item">#}
 
-                                <a href={{ path('partsPrice') }} class="navbar-brand">Parts Price</a>
-                                <a href={{ path('employee') }} class="navbar-brand">Workers</a>
-                                <a href={{ path('companyJobs') }} class="navbar-brand">Jobs</a>
+                                <a href={{ path('partsPrice') }} class="navbar-brand" id="partsPrice">Parts Price</a>
+                                <a href={{ path('employee') }} class="navbar-brand" id="employee">Workers</a>
+                                <a href={{ path('companyJobs') }} class="navbar-brand" id="companyJobs">Jobs</a>
                                 <li class="nav-item">
                                     <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ app.user.email  }}</a>
@@ -115,10 +116,10 @@
                             </li>
                         {% endif %}
                     </ul>
-
+</div>
+                            </nav>
                 </div>
-            </div>
-        </div>
+
         {% endblock %}
 
         <div class="bg-light" style="height: ">
@@ -167,7 +168,7 @@
 
         {% endblock %}
 
-        </div>
+
     </body>
 
 </html>

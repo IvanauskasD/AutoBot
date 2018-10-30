@@ -8,7 +8,7 @@
     <div class="container">
         <div class="row">
             <div class="col"></div>
-            {% if (is_granted('ROLE_USER') == false and is_granted('ROLE_COMPANY') == false and is_granted('ROLE_EMPLOYEE') == false) %}
+            {% if (is_granted('ROLE_USER') == false and is_granted('ROLE_COMPANY') == false and is_granted('ROLE_EMPLOYEE') == false and is_granted('ROLE_ADM') == false) %}
                 <div class="col-13"><h1 style="font-size: 70px">Autoservisų paieškos sistema</h1></div>
             {% endif %}
             <div class="col"></div>

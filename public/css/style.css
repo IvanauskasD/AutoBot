@@ -268,8 +268,30 @@ th {
 	 border-radius: 50%
  }
 
-.navbar-brand{
 
+
+.navbar-brand{
+    padding:0.25em 2em;
+    margin:0 0.3em 0.3em 1;
+    font-family:'Roboto',sans-serif;
+    font-weight:300;
+    text-align:center;
+    transition: all 0.2s;
+}
+
+.navbar-brand:hover{
+    color:black !important;
+}
+
+div a.dropdown-item:hover{
+    background-color:#000000;
+}
+
+
+#log_reg_employee{
+    position: absolute;
+    right:0.5%;
+    background-color:#e9ecef;
     display:inline-block;
     padding:0.35em 1.2em;
     margin:0 0.3em 0.3em 0;
@@ -283,11 +305,8 @@ th {
     transition: all 0.2s;
 }
 
-.navbar-brand:hover{
-    color:black !important;
-}
-
-div a.dropdown-item:hover{
+#log_reg_employee:hover{
+    color:#FFFFFF;
     background-color:#000000;
 }
 

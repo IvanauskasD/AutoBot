@@ -1,29 +1,22 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <button id="log_reg_employee"><a href="{{ path('addJobs') }}">AddJobs</a></button>
 
     <h2>Jobs</h2>
-    <table align="center">
+    <table class="table" align="center">
+        <thead class="thead-dark">
         <tr style="border-bottom: 3px solid #ddd;">
-            <th width="120px">Pavadinimas</th>
+            <th scope="col">Pavadinimas</th>
             <th></th>
-            <th width="200px">Kaina</th>
+            <th scope="col">Kaina</th>
             <th></th>
-            <th width="200px">Trukmė</th>
+            <th scope="col">Phone Number</th>
             <th></th>
-            <th width="200px">Aprašymas</th>
+            <th scope="col">Trukmė</th>
+            <th></th>
+            <th scope="col">Aprašymas</th>
         </tr>
-        {#{% for job in jobs %}#}
-            {#<tr>#}
-                {#<td>{{ job.jobName }}</td>#}
-                {#<td></td>#}
-                {#<td>{{ job.description}}</td>#}
-                {#<td></td>#}
-                {#<td>{{ job.cost }}</td>#}
-                {#<td></td>#}
-                {#<td>{{ job.jobTime}}</td>#}
-            {#</tr>#}
-        {#{% endfor %}#}
+        </thead>
     </table>
+    <button id="log_reg_employee"><a href="{{ path('addJobs') }}">AddJobs</a></button>
 {% endblock %}

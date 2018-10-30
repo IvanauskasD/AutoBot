@@ -1,34 +1,36 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <button id="log_reg_employee"><a href="{{ path('registerEmployee') }}">Register employee</a></button>
+    <h2>Employee List</h2>
 
-<h2>Employee List</h2>
-<table align="center">
-    <tr style="border-bottom: 3px solid #ddd;">
-        <th width="120px">Firstname</th>
-        <th></th>
-        <th width="200px">LastName</th>
-        <th></th>
-        <th width="200px">Phone Number</th>
-        <th></th>
-        <th width="200px">Email</th>
-        <th></th>
-        <th width="200px">Role</th>
-    </tr>
-    {% for employee in employees %}
-        <tr>
-            <td>{{ employee.firstname }}</td>
-            <td></td>
-            <td>{{employee.lastname}}</td>
-            <td></td>
-            <td>{{employee.phoneNumber}}</td>
-            <td></td>
-            <td>{{employee.email}}</td>
-            <td></td>
-            <td>{{employee.position}}</td>
+    <table class="table" align="center">
+        <thead class="thead-dark">
+        <tr style="border-bottom: 3px solid #ddd;">
+            <th scope="col">Firstname</th>
+            <th></th>
+            <th scope="col">LastName</th>
+            <th></th>
+            <th scope="col">Phone Number</th>
+            <th></th>
+            <th scope="col">Email</th>
+            <th></th>
+            <th scope="col">Role</th>
         </tr>
-    {% endfor %}
-</table>
+        {% for employee in employees %}
+            <tr>
+                <td>{{ employee.firstname }}</td>
+                <td></td>
+                <td>{{employee.lastname}}</td>
+                <td></td>
+                <td>{{employee.phoneNumber}}</td>
+                <td></td>
+                <td>{{employee.email}}</td>
+                <td></td>
+                <td>{{employee.position}}</td>
+            </tr>
+        {% endfor %}
+        </thead>
+    </table>
 
+    <button class="log_reg_employee" id="log_reg_employee"><a href="{{ path('registerEmployee') }}">Register employee</a></button>
 {% endblock %}
