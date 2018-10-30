@@ -41,7 +41,8 @@
                                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                             </div>
 
-                            {% elseif is_granted('ROLE_ADMINISTRATOR') %}
+
+                            {% elseif is_granted('ROLE_ADMIN') %}
 
                                 <a href={{ path('usersList') }} class="navbar-brand">Users</a>
                                 <a href={{ path('agreements') }} class="navbar-brand">Agreements</a>
@@ -58,6 +59,7 @@
                                 </div>
 
                                 {% elseif is_granted('ROLE_COMPANY') %}
+
                                 <a href={{ path('homepage') }} class="navbar-brand">Home</a>
                                 <a href={{ path('partsPrice') }} class="navbar-brand">Parts Price</a>
                                 <a href={{ path('employee') }} class="navbar-brand">Workers</a>
