@@ -10,7 +10,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\AdministratorRepository")
  */
-class Administrator
+class Administrator implements UserInterface
 {
     /**
      * @ORM\Id()
@@ -19,10 +19,10 @@ class Administrator
      */
     private $id;
 
-    /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Administrator", mappedBy="userRole")
-     */
-    private $adminType;
+//    /**
+//     * @ORM\OneToOne(targetEntity="App\Entity\Administrator", mappedBy="userRole")
+//     */
+//    private $adminType;
 
     /**
      * @Assert\Length(
@@ -179,21 +179,21 @@ class Administrator
 
 
 
-    /**
-     * @return mixed
-     */
-    public function getAdminType()
-    {
-        return $this->adminType;
-    }
-
-    /**
-     * @param mixed $adminType
-     */
-    public function setAdminType($adminType)
-    {
-        $this->adminType = $adminType;
-    }
+//    /**
+//     * @return mixed
+//     */
+//    public function getAdminType()
+//    {
+//        return $this->adminType;
+//    }
+//
+//    /**
+//     * @param mixed $adminType
+//     */
+//    public function setAdminType($adminType)
+//    {
+//        $this->adminType = $adminType;
+//    }
 
     /**
      * @return mixed
@@ -275,5 +275,60 @@ class Administrator
         $this->plainPassword = $plainPassword;
     }
 
+    /**
+     * Returns the roles granted to the company.
+     *
+     * <code>
+     * public function getRoles()
+     * {
+     *     return array('ROLE_USER');
+     * }
+     * </code>
+     *
+     * Alternatively, the roles might be stored on a ``roles`` property,
+     * and populated in any number of different ways when the company object
+     * is created.
+     *
+     * @return (Role|string)[] The company roles
+     */
+    public function getRoles()
+    {
+        return [
+            'ROLE_ADMIN',
+        ];
+    }
+
+    /**
+     * Returns the salt that was originally used to encode the password.
+     *
+     * This can return null if the password was not encoded using a salt.
+     *
+     * @return string|null The salt
+     */
+    public function getSalt()
+    {
+        return null;
+    }
+
+    /**
+     * Removes sensitive data from the company.
+     *
+     * This is important if, at any given point, sensitive information like
+     * the plain-text password is stored on this object.
+     */
+    public function eraseCredentials()
+    {
+        $this->plainPassword = null;
+    }
+
+    /**
+     * Returns the username used to authenticate the company.
+     *
+     * @return string The username
+     */
+    public function getUsername()
+    {
+        return null;
+    }
 
 }

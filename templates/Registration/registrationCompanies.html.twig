@@ -15,12 +15,16 @@
                 </div>
                 <div id="default">
                     {{ form_start(registration_form) }}
-                    Company name: {{ form_widget(registration_form.companyName, {'attr': {'class': 'Company'}}) }}</br>
-                    Company E-mail: {{ form_widget(registration_form.email, {'attr': {'class': 'Company'}}) }}</br>
-                    Company phone number: {{ form_widget(registration_form.phoneNumber, {'attr': {'class': 'Company'}}) }}</br>
-                    Company address: {{ form_widget(registration_form.adress, {'attr': {'class': 'Company'}}) }}</br>
-                    Password: {{ form_widget(registration_form.plainPassword.first, {'attr': {'class': 'Company'}}) }}</br>
-                    Repeat password: {{ form_widget(registration_form.plainPassword.second, {'attr': {'class': 'Company'}}) }}</br>
+                    {#Company name: {{ form_widget(registration_form.companyName, {'attr': {'class': 'Company'}}) }}</br>#}
+                    {#Company E-mail: {{ form_widget(registration_form.email, {'attr': {'class': 'Company'}}) }}</br>#}
+                    {#Company phone number: {{ form_widget(registration_form.phoneNumber, {'attr': {'class': 'Company'}}) }}</br>#}
+                    Company E-mail: {{ form_widget(registration_form.email, {'attr': {'class': 'Administrator'}}) }}</br>
+                    Company phone number: {{ form_widget(registration_form.phoneNumber, {'attr': {'class': 'Administrator'}}) }}</br>
+                    {#Company address: {{ form_widget(registration_form.adress, {'attr': {'class': 'Company'}}) }}</br>#}
+                    {#Password: {{ form_widget(registration_form.plainPassword.first, {'attr': {'class': 'Company'}}) }}</br>#}
+                    {#Repeat password: {{ form_widget(registration_form.plainPassword.second, {'attr': {'class': 'Company'}}) }}</br>#}
+                    Password: {{ form_widget(registration_form.plainPassword.first, {'attr': {'class': 'Administrator'}}) }}</br>
+                    Repeat password: {{ form_widget(registration_form.plainPassword.second, {'attr': {'class': 'Administrator'}}) }}</br>
                     <button class="btn btn-primary">Save</button>
                     {{ form_end(registration_form) }}
                 </div>
