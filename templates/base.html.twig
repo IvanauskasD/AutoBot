@@ -26,15 +26,21 @@
 
                         <div class="navbar navbar-expand-lg navbar-dark bg-dark">
                             <div class="container">
-                           <a href={{ path('homepage') }} class="navbar-brand">Home</a>
+                           <a href={{ path('homepage') }} class="navbar-brand">Pagrindinis</a>
             <ul class="nav navbar-nav ml-auto">
                         {% if is_granted('ROLE_USER') %}
+      {#<button type="button" id="Edit-profile" onclick="location.href = '{{ path('feedback') }}'" >Feedback</button>#}
+        {#<button type="button" id="Edit-profile" onclick="location.href = '{{ path('carservice') }}'" >Car registration for service</button>#}
+        {#<button type="button" id="Edit-profile" onclick="location.href = '{{ path('reservation') }}'" >Reservation</button>#}
+                                <a href={{ path('feedback') }} class="navbar-brand">Atsiliepimai</a>
+                                <a href={{ path('carservice') }} class="navbar-brand">Registruoti į autoservisą</a>
+                                <a href={{ path('reservation') }} class="navbar-brand">Rezervacijos</a>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="{{ path('profile_index') }}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ app.user.Firstnames  }}</a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ path('profile_index') }}">Profile</a>
+                                    <a class="dropdown-item" href="{{ path('profile_index') }}">Profilis</a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="/logout">Log out</a>
+                                    <a class="dropdown-item" href="/logout">Atsijungti</a>
                                 </div>
                             </li>
                             <div id="mySidenav" class="sidenav">
@@ -44,31 +50,31 @@
 
                             {% elseif is_granted('ROLE_ADMIN') %}
 
-                                <a href={{ path('usersList') }} class="navbar-brand">Users</a>
-                                <a href={{ path('agreements') }} class="navbar-brand">Agreements</a>
-                                <a href={{ path('complaints') }} class="navbar-brand">Complaints</a>
+                                <a href={{ path('usersList') }} class="navbar-brand">Vartotojai</a>
+                                <a href={{ path('agreements') }} class="navbar-brand">Sutartys</a>
+                                <a href={{ path('complaints') }} class="navbar-brand">Skundai</a>
                                 <li class="nav-item">
                                     <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ app.user.email  }}</a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ path('companyProfile') }}">Profile</a>
-                                    <div class="dropdown-divider"></div>
+                                    {#<a class="dropdown-item" href="{{ path('companyProfile') }}">Profilis</a>#}
+                                    {#<div class="dropdown-divider"></div>#}
                                     {#<a class="dropdown-item" href="/company/services">My services</a>#}
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="/logout">Log out</a>
+                                    <a class="dropdown-item" href="/logout">Atsijungti</a>
                                 </div>
 
                                 {% elseif is_granted('ROLE_COMPANY') %}
 
-                                <a href={{ path('homepage') }} class="navbar-brand">Home</a>
-                                <a href={{ path('partsPrice') }} class="navbar-brand">Parts Price</a>
-                                <a href={{ path('employee') }} class="navbar-brand">Workers</a>
-                                <a href={{ path('companyJobs') }} class="navbar-brand">Jobs</a>
+                                {#<a href={{ path('homepage') }} class="navbar-brand">Home</a>#}
+                                <a href={{ path('partsPrice') }} class="navbar-brand">Detalių savikaina</a>
+                                <a href={{ path('employee') }} class="navbar-brand">Darbuotojai</a>
+                                <a href={{ path('companyJobs') }} class="navbar-brand">Atliekami darbai</a>
                                 <li class="nav-item">
                                     <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ app.user.email  }}</a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ path('companyProfile') }}">Profile</a>
+                                    <a class="dropdown-item" href="{{ path('companyProfile') }}">Profilis</a>
                                     <div class="dropdown-divider"></div>
                                     {#<a class="dropdown-item" href="/company/services">My services</a>#}
                                     <div class="dropdown-divider"></div>
@@ -78,10 +84,12 @@
                         </div>
                                     </li>
                             {% elseif is_granted('ROLE_EMPLOYEE') %}
+                            <a href={{ path('pendingJobs') }} class="navbar-brand">Rezervacijos</a>
+                            <a href={{ path('currentJobs') }} class="navbar-brand">Esami darbai</a>
                             <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ app.user.email  }}</a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ path('companyProfile') }}">Profile</a>
+                                {#<a class="dropdown-item" href="{{ path('companyProfile') }}">Profile</a>#}
                                 <div class="dropdown-divider"></div>
                                 {#<a class="dropdown-item" href="/company/services">My services</a>#}
                                 <div class="dropdown-divider"></div>
@@ -89,16 +97,16 @@
                             </div>
                                 {% else %}
                         <li class="nav-item">
-                            <button type="button" class="btn btn-secondary" onclick="location.href = '/login'">Login</button>
+                            <button type="button" class="btn btn-secondary" onclick="location.href = '/login'">Prisijungti</button>
                         </li>
                             <li class="nav-item">
-                                <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#RegisterModal">Register</button>
+                                <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#RegisterModal">Registruotis</button>
                                 <div id="RegisterModal" class="modal fade" role="dialog">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-body" >
-                                                <button id="log_reg_user"><a href="{{ path('signupUser') }}">Register as user</a></button>
-                                                <button id="log_reg_company"><a href="{{ path('signupCompany') }}">Register as company</a></button>
+                                                <button id="log_reg_user"><a href="{{ path('signupUser') }}">Kliento registracija</a></button>
+                                                <button id="log_reg_company"><a href="{{ path('signupCompany') }}">Autoserviso registracija</a></button>
                                             </div>
                                             <div class="modal-footer">
                                             </div>

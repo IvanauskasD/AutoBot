@@ -1,13 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}<title>Register employee</title>{% endblock %}
+{% block title %}<title>Darbuotojo registracija</title>{% endblock %}
 {% block body %}
     <body>
     <div class="container">
         <div class="row">
             <div class="col"></div>
             <div class="col-5">
-                <h1>Employee registration</h1>
+                <h1>Darbuotojo registracija</h1>
                 <div style="color: red">
                     {#{% for message in error %}#}
                         {#{{ message }}<br>#}
@@ -15,14 +15,14 @@
                 </div>
                 <div id="default">
                     {{ form_start(registration_form) }}
-                    Employee name: {{ form_widget(registration_form.firstname, {'attr': {'class': 'Employee'}}) }}</br>
-                    Employee Lastname: {{ form_widget(registration_form.lastname, {'attr': {'class': 'Employee'}}) }}</br>
-                    Employee email: {{ form_widget(registration_form.email, {'attr': {'class': 'Employee'}}) }}</br>
-                    Employee phone number: {{ form_widget(registration_form.phoneNumber, {'attr': {'class': 'Employee'}}) }}</br>
-                    Employee position: {{ form_widget(registration_form.position, {'attr': {'class': 'Employee'}}) }}</br>
-                    Password: {{ form_widget(registration_form.plainPassword.first, {'attr': {'class': 'Employee'}}) }}</br>
-                    Repeat password: {{ form_widget(registration_form.plainPassword.second, {'attr': {'class': 'Employee'}}) }}</br>
-                    <button class="btn btn-primary">Save</button>
+                    Vardas: {{ form_widget(registration_form.firstname, {'attr': {'class': 'Employee'}}) }}</br>
+                    Pavardė: {{ form_widget(registration_form.lastname, {'attr': {'class': 'Employee'}}) }}</br>
+                    El. paštas: {{ form_widget(registration_form.email, {'attr': {'class': 'Employee'}}) }}</br>
+                    Telefono numeris: {{ form_widget(registration_form.phoneNumber, {'attr': {'class': 'Employee'}}) }}</br>
+                    Darbo pozicija: {{ form_widget(registration_form.position, {'attr': {'class': 'Employee'}}) }}</br>
+                    Slaptažodis: {{ form_widget(registration_form.plainPassword.first, {'attr': {'class': 'Employee'}}) }}</br>
+                    Pakartoti slaptažodį: {{ form_widget(registration_form.plainPassword.second, {'attr': {'class': 'Employee'}}) }}</br>
+                    <button class="btn btn-primary">Išsaugoti</button>
                     {{ form_end(registration_form) }}
                 </div>
             </div>

@@ -18,7 +18,7 @@
         {% if is_granted('ROLE_USER') == true %}
         <div class="bd-search">
             <input type="text" name="search" placeholder="search">
-            <button type="submit" name="submit-search">Search</button>
+            <button type="submit" name="submit-search">Paieška</button>
         </div>
         {%  endif %}
 
@@ -28,17 +28,17 @@
                     <thead class="thead-dark">
 
                     <tr style="border-bottom: 3px solid #ddd;">
-                        <th scope="col">Order Name</th>
+                        <th scope="col">Užsakymo pavadinimas</th>
                         <th></th>
-                        <th scope="col">Car</th>
+                        <th scope="col">Mašina</th>
                         <th></th>
-                        <th scope="col">Phone Number</th>
+                        <th scope="col">Telefono numeris</th>
                         <th></th>
-                        <th scope="col">Work Status(%)</th>
+                        <th scope="col">Darbo statusas(%)</th>
                     </tr>
                     </thead>
                 </table>
-            <a href={{ path('currentJobs') }} class="btn-more-options" id="btn-current-orders">More Options</a>
+            <a href={{ path('currentJobs') }} class="btn-more-options" id="btn-current-orders">Daugiau parinkčių</a>
 
         {%  endif %}
             {#{% if (is_granted('ROLE_COMPANY')) == true %}#}
