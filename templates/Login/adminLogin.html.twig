@@ -1,6 +1,10 @@
 {% extends 'base.html.twig' %}
 {% block title %}<title>Login</title>{% endblock %}
 {% block body %}
+    {% if errors %}
+        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
     <div class="text-center">
         <form class="form-signin" action="{{ path('login') }}" method="POST">
             <div style="position:fixed;right: 43%">

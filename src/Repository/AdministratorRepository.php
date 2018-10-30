@@ -20,13 +20,13 @@ class AdministratorRepository extends ServiceEntityRepository implements UserLoa
         parent::__construct($registry, Administrator::class);
     }
 
-//    public function loadUserByUsername($username)
-//    {
-//        return $this->createQueryBuilder('u')
-//            ->where('u.username = :username OR u.email = :email')
-//            ->setParameter('username', $username)
-//            ->setParameter('email', $username)
-//            ->getQuery()
-//            ->getOneOrNullResult();
-//    }
+    public function loadUserByUsername($username)
+    {
+        return $this->createQueryBuilder('u')
+            ->where('u.username = :username OR u.email = :email')
+            ->setParameter('username', $username)
+            ->setParameter('email', $username)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
 }
