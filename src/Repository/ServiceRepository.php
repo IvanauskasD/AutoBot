@@ -10,7 +10,7 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  * @method Service|null find($id, $lockMode = null, $lockVersion = null)
  * @method Service|null findOneBy(array $criteria, array $orderBy = null)
  * @method Service[]    findAll()
- * @method Service[]    findByOrder($category, $name)
+ //* @method Service[]    findByOrder($category, $name)
  * @method Service[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
 class ServiceRepository extends ServiceEntityRepository

@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Profilis</h1>
+    <div id="user" style="font-weight: bold">
+        Vardas: {{ app.user.firstname  }}<br/>
+        Pavardė: {{ app.user.lastname }}<br/>
+        El. paštas: {{ app.user.email  }}<br/>
+        Telefono numeris: {{ app.user.phoneNumber }}<br/>
+        Pozicija: {{ app.user.position }}<br/>
+        <br/>
+        <br/>
+        {#Kompanijos profiliui#}
+        {#<h2>Darbuotojų sąrašas</h2>#}
+        {#<table align="center">#}
+        {#<tr style="border-bottom: 3px solid #ddd;">#}
+        {#<th scope="row">Vardas</th>#}
+        {#<th></th>#}
+        {#<th scope="row">Pavardė</th>#}
+        {#<th></th>#}
+        {#<th scope="row">Tel. numeris</th>#}
+        {#<th></th>#}
+        {#<th scope="row">Pozicija</th>#}
+        {#</tr>#}
+        {#{% for employee in employees %}#}
+        {#<tr>#}
+        {#<td>{{ employee.firstname }}</td>#}
+        {#<td></td>#}
+        {#<td>{{employee.lastname}}</td>#}
+        {#<td></td>#}
+        {#<td>{{employee.email}}</td>#}
+        {#<td></td>#}
+        {#<td>{{employee.position}}</td>#}
+        {#</tr>#}
+        {#{% endfor %}#}
+        {#</table>#}
+        {#<button id="log_reg_employee"><a href="{{ path('registerEmployee') }}">Pridėti naują darbuotoją</a></button>#}
+        {#<h2>Client list</h2>#}
+        {#<table align="center">#}
+        {#<tr style="border-bottom: 3px solid #ddd;">#}
+        {#<th width="120px">Firstname</th>#}
+        {#<th></th>#}
+        {#<th width="200px">LastName</th>#}
+        {#<th></th>#}
+        {#<th width="200px">Phone Number</th>#}
+        {#<th></th>#}
+        {#<th width="200px">Role</th>#}
+        {#</tr>#}
+        {#{% for employee in employees %}#}
+        {#<tr>#}
+        {#<td>{{ employee.firstname }}</td>#}
+        {#<td></td>#}
+        {#<td>{{employee.lastname}}</td>#}
+        {#<td></td>#}
+        {#<td>{{employee.email}}</td>#}
+        {#<td></td>#}
+        {#<td>{{employee.position}}</td>#}
+        {#</tr>#}
+        {#{% endfor %}#}
+        {#</table>#}
+        {#<button id="log_reg_employee"><a href="{{ path('registerEmployee') }}">Register employee</a></button>#}
+    </div>
+
+{% endblock %}

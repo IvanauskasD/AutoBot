@@ -24,9 +24,28 @@ class ClientListController extends Controller
         $employee = $this->getDoctrine()->getManager()->getRepository(Employee::class)->findByCompany($user->getId());
 //        $orders = $this->getDoctrine()->getManager()->getRepository(Orders::class)->findByCompany($user->getId());
         dump($employee);
-        return $this->render('profile/clientList.html.twig', [
+        return $this->render('profile/companyProfile.html.twig', [
             'employees' => $employee,
         ]);
     }
-    
+
+    /**
+     * @Route("/empployee/profile", name="employeeProfile")
+     */
+    public function employeeProfile(AuthorizationCheckerInterface $authorizationChecker)
+    {
+        if (!$authorizationChecker->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
+            return $this->redirectToRoute('homepage');
+        }
+        $user = $this->getUser();
+        $users = $this->getDoctrine()->getManager()->getRepository(User::class)->findAll();
+        $employee = $this->getDoctrine()->getManager()->getRepository(Employee::class)->findByCompany($user->getId());
+//        $orders = $this->getDoctrine()->getManager()->getRepository(Orders::class)->findByCompany($user->getId());
+        dump($employee);
+        return $this->render('profile/userProfile.html.twig', [
+            'employees' => $employee,
+        ]);
+    }
+
+
 }
