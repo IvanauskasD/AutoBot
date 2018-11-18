@@ -19,11 +19,6 @@ class Administrator implements UserInterface
      */
     private $id;
 
-//    /**
-//     * @ORM\OneToOne(targetEntity="App\Entity\Administrator", mappedBy="userRole")
-//     */
-//    private $adminType;
-
     /**
      * @Assert\Length(
      *     min = 6,
@@ -76,7 +71,7 @@ class Administrator implements UserInterface
     private $service;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Job", mappedBy="administrator")
+     * @ORM\OneToMany(targetEntity="App\Entity\AdminJob", mappedBy="administrator")
      */
     private $job;
 
