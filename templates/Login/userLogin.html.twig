@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+{% block title %}<title>Login</title>{% endblock %}
+{% block body %}
+    <div class="text-center">
+        <form class="form-signin" action="{{ path('login') }}" method="POST">
+            <div style="position:fixed;right: 43%">
+                <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+            </div>
+            <input type="text"
+                   id="_username"
+                   name="_username"
+                   class="form-control"
+                   placeholder="E-mail"
+                   required autofocus>
+            <input type="password"
+                   id="_password"
+                   name="_password"
+                   class="form-control"
+                   placeholder="Password"
+                   required>
+
+            <button class="btn btn-sm btn-primary" style="position: absolute;top: 50%" type="submit">Sign in</button>
+        </form>
+    </div>
+{% endblock %}

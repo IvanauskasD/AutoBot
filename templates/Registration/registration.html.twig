@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <label>Kliento registracija</label>
+    <a href="{{ path('signupUser') }}">Klientams</a>
+    <label>Autoservisų registracija</label>
+    <a href="{{ path('signupCompany') }}">Autoservisams</a>
+
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <table class="table" align="center">
+        <thead class="thead-dark">
+        <tr style="border-bottom: 3px solid #ddd;">
+            <th scope="col">Darbo pavadinimas</th>
+            <th></th>
+            <th scope="col">Mašina</th>
+            <th></th>
+            <th scope="col">Aprašymas</th>
+            <th></th>
+            <th scope="col">Komentarai</th>
+            <th></th>
+            <th scope="col">Statusas</th>
+            <th></th>
+            <th scope="col">Daugiau_button</th>
+        </tr>
+        </thead>
+        {#{% for employee in employees %}#}
+            {#<tr>#}
+                {#<td>{{ employee.firstname }}</td>#}
+                {#<td></td>#}
+                {#<td>{{employee.lastname}}</td>#}
+                {#<td></td>#}
+                {#<td>{{employee.email}}</td>#}
+                {#<td></td>#}
+                {#<td>{{employee.position}}</td>#}
+            {#</tr>#}
+        {#{% endfor %}#}
+    </table>
+{% endblock %}

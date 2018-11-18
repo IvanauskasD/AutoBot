@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <h2 xmlns="http://www.w3.org/1999/html">Vartotojų sąrašas</h2>
+    <table align="center">
+        <tr style="border-bottom: 3px solid #ddd;">
+            <th width="120px">ID</th>
+            <th></th>
+            <th width="120px">Vardas</th>
+            <th></th>
+            <th width="200px">Pavardė</th>
+            <th></th>
+            <th width="200px">Telefono numeris</th>
+            <th></th>
+            <th width="200px">Elektroninis paštas</th>
+            <th></th>
+            <th>
+
+                <button type="submit" name="/">Blokuoti</button>
+            <th></th>
+            <th>
+                <button type="submit" name="/">Ištrinti</button>
+            <th></th>
+                <form id="role" method="post">
+                    <select name="size">
+                        <option value="employee">Darbuotojai</option>
+                        <option value="customer">Klientai</option>
+                        <option value="company">Autoservisai</option>
+                    </select>
+                    <input type="submit" name="Submit" value="Send">
+                </form>
+            <th></th>
+     {# <?php
+if(isset($_POST['role'])) {
+  echo "selected role: ".htmlspecialchars($_POST['role']);
+}
+?>#}
+            </th>
+        {# <form id="s" method="post">
+                <select name="size">
+                    <option value="small">Suspend</option>
+                    <option value="medium">Delete</option>
+                </select>
+
+            </form>#}
+
+
+     {# {% for user in users %}
+            <tr>
+                <td>{{ employee.firstname }}</td>
+                <td></td>
+                <td>{{employee.lastname}}</td>
+                <td></td>
+                <td>{{employee.phoneNumber}}</td>
+                <td></td>
+                <td>{{employee.email}}</td>
+                <td></td>
+                <td>{{employee.position}}</td>
+            </tr>
+        {% endfor %}#}
+    </table>
+
+{% endblock %}

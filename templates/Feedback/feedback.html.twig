@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <div class="star-rating" style="position: fixed;right: 40%;top: 40%">
+        <input id="star-1" type="radio" name="rating" value="star-1">
+        <label for="star-1" title="1 Star">
+            <i class="active fa fa-star" aria-hidden="true"></i>
+        </label>
+        <input id="star-2" type="radio" name="rating" value="star-2">
+        <label for="star-2" title="2 Stars">
+            <i class="active fa fa-star" aria-hidden="true"></i>
+        </label>
+        <input id="star-3" type="radio" name="rating" value="star-3">
+        <label for="star-3" title="3 Stars">
+            <i class="active fa fa-star" aria-hidden="true"></i>
+        </label>
+        <input id="star-4" type="radio" name="rating" value="star-4">
+        <label for="star-4" title="4 Stars">
+            <i class="active fa fa-star" aria-hidden="true"></i>
+        </label>
+        <input id="star-5" type="radio" name="rating" value="star-5">
+        <label for="star-5" title="5 Star">
+            <i class="active fa fa-star" aria-hidden="true"></i>
+        </label>
+    </div>
+<form>
+    <textarea id="komentaras" placeholder="Komentaras..."></textarea>
+</form>
+    <div class="row">
+        <button style="position: fixed;right: 55%;top: 45%;" class="btn btn-lg btn-primary">Irašyti</button>
+    </div>
+    <script>
+        $.fn.textWidth = function(text, font) {
+
+            if (!$.fn.textWidth.fakeEl) $.fn.textWidth.fakeEl = $('<span>').hide().appendTo(document.body);
+
+            $.fn.textWidth.fakeEl.text(text || this.val() || this.text() || this.attr('placeholder')).css('font', font || this.css('font'));
+
+            return $.fn.textWidth.fakeEl.width();
+        };
+
+        $('.width-dynamic').on('input', function() {
+            var inputWidth = $(this).textWidth();
+            $(this).css({
+                width: inputWidth
+            })
+        }).trigger('input');
+
+
+        function inputWidth(elem, minW, maxW) {
+            elem = $(this);
+            console.log(elem)
+        }
+
+        var targetElem = $('.width-dynamic');
+
+        inputWidth(targetElem);
+
+    </script>
+{% endblock %}

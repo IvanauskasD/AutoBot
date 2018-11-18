@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <button id="log_reg_employee"><a href="{{ path('addJobs') }}">Pridėti naują darbą</a></button>
+
+    <h2>Atliekami darbai</h2>
+    <table align="center">
+        <tr style="border-bottom: 3px solid #ddd;">
+            <th width="120px">Pavadinimas</th>
+            <th></th>
+            <th width="200px">Kaina</th>
+            <th></th>
+            <th width="200px">Trukmė</th>
+            <th></th>
+            <th width="200px">Aprašymas</th>
+        </tr>
+        {#{% for job in jobs %}#}
+            {#<tr>#}
+                {#<td>{{ job.jobName }}</td>#}
+                {#<td></td>#}
+                {#<td>{{ job.description}}</td>#}
+                {#<td></td>#}
+                {#<td>{{ job.cost }}</td>#}
+                {#<td></td>#}
+                {#<td>{{ job.jobTime}}</td>#}
+            {#</tr>#}
+        {#{% endfor %}#}
+    </table>
+{% endblock %}
