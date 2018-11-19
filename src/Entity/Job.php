@@ -17,10 +17,10 @@ class Job
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Company", inversedBy="job")
-     * @ORM\JoinColumn(name="company_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Administrator", inversedBy="job")
+     * @ORM\JoinColumn(name="admin_id", referencedColumnName="id")
      */
-    private $companyId;
+    private $administrator;
 
     /**
      * @ORM\Column(name="jobName", type="string", length=255)
@@ -42,45 +42,6 @@ class Job
     private $jobTime;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\AdminJob", inversedBy="jobs")
-     * @ORM\JoinColumn(name="Admin_jobs", referencedColumnName="id")
-     */
-    private $jobs;
-
-    /**
-     * @return mixed
-     */
-    public function getJobs()
-    {
-        return $this->jobs;
-    }
-
-    /**
-     * @param mixed $jobs
-     */
-    public function setJobs($jobs)
-    {
-        $this->jobs = $jobs;
-    }
-
-
-    /**
-     * @return mixed
-     */
-    public function getCompanyId()
-    {
-        return $this->companyId;
-    }
-
-    /**
-     * @param mixed $companyId
-     */
-    public function setCompanyId($companyId)
-    {
-        $this->companyId = $companyId;
-    }
-
-    /**
      * @return mixed
      */
     public function getAdministrator()
@@ -89,15 +50,12 @@ class Job
     }
 
     /**
-     * @param mixed $administrator
+     * @param mixed $adminType
      */
-    public function setAdministrator($administrator)
+    public function setAdministrator($adminType)
     {
-        $this->administrator = $administrator;
+        $this->administrator = $adminType;
     }
-
-
-
 
     /**
      * @return mixed

@@ -2,11 +2,9 @@
 namespace App\Form;
 
 use App\Entity\Job;
-use App\Entity\AdminJob;
 use App\Entity\Service;
 use Doctrine\DBAL\Types\FloatType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -20,17 +18,27 @@ class JobForm extends AbstractType
     {
 
         $builder
-            ->add('jobsName', TextType::class, [
+            ->add('jobName', TextType::class, [
                 'label' => 'Job Name'
-            ]
-        );
+            ])
+            ->add('description', TextType::class, [
+                'label' => 'Description'
+            ])
+            ->add('cost', TextType::class, [
+                'label' => 'Cost'
+            ])
+            ->add('jobTime', TextType::class, [
+                'label' => 'Job Time'
+            ])
+        ;
+        ;
 
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => AdminJob::class
+            'data_class' => Job::class
         ));
     }
 }

@@ -9,16 +9,20 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use App\Entity\Company;
-use App\Entity\Job;
 
 class SearchForm extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('jobName', null, array(
-            'required'   => false,
-            'empty_data' => 'John Doe'));
+            ->add('serviceCategory', ChoiceType::class, array(
+                'choices' => array(
+                    'Varikliai' => 'Varikliai',
+                    'Salonas' => 'Salonas',
+                    'Padangos' => 'Padangos'),
+                'label' => 'serviceCategory'
+            ))
+            ->add('ServiceName', TextType::class);
 
 
 
