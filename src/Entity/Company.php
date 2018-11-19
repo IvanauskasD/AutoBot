@@ -98,6 +98,29 @@ class Company implements UserInterface
     private $service;
 
     /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Job", mappedBy="companyId")
+     */
+    private $job;
+
+    /**
+     * @return mixed
+     */
+    public function getJob()
+    {
+        return $this->job;
+    }
+
+    /**
+     * @param mixed $job
+     */
+    public function setJob($job)
+    {
+        $this->job = $job;
+    }
+
+
+
+    /**
      * @return mixed
      */
     public function getService()
