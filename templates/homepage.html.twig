@@ -41,24 +41,6 @@
             <a href={{ path('currentJobs') }} class="btn-more-options" id="btn-current-orders">Daugiau parinkčių</a>
 
         {%  endif %}
-
-        {% if is_granted('ROLE_ADMIN') == true %}
-            <button class="btn btn-primary" style="width: 200px;">Prideti darba</button>
-            <table class="table">
-                <thead class="thead-dark">
-                <tr>
-                    <th scope="col">Job Name</th>
-                </tr>
-                </thead>
-                <tbody>
-                {% for jobs in job %}
-                <tr>
-                    <td>{{ jobs.jobsName }}</td>
-                </tr>
-                {% endfor %}
-                </tbody>
-            </table>
-        {% endif %}
             {#{% if (is_granted('ROLE_COMPANY')) == true %}#}
             {#<h1> Pending Jobs </h1>#}
             {#<table class="table">#}
