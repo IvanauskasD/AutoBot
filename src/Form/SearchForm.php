@@ -3,6 +3,7 @@ namespace App\Form;
 
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -16,9 +17,10 @@ class SearchForm extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('jobName', null, array(
-            'required'   => false,
-            'empty_data' => 'John Doe'));
+            ->add('jobName', EntityType::class, array(
+                'class' => Job::class,
+                'label' => 'Job Name'
+            ));
 
 
 
@@ -26,7 +28,7 @@ class SearchForm extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => Company::class,
+            'data_class' => Job::class,
         ));
     }
 }
