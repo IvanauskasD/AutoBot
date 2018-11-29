@@ -21,20 +21,14 @@ class Car
     private $carId;
 
     /**
-     * @Assert\Regex(
-     *     pattern = "/^[a-zA-Z0-9]$/",
-     *     match = false,
-     * )
-     * @ORM\Column(type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="App\Entity\Maker")
+     * @ORM\JoinColumn(name="maker_id", referencedColumnName="id")
      */
     private $maker;
 
     /**
-     * @Assert\Regex(
-     *     pattern = "/^[a-zA-Z0-9 ]$/",
-     *     match = false,
-     * )
-     * @ORM\Column(type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="App\Entity\Model")
+     * @ORM\JoinColumn(name="model_id", referencedColumnName="id")
      */
     private $model;
 
@@ -81,20 +75,6 @@ class Car
     public $orders;
 
 
-    /**
-     * @Assert\Regex(
-     *     pattern = "/^[a-zA-Z0-9 ]$/",
-     *     match = false,
-     * )
-     * @ORM\Column(name="comments",type="string", length=255)
-     */
-    private $comment;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Profile", inversedBy="cars")
-     * @ORM\JoinColumn(name="profile_id", referencedColumnName="id")
-     */
-    private $profile;
 
     /**
      * @return mixed
@@ -112,21 +92,6 @@ class Car
         $this->carYear = $carYear;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getProfile()
-    {
-        return $this->profile;
-    }
-
-    /**
-     * @param mixed $profile
-     */
-    public function setProfile($profile)
-    {
-        $this->profile = $profile;
-    }
 
     /**
      * @return mixed
@@ -257,22 +222,6 @@ class Car
     public function setOrders($orders)
     {
         $this->orders = $orders;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getComments()
-    {
-        return $this->comment;
-    }
-
-    /**
-     * @param mixed $comment
-     */
-    public function setComments($comment)
-    {
-        $this->comment = $comment;
     }
 
 

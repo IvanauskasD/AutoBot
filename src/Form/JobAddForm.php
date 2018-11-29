@@ -14,23 +14,33 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class JobForm extends AbstractType
+
+class JobAddForm extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
 
         $builder
-            ->add('jobsName', TextType::class, [
-                'label' => 'Job Name'
-            ]
-        );
-
+            ->add('jobName', EntityType::class, array(
+                    'class' => AdminJob::class,
+                    'label' => 'Job Name'
+            ))
+            ->add('description', TextType::class, array(
+                'label' => 'Aprasymas'
+            ))
+            ->add('cost', TextType::class, array(
+                'label' => 'Kaina'
+            ))
+            ->add('jobTime', TextType::class, array(
+                'label' => 'Darbo laikas'
+            ))
+        ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => AdminJob::class
+            'data_class' => Job::class
         ));
     }
 }

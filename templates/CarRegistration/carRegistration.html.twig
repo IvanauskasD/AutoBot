@@ -1,18 +1,47 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-    {{ form_start(car_form) }}
-    <div id="default">
-    <label>Mašinos numeris: </label> {{ form_widget(car_form.carId, {'attr': {'class': 'Car'}}) }}</br>
-    <label>Markė:</label> {{ form_widget(car_form.maker, {'attr': {'class': 'Car', 'style' : 'width: 60.3%'}}) }}</br>
-    <label>Modelis:</label> {{ form_widget(car_form.model, {'attr': {'class': 'Car'}}) }}</br>
-    <label>Metai:</label> {{ form_widget(car_form.carYear, {'attr': {'class': 'Car', 'style' : 'width: 60.3%'}}) }}</br>
-    <label>Pavarų dėžė:</label> {{ form_widget(car_form.transmission, {'attr': {'class': 'Car', 'style' : 'width: 60.3%'}}) }}</br>
-    <label>Variklio tūris:</label> {{ form_widget(car_form.engineVolume, {'attr': {'class': 'Car'}}) }}</br>
-    <label>Kėbulo tipas:</label> {{ form_widget(car_form.carBody, {'attr': {'class': 'Car'}}) }}</br>
-    {#<label>C: </label>{{ form_widget(car_form.comments, {'attr': {'class': 'Car'}}) }}</br>#}
-    <button class="btn btn-primary" style="width: 200px;">Registruoti mašiną</button>
-    </div>
-    
+    {{ form_start(car) }}
+    {{ form_row(car.carId) }}
+    {{ form_row(car.maker) }}    {# <select id="meetup_sport" ... #}
+    {{ form_row(car.model) }} {# <select id="meetup_position" ... #}
+    {{ form_row(car.carYear) }}
+    {{ form_row(car.carBody) }}
+    {{ form_row(car.transmission) }}
+    {{ form_row(car.engineVolume) }}
 
-    {{ form_end(car_form) }}
+
+    <button class="btn btn-primary">Išsaugoti</button>
+    {{ form_end(car) }}
+
+    <script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
+    <script>
+        var $espece = $('#car_form_maker');
+        // When especegets selected ...
+        $espece.change(function() {
+            console.log("Dans la fonction Change");
+            // ... retrieve the corresponding form.
+            var $form = $(this).closest('form');
+            // Simulate form data, but only include the selected espece value.
+            var data = {};
+            data[$espece.attr('name')] = $espece.val();
+
+            // Submit data via AJAX to the form's action path.
+            $.ajax({
+                url : $form.attr('action'),
+                type: $form.attr('method'),
+                data : data,
+                success: function(html) {
+                    // Replace current race field ...
+                    $('#car_form_model').replaceWith(
+                            // ... with the returned one from the AJAX response.
+                            $(html).find('#car_form_model')
+                    );
+                    // race field now displays the appropriate positions.
+                }
+            });
+        });
+    </script>
 {% endblock %}
+
+
+
