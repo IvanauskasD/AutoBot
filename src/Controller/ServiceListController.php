@@ -1,7 +1,7 @@
 <?php
 namespace App\Controller;
 
-use App\Entity\Service;
+use App\Entity\Job;
 use App\Form\ServiceForm;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -19,7 +19,7 @@ class ServiceListController extends Controller
             return $this->redirectToRoute('homepage');
         }
         $user = $this->getUser();
-        $services = $this->getDoctrine()->getManager()->getRepository(Service::class)->findByCompanyId($user->getId());
+        $services = $this->getDoctrine()->getManager()->getRepository(Job::class)->findByCompanyId($user->getId());
         return $this->render('serviceList.html.twig',[
             'services' => $services
         ]);
@@ -28,20 +28,20 @@ class ServiceListController extends Controller
     /**
      * @Route("/company/services/delete/{id}", name="deleteService")
      */
-    public function Delete (int $id, AuthorizationCheckerInterface $authorizationChecker)
+    public function Delete ($id, AuthorizationCheckerInterface $authorizationChecker)
     {
         if (!$authorizationChecker->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
             return $this->redirectToRoute('homepage');
         }
         $em = $this->getDoctrine()->getManager();
-        $service = $em->getRepository(Service::class)->find($id);
+        $service = $em->getRepository(Job::class)->find($id);
         if ($service)
         {
             $em->remove($service);
             $em->flush();
         }
         $user = $this->getUser();
-        $services = $this->getDoctrine()->getManager()->getRepository(Service::class)->findByCompanyId($user->getId());
+        $services = $this->getDoctrine()->getManager()->getRepository(Job::class)->findByCompanyId($user->getId());
         return $this->render('serviceList.html.twig',[
             'services' => $services
         ]);
@@ -56,7 +56,7 @@ class ServiceListController extends Controller
             return $this->redirectToRoute('homepage');
         }
         $em = $this->getDoctrine()->getManager();
-        $service = $em->getRepository(Service::class)->find($id);
+        $service = $em->getRepository(Job::class)->find($id);
 
         $form = $this->createForm(ServiceForm::class, $service);
         $form->handleRequest($request);
@@ -66,14 +66,14 @@ class ServiceListController extends Controller
             $em->persist($service);
             $em->flush();
             $user = $this->getUser();
-            $services = $this->getDoctrine()->getManager()->getRepository(Service::class)->findByCompanyId($user->getId());
+            $services = $this->getDoctrine()->getManager()->getRepository(Job::class)->findByCompanyId($user->getId());
             return $this->render('serviceList.html.twig',[
             'services' => $services
             ]);
         }
 
         $user = $this->getUser();
-        $services = $this->getDoctrine()->getManager()->getRepository(Service::class)->findByCompanyId($user->getId());
+        $services = $this->getDoctrine()->getManager()->getRepository(Job::class)->findByCompanyId($user->getId());
         return $this->render('ServiceRegistration/serviceRegistration.html.twig', [
             'services' =>$form->createView()
         ]);

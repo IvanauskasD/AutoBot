@@ -29,4 +29,11 @@ class UserRepository extends ServiceEntityRepository implements UserLoaderInterf
             ->getQuery()
             ->getOneOrNullResult();
     }
+
+    public function loadAllUsers(){
+        return $this->createQueryBuilder('user')
+            ->select('user.id, user.email')
+            ->getQuery()
+            ->getArrayResult();
+    }
 }
