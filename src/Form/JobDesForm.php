@@ -1,10 +1,8 @@
 <?php
 namespace App\Form;
 
+use App\Entity\Car;
 use App\Entity\Job;
-use App\Form\JobAddForm;
-use App\Entity\AdminJob;
-use App\Entity\AdminJobDes;
 use App\Entity\Service;
 use Doctrine\DBAL\Types\FloatType;
 use Symfony\Component\Form\AbstractType;
@@ -15,17 +13,22 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\FormEvent;
-use Symfony\Component\Form\FormEvents;
-use Symfony\Component\Form\FormInterface;
-class JobForm extends AbstractType
+
+class JobDesForm extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+    $builder
+        ->add('carId', EntityType::class, array(
+            'class'        => Car::class, //This existed usually in (AppBundle\Entity\Person)
+            'choice_label' => 'carId'
+        ))
+        ->add('jobName', EntityType::class, array(
+            'class'        => Job::class, //This existed usually in (AppBundle\Entity\Person)
+            'choice_label' => 'carId'
+        ))
+    ;
 
-        $builder
-->add('jobsName', TextType::class, array(
-))
-        ;
     }
+
 }

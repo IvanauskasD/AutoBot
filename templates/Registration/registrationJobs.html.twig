@@ -14,7 +14,7 @@
                 </div>
                 <div id="default">
                     {{ form_start(jobs_form) }}
-                    Darbo pavadinimas: {{ form_widget(jobs_form.jobsName, {'attr': {'class': 'AdminJob'}}) }}</br>
+                    {{ form_row(jobs_form.jobsName) }}
                     <button class="btn btn-primary">Išsaugoti</button>
                     {{ form_end(jobs_form) }}
                 </div>
@@ -26,4 +26,6 @@
 
 
     </body>
+
+
 {%  endblock %}

@@ -74,7 +74,26 @@ class Car
      */
     public $orders;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Service", mappedBy="carId")
+     */
+    private $service;
 
+    /**
+     * @return mixed
+     */
+    public function getService()
+    {
+        return $this->service;
+    }
+
+    /**
+     * @param mixed $service
+     */
+    public function setService($service)
+    {
+        $this->service = $service;
+    }
 
     /**
      * @return mixed
@@ -224,6 +243,8 @@ class Car
         $this->orders = $orders;
     }
 
+    public function __toString() {
+        return (string) $this->carId; }
 
 
 }

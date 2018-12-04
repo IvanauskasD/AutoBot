@@ -48,6 +48,28 @@ class Job
     private $jobs;
 
     /**
+     * @ORM\OneToOne(targetEntity="App\Entity\AdminJobDes", inversedBy="jobsDesc")
+     * @ORM\JoinColumn(name="Admin_jobsDes", referencedColumnName="id")
+     */
+    private $jobsDes;
+
+    /**
+     * @return mixed
+     */
+    public function getJobsDes()
+    {
+        return $this->jobsDes;
+    }
+
+    /**
+     * @param mixed $jobsDes
+     */
+    public function setJobsDes($jobsDes)
+    {
+        $this->jobsDes = $jobsDes;
+    }
+
+    /**
      * @return mixed
      */
     public function getJobs()
@@ -78,22 +100,6 @@ class Job
     public function setCompanyId($companyId)
     {
         $this->companyId = $companyId;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getAdministrator()
-    {
-        return $this->administrator;
-    }
-
-    /**
-     * @param mixed $administrator
-     */
-    public function setAdministrator($administrator)
-    {
-        $this->administrator = $administrator;
     }
 
 
@@ -180,5 +186,7 @@ class Job
     }
 
 
+    public function __toString() {
+        return (string) $this->jobName; }
 }
 

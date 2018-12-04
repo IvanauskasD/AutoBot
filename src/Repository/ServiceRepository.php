@@ -20,6 +20,14 @@ class ServiceRepository extends ServiceEntityRepository
         parent::__construct($registry, Service::class);
     }
 
+    public function findById($value)
+    {
+        return $this->createQueryBuilder('c')
+            ->where('c.id = :value')->setParameter('value', $value)
+            ->getQuery()
+            ->getOneOrNullResult();
+        ;
+    }
     
     public function findByCompanyId($value)
     {

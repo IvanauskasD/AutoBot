@@ -6,7 +6,7 @@ use App\Entity\AdminJob;
 use App\Entity\Orders;
 use App\Entity\Service;
 use App\Entity\User;
-use App\Form\ServiceForm;
+use App\Form\JobDesForm;
 use App\Form\DurationForm;
 use App\Form\JobForm;
 use App\Form\JobAddForm;
@@ -47,13 +47,13 @@ class JobController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $user = $this->getUser();
-        $newJob = new Job();
-        $form = $this->createForm(JobAddForm::class, $newJob);
+        $meetup = new Job();
+        $form = $this->createForm(JobAddForm::class, $meetup);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $newJob->setCompanyId($user);
-            $em->persist($newJob);
+            $meetup->setCompanyId($user);
+            $em->persist($meetup);
             $em->flush();
 
             return $this->redirectToRoute('companyJobs');

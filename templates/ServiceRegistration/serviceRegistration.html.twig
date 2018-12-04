@@ -3,9 +3,9 @@
 {% block body %}
     {{ form_start(services) }}
     <div id="default">
-        <label>Service category:</label> {{ form_widget(services.serviceCategory, {'attr': {'class': 'Service','style' : 'width: 53%'}}) }}</br>
+        <label>Service category:</label> {{ form_widget(services.serviceCategory, {'attr': {'class': 'Job','style' : 'width: 53%'}}) }}</br>
         </br>
-        Service name: {{ form_widget(services.ServiceName, {'attr': {'class': 'Service','style' : 'width: 53%'}}) }}</br>
+        Service name: {{ form_widget(services.ServiceName, {'attr': {'class': 'Job','style' : 'width: 53%'}}) }}</br>
         </br>
         <button class="btn btn-primary">Register service</button>
     </div>

@@ -19,7 +19,7 @@ class CarServiceListController extends Controller
     /**
      * @Route("/company/carServices/{id}", name="carServices")
      */
-    public function index(AuthorizationCheckerInterface $authorizationChecker, string $id)
+    public function index(AuthorizationCheckerInterface $authorizationChecker, $id)
     {
         if (!$authorizationChecker->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
             return $this->redirectToRoute('homepage');

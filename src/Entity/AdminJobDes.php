@@ -3,12 +3,12 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections\ArrayCollection;
+
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\AdminJobRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\AdminJobDesRepository")
  */
-class AdminJob
+class AdminJobDes
 {
     /**
      * @ORM\Id()
@@ -25,20 +25,32 @@ class AdminJob
     private $administrator;
 
     /**
-     * @ORM\Column(name="jobsName", type="string", length=255)
-     */
-    private $jobsName;
-
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\AdminJobDes", mappedBy="jobsDes")
+     * @ORM\Column(name="jobsDes", type="string", length=255)
      */
     private $jobsDes;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\AdminJob", inversedBy="jobsDes")
+     */
+    private $jobsDesc;
 
-    public function __construct()
+    /**
+     * @return mixed
+     */
+    public function getJobsDesc()
     {
-        $this->administrator = new ArrayCollection();
+        return $this->jobsDesc;
     }
+
+    /**
+     * @param mixed $jobsDesc
+     */
+    public function setJobsDesc($jobsDesc)
+    {
+        $this->jobsDesc = $jobsDesc;
+    }
+
+
 
     /**
      * @return mixed
@@ -75,37 +87,38 @@ class AdminJob
     /**
      * @return mixed
      */
+    public function getJobs()
+    {
+        return $this->jobs;
+    }
+
+    /**
+     * @param mixed $jobs
+     */
+    public function setJobs($jobs)
+    {
+        $this->jobs = $jobs;
+    }
+
+    /**
+     * @return mixed
+     */
     public function getJobsDes()
     {
         return $this->jobsDes;
     }
 
     /**
-     * @param mixed $jobs
+     * @param mixed $jobsDes
      */
-    public function setJobsDes($jobs)
+    public function setJobsDes($jobsDes)
     {
-        $this->jobsDes = $jobs;
+        $this->jobsDes = $jobsDes;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getJobsName()
-    {
-        return $this->jobsName;
-    }
-
-    /**
-     * @param mixed $jobsName
-     */
-    public function setJobsName($jobsName)
-    {
-        $this->jobsName = $jobsName;
-    }
 
     public function __toString() {
-        return (string) $this->jobsName; }
+        return (string) $this->jobsDes; }
 
 
 }

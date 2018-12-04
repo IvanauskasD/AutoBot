@@ -17,12 +17,13 @@ class Service
      */
     private $id;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Company", inversedBy="service")
-     * @ORM\JoinColumn(name="company_id", referencedColumnName="id")
-     */
-    private $companyId;
 
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Car", inversedBy="service")
+     * @ORM\JoinColumn(name="car_id", referencedColumnName="id")
+     */
+    private $carId;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=false)
@@ -35,41 +36,21 @@ class Service
     private $serviceCategory;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Administrator", inversedBy="service")
-     * @ORM\JoinColumn(name="admin_id", referencedColumnName="id")
-     */
-    private $administrator;
-
-    /**
-     * @ORM\Column(type="float", length=255, nullable=false)
-     */
-    private $cost;
-
-    /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Work", mappedBy="services")
-     */
-    private $works;
-
-    /**
      * @return mixed
      */
-    public function getWorks()
+    public function getCarId()
     {
-        return $this->works;
+        return $this->carId;
     }
 
     /**
-     * @param mixed $works
+     * @param mixed $carId
      */
-    public function setWorks($works)
+    public function setCarId($carId)
     {
-        $this->works = $works;
+        $this->carId = $carId;
     }
 
-    /**
-     * @ORM\Column(type="integer", length=255, nullable=false)
-     */
-    private $serviceTime;
 
     public function getId()
     {
@@ -115,101 +96,4 @@ class Service
     {
         $this->serviceName = $serviceName;
     }
-
-    public function getCompanyId()
-    {
-        return $this->companyId;
-    }
-
-    /**
-     * @param int $service_name
-     */
-    public function setCompanyId($companyId)
-    {
-        $this->companyId = $companyId;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getCompany()
-    {
-        return $this->company;
-    }
-
-    /**
-     * @param mixed $company
-     */
-    public function setCompany($company)
-    {
-        $this->company = $company;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getAdministrator()
-    {
-        return $this->administrator;
-    }
-
-    /**
-     * @param mixed $administrator
-     */
-    public function setAdministrator($administrator)
-    {
-        $this->administrator = $administrator;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getAdministratorType()
-    {
-        return $this->administratorType;
-    }
-
-    /**
-     * @param mixed $administratorType
-     */
-    public function setAdministratorType($administratorType)
-    {
-        $this->administratorType = $administratorType;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getCost()
-    {
-        return $this->cost;
-    }
-
-    /**
-     * @param mixed $cost
-     */
-    public function setCost($cost)
-    {
-        $this->cost = $cost;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getServiceTime()
-    {
-        return $this->serviceTime;
-    }
-
-    /**
-     * @param mixed $serviceTime
-     */
-    public function setServiceTime($serviceTime)
-    {
-        $this->serviceTime = $serviceTime;
-    }
-
-
-
-
 }

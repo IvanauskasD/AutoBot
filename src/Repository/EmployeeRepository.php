@@ -19,16 +19,10 @@ class EmployeeRepository extends ServiceEntityRepository
         parent::__construct($registry, Employee::class);
     }
 
-    /*
-    public function findBySomething($value)
-    {
-        return $this->createQueryBuilder('e')
-            ->where('e.something = :value')->setParameter('value', $value)
-            ->orderBy('e.id', 'ASC')
-            ->setMaxResults(10)
+    public function loadAllEmployees(){
+        return $this->createQueryBuilder('employee')
+            ->select('employee.id, employee.email')
             ->getQuery()
-            ->getResult()
-        ;
+            ->getArrayResult();
     }
-    */
 }

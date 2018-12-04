@@ -49,6 +49,7 @@ class SignupCompanyController extends AbstractController
 
         if($form->isSubmitted() && $form->isValid() && !$userExists && !$company1Exists && !$company1Exists)
         {
+
             $password = $encoder
                 ->encodePassword(
                     $company,

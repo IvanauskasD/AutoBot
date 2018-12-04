@@ -53,7 +53,7 @@ class SignupUserController extends AbstractController
                 );
 
             $user->setPassword($password);
-
+            $user->setRoles(array('ROLE_USER'));
             $em = $this->getDoctrine()->getManager();
 
             $em->persist($user);

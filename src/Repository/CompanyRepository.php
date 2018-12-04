@@ -29,7 +29,13 @@ class CompanyRepository extends ServiceEntityRepository implements UserLoaderInt
             ->getQuery()
             ->getOneOrNullResult();
     }
-    
+
+    public function loadAllCompanies(){
+        return $this->createQueryBuilder('company')
+            ->select('company.id, company.email')
+            ->getQuery()
+            ->getArrayResult();
+    }
     
     
 }
