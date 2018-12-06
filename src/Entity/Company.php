@@ -102,6 +102,28 @@ class Company implements UserInterface, AdvancedUserInterface
     private $job;
 
     /**
+     * @ORM\OneToMany(targetEntity="App\Entity\DenyComment", mappedBy="company")
+     */
+    private $denycomment;
+
+    /**
+     * @return mixed
+     */
+    public function getDenycomment()
+    {
+        return $this->denycomment;
+    }
+
+    /**
+     * @param mixed $denycomment
+     */
+    public function setDenycomment($denycomment)
+    {
+        $this->denycomment = $denycomment;
+    }
+
+
+    /**
      * @var bool
      *
      * @ORM\Column(type="boolean")

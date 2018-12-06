@@ -29,8 +29,10 @@
             <td></td>
             <td></td>
             <td></td>
-            <td><button type="button" class="btn btn-success" onclick="location.href = '{{ path('reservation', {id: employees.id}) }}'" >Details</button>
+            {% if employees.status != "Dismissed" %}
+            <td><button type="button" class="btn btn-success" onclick="location.href = '{{ path('pendingJobList', {id: employees.id}) }}'" >Details</button>
             </td>
+            {% endif %}
         {% endfor %}
         {#{% for employee in employees %}#}
         {#<tr>#}
