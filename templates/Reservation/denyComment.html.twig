@@ -1,0 +1,8 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    {{ form_start(form) }}
+    <button type="submit" onclick="location.href = '{{ path('pendingJobs') }}'">Submit</button>
+    {{ form_end(form) }}
+
+
+{% endblock %}

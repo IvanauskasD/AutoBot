@@ -80,6 +80,27 @@ class Orders
     private $profile;
 
     /**
+     * @ORM\OneToMany(targetEntity="App\Entity\DenyComment", mappedBy="order")
+     */
+    private $denycomment;
+
+    /**
+     * @return mixed
+     */
+    public function getDenycomment()
+    {
+        return $this->denycomment;
+    }
+
+    /**
+     * @param mixed $denycomment
+     */
+    public function setDenycomment($denycomment)
+    {
+        $this->denycomment = $denycomment;
+    }
+
+    /**
      * @return mixed
      */
     public function getProfile()
