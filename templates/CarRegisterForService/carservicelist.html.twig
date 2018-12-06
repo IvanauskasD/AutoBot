@@ -47,7 +47,9 @@
                     <td>{{company.companyId.companyName}}</td>
                     <td>{{company.companyId.email}}</td>
                     <td>{{company.companyId.phoneNumber}}</td>
-                    {#<td style="text-align: right"><button type="button" class="btn btn-info" onclick="location.href = '{{ path('RegisterCarService', {car_id: car.carId, company_id: company.company.id}) }}'"  >Book car</button></td>#}
+                    {% if car is not null %}
+                    <td style="text-align: right"><button type="button" class="btn btn-info" onclick="location.href = '{{ path('RegisterCarService', {car_id: car.carId, company_id: company.companyId.id}) }}'"  >Book car</button></td>
+                        {% endif %}
                     {% set i = i + 1 %}
                 </tr>
 

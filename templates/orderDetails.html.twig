@@ -16,15 +16,15 @@
                 <tbody>
                             <tr class="table-light">
                             <th> Full name </th>
-                            <td>{{order.car.company.firstnames}} {{order.car.company.lastname}} </td>
+                            <td>{{order.car.user.firstnames}} {{order.car.user.lastname}} </td>
                             </tr>
                             <tr class="table-light">
                             <th> Email </th>
-                            <td>{{order.car.company.email}}</td>
+                            <td>{{order.car.user.email}}</td>
                             </tr>
                             <tr class="table-light">
                             <th> Phone Number </th>
-                            <td>{{order.car.company.phoneNumber}}</td>
+                            <td>{{order.car.user.phoneNumber}}</td>
                             </tr>
                             <tr class="table-light">
                                 <th> Visit time </th>
@@ -80,15 +80,7 @@
                 <tbody>
                             <tr class="table-light">
                             <th> Category </th>
-                            <td>{{order.car.serviceCategory}}</td>
-                            </tr>
-                            <tr class="table-light">
-                            <th> Service </th>
-                            <td>{{order.car.serviceName}}</td>
-                            </tr>
-                            <tr class="table-light">
-                            <th> Description </th>
-                            <td>{{order.car.comments}}</td>
+                            <td>{{order.car.carId}}</td>
                             </tr>
                             
                 </tbody>
@@ -108,6 +100,8 @@
                 <button type="button" class="btn btn-danger" onclick="location.href = '{{ path('orderDeny', {id: order.id}) }}'" >Dismiss</button>
                 </div>
                 <div class="col-4"></div>
+                {{ form_start(form) }}
+                {{ form_end(form) }}
             </div>
             <div style="height: 50px;"></div>
             {% elseif order.status == "Accepted" %}

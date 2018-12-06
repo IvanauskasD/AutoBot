@@ -80,6 +80,27 @@ class Car
     private $service;
 
     /**
+     * @ORM\OneToMany(targetEntity="App\Entity\CarProblme", mappedBy="car")
+     */
+    private $carjob;
+
+    /**
+     * @return mixed
+     */
+    public function getCarjob()
+    {
+        return $this->carjob;
+    }
+
+    /**
+     * @param mixed $carjob
+     */
+    public function setCarjob($carjob)
+    {
+        $this->carjob = $carjob;
+    }
+
+    /**
      * @return mixed
      */
     public function getService()

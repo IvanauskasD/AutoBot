@@ -19,18 +19,20 @@ class ClientListController extends Controller
         if (!$authorizationChecker->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
             return $this->redirectToRoute('homepage');
         }
+
         $user = $this->getUser();
-        $users = $this->getDoctrine()->getManager()->getRepository(User::class)->findAll();
         $employee = $this->getDoctrine()->getManager()->getRepository(Employee::class)->findByCompany($user->getId());
+        $orders = $this->getDoctrine()->getManager()->getRepository(Orders::class)->findByCompany($user->getId());
+
 //        $orders = $this->getDoctrine()->getManager()->getRepository(Orders::class)->findByCompany($user->getId());
         dump($employee);
         return $this->render('profile/companyProfile.html.twig', [
-            'employees' => $employee,
+            'orders' => $orders
         ]);
     }
 
     /**
-     * @Route("/empployee/profile", name="employeeProfile")
+     * @Route("/employee/profile", name="employeeProfile")
      */
     public function employeeProfile(AuthorizationCheckerInterface $authorizationChecker)
     {

@@ -91,15 +91,20 @@
                         {% if car.orders %}
                             {% if car.orders.status != "Dismissed" %}
                                 <button type="button" id="Service-car" disabled onclick="location.href = '{{ path('carServices', {id: car.carId}) }}'" >Services</button>
+                                <button type="button" id="Edit-car" disabled onclick="location.href = '{{ path('editCar', {id: car.carId}) }}'" >Edit</button>
+                                <button type="button" id="Delete-car" disabled onclick="location.href = '{{ path('deleteCar', {id: car.carId}) }}'" >Delete</button>
                             {% else %}
                                 <button type="button" id="Service-car" onclick="location.href = '{{ path('carServices', {id: car.carId}) }}'" >Services</button>
+                                <button type="button" id="Edit-car" onclick="location.href = '{{ path('editCar', {id: car.carId}) }}'" >Edit</button>
+                                <button type="button" id="Delete-car" onclick="location.href = '{{ path('deleteCar', {id: car.carId}) }}'" >Delete</button>
                             {% endif %}
                         {% else %}
                             <button type="button" id="Service-car" onclick="location.href = '{{ path('carServices', {id: car.carId}) }}'" >Services</button>
+                            <button type="button" id="Edit-car" onclick="location.href = '{{ path('editCar', {id: car.carId}) }}'" >Edit</button>
+                            <button type="button" id="Delete-car" onclick="location.href = '{{ path('deleteCar', {id: car.carId}) }}'" >Delete</button>
                         {% endif %}
 
-                        <button type="button" id="Edit-car" onclick="location.href = '{{ path('editCar', {id: car.carId}) }}'" >Edit</button>
-                        <button type="button" id="Delete-car" onclick="location.href = '{{ path('deleteCar', {id: car.carId}) }}'" >Delete</button>
+
                     </td>
                 </tr>
             {% endif %}

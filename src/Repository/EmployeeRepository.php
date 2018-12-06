@@ -25,4 +25,17 @@ class EmployeeRepository extends ServiceEntityRepository
             ->getQuery()
             ->getArrayResult();
     }
+
+    public function loadByCompany($id)
+    {
+        return $this->createQueryBuilder('c')
+            ->addSelect('r') // to make Doctrine actually use the join
+            ->leftJoin('c.orders', 'r')
+            ->addSelect('u') // to make Doctrine actually use the join
+            ->leftJoin('r.company', 'u')
+            ->andwhere('c.company = :id')->setParameter('id', $id)
+            ->getQuery()
+            ->getResult();
+        ;
+    }
 }
