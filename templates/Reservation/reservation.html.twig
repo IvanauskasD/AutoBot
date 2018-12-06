@@ -1,29 +1,128 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <table style="width: 70%">
+    {#<table style="width: 70%">#}
+        {#<tr>#}
+            {#<th style="width:250px">Mašina</th>#}
+            {#<th style="width:250px">Servisas</th>#}
+            {#<th style="width: 250px">Priimta/Laukiama/Atmesta</th>#}
+        {#</tr>#}
+        {#<tr>#}
+            {#<td>Car1</td>#}
+            {#<td>Autoservice1</td>#}
+            {#<td style="color: green">Priimta</td>#}
+            {#<td><button class="btn"style="background-color: red;cursor: not-allowed;">Atmesta</button></td>#}
+        {#</tr>#}
+        {#<tr>#}
+            {#<td>Car1</td>#}
+            {#<td>Autoservice1</td>#}
+            {#<td style="color: yellow">Laukiama</td>#}
+            {#<td><button class="btn"style="background-color: red"onclick="location.href = '{{ path('cancelreservation') }}'">Atšaukti</button></td>#}
+        {#</tr>#}
+        {#<tr>#}
+            {#<td>Car1</td>#}
+            {#<td>Autoservice1</td>#}
+            {#<td id="Canceled" style="color: red">Atmesta</td>#}
+            {#<td><button class="btn"style="background-color: red;"onclick="location.href = '{{ path('cancelreservation') }}'">Atšaukti</button></td>#}
+        {#</tr>#}
+    {#</table>#}
+
+    <table class="table">
         <tr>
-            <th style="width:250px">Mašina</th>
-            <th style="width:250px">Servisas</th>
-            <th style="width: 250px">Priimta/Laukiama/Atmesta</th>
+            <th scope="col">Car ID</th>
+            <th scope="col">Maker</th>
+            <th scope="col">Model</th>
+            <th scope="col">Visit time</th>
+            <th scope="col">Cost</th>
+            <th scope="col">Duration</th>
+            <th scope="col">Status</th>
+            <th> </th>
         </tr>
-        <tr>
-            <td>Car1</td>
-            <td>Autoservice1</td>
-            <td style="color: green">Priimta</td>
-            <td><button class="btn"style="background-color: red;cursor: not-allowed;">Atmesta</button></td>
-        </tr>
-        <tr>
-            <td>Car1</td>
-            <td>Autoservice1</td>
-            <td style="color: yellow">Laukiama</td>
-            <td><button class="btn"style="background-color: red"onclick="location.href = '{{ path('cancelreservation') }}'">Atšaukti</button></td>
-        </tr>
-        <tr>
-            <td>Car1</td>
-            <td>Autoservice1</td>
-            <td id="Canceled" style="color: red">Atmesta</td>
-            <td><button class="btn"style="background-color: red;"onclick="location.href = '{{ path('cancelreservation') }}'">Atšaukti</button></td>
-        </tr>
+        </thead>
+        <tbody>
+        {% for car in cars %}
+            {% if car.orders and car.orders.status == "Finished" %}
+                <tr class="table-success">
+                    <td>{{ car.carId }}</td>
+                    <td>{{ car.maker}}</td>
+                    <td>{{ car.model}}</td>
+                    <td>{{ car.carYear}}</td>
+                    {% if car.orders.cost and car.orders.duration != null %}
+                        <td>{{ car.orders.cost}}</td>
+                        <td>{{ car.orders.duration}}</td>
+                    {% endif %}
+                    {% if car.orders %}
+                        {% if car.orders.status == "Accepted" %}
+                            <td style="color: green;">{{  car.orders.status}}</td>
+                        {% elseif car.orders.status == "Waiting" %}
+                            <td style="color: #ffbf00;">{{  car.orders.status}}</td>
+                        {% elseif car.orders.status == "Dismissed" %}
+                            <td style="color: red;">{{  car.orders.status}}</td>
+                        {% elseif car.orders.status == "Finished" %}
+                            <td style="color: green;">{{car.orders.status}}</td>
+                        {% endif %}
+
+                    {% else %}
+                        <td>Not registered</td>
+                    {% endif %}
+                    <td style="text-align: right">
+                        {% if car.orders %}
+                        <button type="button" id="Edit-car" onclick="location.href = '{{ path('editCar', {id: car.carId}) }}'" >Edit</button>
+                        <button type="button" id="Delete-car" onclick="location.href = '{{ path('deleteCar', {id: car.carId}) }}'" >Delete</button>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td>{{ car.carId }}</td>
+                    <td>{{ car.maker}}</td>
+                    <td>{{ car.model}}</td>
+                    {% if car.orders %}
+                        {% if car.orders.status == "Accepted" or car.orders.status == "Finished" %}
+                            <td>{{ car.orders.startDate|date('Y-m-d h:m')}}</td>
+                        {% else %}
+                            <td>{{ car.orders.startDate|date('')}}</td>
+                        {% endif %}
+                    {% else %}
+                        <td></td>
+                    {% endif %}
+                    <td>{{ car.orders.cost|default('N/A')}}</td>
+
+                    <td>{{ car.orders.duration|default('N/A')}}</td>
+
+                    {% if car.orders %}
+                        {% if car.orders.status == "Accepted" %}
+                            <td style="color: green;">{{  car.orders.status}}</td>
+                        {% elseif car.orders.status == "Waiting" %}
+                            <td style="color: #ffbf00;">{{  car.orders.status}}</td>
+                        {% elseif car.orders.status == "Dismissed" %}
+                            <td style="color: red;">{{  car.orders.status}}</td>
+                        {% elseif car.orders.status == "Finished" %}
+                            <td>{{  car.orders.status}}</td>
+                        {% endif %}
+
+                    {% else %}
+                        <td>Not registered</td>
+                    {% endif %}
+
+                    <td style="text-align: right">
+                        {% if car.orders %}
+                            {% if car.orders.status != "Dismissed" %}
+                                <button type="button" id="Edit-car" disabled onclick="location.href = '{{ path('editCar', {id: car.carId}) }}'" >Edit</button>
+                                <button type="button" id="Delete-car" disabled onclick="location.href = '{{ path('deleteCar', {id: car.carId}) }}'" >Delete</button>
+                            {% else %}
+                                <button type="button" id="Edit-car" onclick="location.href = '{{ path('editCar', {id: car.carId}) }}'" >Edit</button>
+                                <button type="button" id="Delete-car" onclick="location.href = '{{ path('deleteCar', {id: car.carId}) }}'" >Delete</button>
+                            {% endif %}
+                        {% else %}
+                            <button type="button" id="Edit-car" onclick="location.href = '{{ path('editCar', {id: car.carId}) }}'" >Edit</button>
+                            <button type="button" id="Delete-car" onclick="location.href = '{{ path('deleteCar', {id: car.carId}) }}'" >Delete</button>
+                        {% endif %}
+
+
+                    </td>
+                </tr>
+            {% endif %}
+        {% endfor %}
+        </tbody>
     </table>
 {% endblock %}

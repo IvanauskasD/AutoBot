@@ -4,9 +4,9 @@ namespace App\Controller;
 
 use App\Entity\Car;
 use App\Entity\Orders;
-use App\Entity\Service;
-use App\Entity\User;
-use App\Form\ServiceForm;
+use App\Entity\Job;
+use App\Entity\Employee;
+use App\Form\EmployeesForm;
 use App\Form\DurationForm;
 use App\Form\OrdersForm;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -30,10 +30,10 @@ class OrdersController extends Controller
         $user = $this->getUser();
         $cars = $user->getCars();
         $em = $this->getDoctrine()->getManager();
-        $newService = new Service();
+        $newService = new Job();
         $newOrders = new Orders();
         $newCar = $this->getDoctrine()->getRepository(Car::class)->findAll();
-        $service = $this->getDoctrine()->getRepository(Service::class)->findAll();
+        $service = $this->getDoctrine()->getRepository(Job::class)->findAll();
 
         $form = $this->createForm(OrdersForm::class, $newOrders);
         $form->handleRequest($request);
@@ -58,20 +58,35 @@ class OrdersController extends Controller
     /**
      * @Route("/order/{id}", name="orderDetails")
      */
-    public function Details(Request $request, AuthorizationCheckerInterface $authorizationChecker, int $id)
+    public function Details(Request $request, AuthorizationCheckerInterface $authorizationChecker,  $id)
     {
         if (!$authorizationChecker->isGranted('IS_AUTHENTICATED_FULLY')) {
             return $this->redirectToRoute('homepage');
         }
+        $user = $this->getUser();
+        $employee = $this->getDoctrine()->getRepository(Employee::class)->loadByCompany($user->getId());
+        $form = $this->createForm(EmployeesForm::class, $employee);
 
-
+        $form->handleRequest($request);
         $user = $this->getUser();
         $em = $this->getDoctrine()->getManager();
         $order = $this->getDoctrine()->getRepository(Orders::class)->findByOrderId($id);
-        dump($order);
+
+
+
+        if($form->isSubmitted() && $form->isValid())
+        {
+
+            $employee->setOrders();
+
+            $em->persist($employee);
+            $em->flush();
+        }
+        dump($employee);
 
         return $this->render('orderDetails.html.twig', [
-            'order' => $order
+            'order' => $order,
+            'form' => $form->createView()
         ]);
     }
 
@@ -80,7 +95,7 @@ class OrdersController extends Controller
     /**
      * @Route("/order/{id}/duration", name="orderDuration")
      */
-    public function Duration(Request $request, AuthorizationCheckerInterface $authorizationChecker, int $id)
+    public function Duration(Request $request, AuthorizationCheckerInterface $authorizationChecker,  $id)
     {
         if (!$authorizationChecker->isGranted('IS_AUTHENTICATED_FULLY')) {
             return $this->redirectToRoute('homepage');

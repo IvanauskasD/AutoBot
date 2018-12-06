@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Car;
-use App\Entity\AdminJob;
+use App\Entity\CarProblme;
 use App\Entity\Job;
 use App\Entity\Company;
 use App\Entity\Orders;
@@ -13,7 +13,7 @@ use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use App\Form\JobDesForm;
+use App\Form\TimeForm;
 class CarRegisterForService extends Controller
 {
 
@@ -68,6 +68,9 @@ class CarRegisterForService extends Controller
 //        $questionForms = $form["jobName"]->getData();
 
 //        $form->handleRequest($request);
+        $car = $em->getRepository(Car::class)->findById($id);
+        $carPro = new CarProblme();
+        dump($car);
         $form = $this->createFormBuilder()
             ->add('jobName', EntityType::class, array(
                 'class' => Job::class
@@ -79,10 +82,13 @@ class CarRegisterForService extends Controller
         $companies = $em->getRepository(Job::class);
         $products = new Job();
         if ($form->isSubmitted() && $form->isValid()) {
+
             $bar = $form->get('jobName')->getData();
             $bars = $bar->getJobName();
+            $carPro->setJobName($bar->getJobName());
+            $carPro->setCar($car);
             $products = $companies->findByOrderNotGrouped($bars);
-            dump($products);
+
         }
 
 
@@ -92,14 +98,15 @@ class CarRegisterForService extends Controller
 
         return $this->render('CarRegisterForService/carservicelist.html.twig', [
             'companies' => $products,
+            'car' => $car,
             'form' => $form->createView()
         ]);
     }
 
     /**
-     * @Route("/user/carServices/car={car_id}&&company={company_id}", name="RegisterCarService")
+     * @Route("/user/carServicesOrder/car={car_id}&&company={company_id}", name="RegisterCarService")
      */
-    public function Register(Request $request, AuthorizationCheckerInterface $authorizationChecker, string $car_id, int $company_id)
+    public function Register(Request $request, AuthorizationCheckerInterface $authorizationChecker, $car_id, $company_id)
     {
         if (!$authorizationChecker->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
             return $this->redirectToRoute('homepage');
@@ -108,24 +115,26 @@ class CarRegisterForService extends Controller
         $company = $em->getRepository(Company::class)->find($company_id);
         $car = $em->getRepository(Car::class)->find($car_id);
         $newOrder = new Orders();
-//        $form = $this->createForm(TimeForm::class, $newOrder);
-//        $form->handleRequest($request);
-//        if($form->isSubmitted() && $form->isValid())
-//        {
-//            $newOrder->setCompany($company);
-//            $newOrder->setCar($car);
-//            $newOrder->setStatus('Waiting');
-//            dump($newOrder);
-//            $em->persist($newOrder);
-//            $em->flush();
-//            return $this->redirectToRoute('homepage');
-//        }
-        $em = $this->getDoctrine()->getManager();
         $user = $this->getUser();
+        $form = $this->createForm(TimeForm::class, $newOrder);
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid())
+        {
+            $newOrder->setCompany($company);
+            $newOrder->setCar($car);
+            $newOrder->setUser($user);
+            $newOrder->setStatus('Waiting');
+            dump($newOrder);
+            $em->persist($newOrder);
+            $em->flush();
+            return $this->redirectToRoute('homepage');
+        }
+        $em = $this->getDoctrine()->getManager();
+
         $cars = $em->getRepository(Car::class)->findAllByUserId($user->getId());
         return $this->render('selectTime.html.twig', array(
             'time_form' => $form->createView(),
-            'cars' => $cars));
+            'car' => $cars));
 //        return $this->render('profile/index.html.twig',
 //            ['error' => null,
 //             'cars' => $cars
