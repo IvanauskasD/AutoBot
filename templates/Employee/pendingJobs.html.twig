@@ -17,6 +17,21 @@
             <th scope="col">Daugiau detalių</th>
         </tr>
         </thead>
+
+        {% for employees in employee %}
+            <td></td>
+            <td></td>
+            <td>{{ employees.car.carId }}</td>
+            <td></td>
+            <td>{{ employees.status }}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><button type="button" class="btn btn-success" onclick="location.href = '{{ path('reservation', {id: employees.id}) }}'" >Details</button>
+            </td>
+        {% endfor %}
         {#{% for employee in employees %}#}
         {#<tr>#}
         {#<td>{{ employee.firstname }}</td>#}

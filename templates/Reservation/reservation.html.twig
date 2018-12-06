@@ -1,128 +1,112 @@
 {% extends 'base.html.twig' %}
-
 {% block body %}
-    {#<table style="width: 70%">#}
-        {#<tr>#}
-            {#<th style="width:250px">Mašina</th>#}
-            {#<th style="width:250px">Servisas</th>#}
-            {#<th style="width: 250px">Priimta/Laukiama/Atmesta</th>#}
-        {#</tr>#}
-        {#<tr>#}
-            {#<td>Car1</td>#}
-            {#<td>Autoservice1</td>#}
-            {#<td style="color: green">Priimta</td>#}
-            {#<td><button class="btn"style="background-color: red;cursor: not-allowed;">Atmesta</button></td>#}
-        {#</tr>#}
-        {#<tr>#}
-            {#<td>Car1</td>#}
-            {#<td>Autoservice1</td>#}
-            {#<td style="color: yellow">Laukiama</td>#}
-            {#<td><button class="btn"style="background-color: red"onclick="location.href = '{{ path('cancelreservation') }}'">Atšaukti</button></td>#}
-        {#</tr>#}
-        {#<tr>#}
-            {#<td>Car1</td>#}
-            {#<td>Autoservice1</td>#}
-            {#<td id="Canceled" style="color: red">Atmesta</td>#}
-            {#<td><button class="btn"style="background-color: red;"onclick="location.href = '{{ path('cancelreservation') }}'">Atšaukti</button></td>#}
-        {#</tr>#}
-    {#</table>#}
+    <div class="container">
 
-    <table class="table">
-        <tr>
-            <th scope="col">Car ID</th>
-            <th scope="col">Maker</th>
-            <th scope="col">Model</th>
-            <th scope="col">Visit time</th>
-            <th scope="col">Cost</th>
-            <th scope="col">Duration</th>
-            <th scope="col">Status</th>
-            <th> </th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for car in cars %}
-            {% if car.orders and car.orders.status == "Finished" %}
-                <tr class="table-success">
-                    <td>{{ car.carId }}</td>
-                    <td>{{ car.maker}}</td>
-                    <td>{{ car.model}}</td>
-                    <td>{{ car.carYear}}</td>
-                    {% if car.orders.cost and car.orders.duration != null %}
-                        <td>{{ car.orders.cost}}</td>
-                        <td>{{ car.orders.duration}}</td>
-                    {% endif %}
-                    {% if car.orders %}
-                        {% if car.orders.status == "Accepted" %}
-                            <td style="color: green;">{{  car.orders.status}}</td>
-                        {% elseif car.orders.status == "Waiting" %}
-                            <td style="color: #ffbf00;">{{  car.orders.status}}</td>
-                        {% elseif car.orders.status == "Dismissed" %}
-                            <td style="color: red;">{{  car.orders.status}}</td>
-                        {% elseif car.orders.status == "Finished" %}
-                            <td style="color: green;">{{car.orders.status}}</td>
-                        {% endif %}
+    {% if (is_granted('ROLE_EMPLOYEE')) == true %}
+        <div style="text-align:center;"><h1> Job details </h1> </div>
+        <div style="height: 50px;"> </div>
+        <div class="row">
+            <div class="col-4">
 
-                    {% else %}
-                        <td>Not registered</td>
-                    {% endif %}
-                    <td style="text-align: right">
-                        {% if car.orders %}
-                        <button type="button" id="Edit-car" onclick="location.href = '{{ path('editCar', {id: car.carId}) }}'" >Edit</button>
-                        <button type="button" id="Delete-car" onclick="location.href = '{{ path('deleteCar', {id: car.carId}) }}'" >Delete</button>
-                    </td>
-                </tr>
-            {% else %}
-                <tr>
-                    <td>{{ car.carId }}</td>
-                    <td>{{ car.maker}}</td>
-                    <td>{{ car.model}}</td>
-                    {% if car.orders %}
-                        {% if car.orders.status == "Accepted" or car.orders.status == "Finished" %}
-                            <td>{{ car.orders.startDate|date('Y-m-d h:m')}}</td>
-                        {% else %}
-                            <td>{{ car.orders.startDate|date('')}}</td>
-                        {% endif %}
-                    {% else %}
-                        <td></td>
-                    {% endif %}
-                    <td>{{ car.orders.cost|default('N/A')}}</td>
+                <table class="table">
+                    <thead>
+                    <div style="text-align: center;"><h5> Client information </h5> </div>
 
-                    <td>{{ car.orders.duration|default('N/A')}}</td>
+                    </thead>
+                    <tbody>
+                    <tr class="table-light">
+                        <th> Full name </th>
+                        <td>{{order.car.user.firstnames}} {{order.car.user.lastname}} </td>
+                    </tr>
+                    <tr class="table-light">
+                        <th> Email </th>
+                        <td>{{order.car.user.email}}</td>
+                    </tr>
+                    <tr class="table-light">
+                        <th> Phone Number </th>
+                        <td>{{order.car.user.phoneNumber}}</td>
+                    </tr>
+                    <tr class="table-light">
+                        <th> Visit time </th>
+                        <td>{{order.startDate|date('Y-m-d h:m')}}</td>
+                    </tr>
 
-                    {% if car.orders %}
-                        {% if car.orders.status == "Accepted" %}
-                            <td style="color: green;">{{  car.orders.status}}</td>
-                        {% elseif car.orders.status == "Waiting" %}
-                            <td style="color: #ffbf00;">{{  car.orders.status}}</td>
-                        {% elseif car.orders.status == "Dismissed" %}
-                            <td style="color: red;">{{  car.orders.status}}</td>
-                        {% elseif car.orders.status == "Finished" %}
-                            <td>{{  car.orders.status}}</td>
-                        {% endif %}
+                    </tbody>
+                </table>
 
-                    {% else %}
-                        <td>Not registered</td>
-                    {% endif %}
+            </div>
+            <div class="col-4">
+                <table class="table">
+                    <thead>
+                    <div style="text-align: center;"><h5> Car information </h5> </div>
 
-                    <td style="text-align: right">
-                        {% if car.orders %}
-                            {% if car.orders.status != "Dismissed" %}
-                                <button type="button" id="Edit-car" disabled onclick="location.href = '{{ path('editCar', {id: car.carId}) }}'" >Edit</button>
-                                <button type="button" id="Delete-car" disabled onclick="location.href = '{{ path('deleteCar', {id: car.carId}) }}'" >Delete</button>
-                            {% else %}
-                                <button type="button" id="Edit-car" onclick="location.href = '{{ path('editCar', {id: car.carId}) }}'" >Edit</button>
-                                <button type="button" id="Delete-car" onclick="location.href = '{{ path('deleteCar', {id: car.carId}) }}'" >Delete</button>
-                            {% endif %}
-                        {% else %}
-                            <button type="button" id="Edit-car" onclick="location.href = '{{ path('editCar', {id: car.carId}) }}'" >Edit</button>
-                            <button type="button" id="Delete-car" onclick="location.href = '{{ path('deleteCar', {id: car.carId}) }}'" >Delete</button>
-                        {% endif %}
+                    </thead>
+                    <tbody>
+                    <tr class="table-light">
+                        <th> Car ID </th>
+                        <td>{{order.car.carId}}</td>
+                    </tr>
+                    <tr class="table-light">
+                        <th> Manufacturer </th>
+                        <td>{{order.car.maker}}</td>
+                    </tr>
+                    <tr class="table-light">
+                        <th> Model </th>
+                        <td>{{order.car.model}}</td>
+                    </tr>
+                    <tr class="table-light">
+                        <th> Years </th>
+                        <td>{{order.car.carYear}}</td>
+                    </tr>
+                    <tr class="table-light">
+                        <th> Transmission </th>
+                        <td>{{order.car.transmission}}</td>
+                    </tr>
+                    <tr class="table-light">
+                        <th> Engine Volume </th>
+                        <td>{{order.car.engineVolume}}</td>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-4">
+
+                <table class="table">
+                    <thead>
+                    <div style="text-align: center;"><h5> Problem </h5> </div>
+
+                    </thead>
+                    <tbody>
+                    <tr class="table-light">
+                        <th> Category </th>
+                        <td>{{order.car.carId}}</td>
+                    </tr>
+
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+        </div>
+        <div style="height: 30px;"></div>
+        {% if order.status == "Waiting" %}
+            <div style="height: 50px;"></div>
+        {% elseif order.status == "Accepted" and (is_granted('ROLE_EMPLOYEE')) == true %}
+            <div class="row">
+                <div class="col-4"></div>
+                <div class="col-2" style="text-align: center;">
+                    <button type="button" class="btn btn-success" onclick="location.href = '{{ path('orderAccept', {id: order.id}) }}'">Accept</button>
+                </div>
+                <div class="col-2" style="text-align: center;">
+                    <button type="button" class="btn btn-danger" onclick="location.href = '{{ path('orderDeny', {id: order.id}) }}'" >Dismiss</button>
+                </div>
+                <div class="col-4"></div>
+            </div>
+            <div style="height: 50px;"></div>
+        {% endif %}
+    {% endif %}
 
 
-                    </td>
-                </tr>
-            {% endif %}
-        {% endfor %}
-        </tbody>
-    </table>
+    </div>
 {% endblock %}

@@ -2,7 +2,7 @@
 namespace App\Form;
 
 use App\Entity\Employee;
-use App\Entity\Job;
+use App\Repository\EmployeeRepository;
 use App\Entity\Service;
 use Doctrine\DBAL\Types\FloatType;
 use Symfony\Component\Form\AbstractType;
@@ -12,7 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 class EmployeesForm extends AbstractType
 {
@@ -22,20 +22,33 @@ class EmployeesForm extends AbstractType
     {
         $this->doctrine = $doctrine;
     }
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
-            'data_class' => 'Kpr\CentarZdravljaBundle\Entity\Category',
-            'catID' => null,
-        ));
+        // ...
+        $resolver->setRequired('ids');
+        // type validation - User instance or int, you can also pick just one.
+        $resolver->setAllowedTypes('ids', array(Employee::class, 'int'));
     }
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $id = $options['ids'];
         $builder
             ->add('id', EntityType::class, array(
                 'class'        => Employee::class, //This existed usually in (AppBundle\Entity\Person)
-                'choice_label' => 'id'
+                'query_builder' => function (EmployeeRepository $er) use($id) {
+                    return $er->createQueryBuilder('c')
+                        ->addSelect('r') // to make Doctrine actually use the join
+                        ->leftJoin('c.orders', 'r')
+                        ->addSelect('u') // to make Doctrine actually use the join
+                        ->leftJoin('r.company', 'u')
+                        ->andwhere('c.company = :id')->setParameter('id', $id);
+
+                }
+
             ))
+            ->add('save', SubmitType::class)
+
+
         ;
 
     }

@@ -64,25 +64,31 @@ class OrdersController extends Controller
             return $this->redirectToRoute('homepage');
         }
         $user = $this->getUser();
-        $employee = $this->getDoctrine()->getRepository(Employee::class)->loadByCompany($user->getId());
-        $form = $this->createForm(EmployeesForm::class, $employee);
+        $ids = $user->getId();
 
+        $employees = new Employee();
+        $employee = $this->getDoctrine()->getRepository(Employee::class)->loadByCompany($user->getId());
+
+        $form = $this->createForm(EmployeesForm::class, $employees, array(
+            'ids' => $ids
+            ));
         $form->handleRequest($request);
         $user = $this->getUser();
         $em = $this->getDoctrine()->getManager();
         $order = $this->getDoctrine()->getRepository(Orders::class)->findByOrderId($id);
 
 
+        $bar = new Employee();
 
         if($form->isSubmitted() && $form->isValid())
         {
-
-            $employee->setOrders();
-
-            $em->persist($employee);
+            $bar = $form->get('id')->getData();
+            $order->setEmployee($bar);
+//            $employee->setOrders($order);
             $em->flush();
+            dump($order);
         }
-        dump($employee);
+
 
         return $this->render('orderDetails.html.twig', [
             'order' => $order,
@@ -152,11 +158,27 @@ class OrdersController extends Controller
             return $this->redirectToRoute('homepage');
         }
         $user = $this->getUser();
+        $ids = $user->getId();
         $em = $this->getDoctrine()->getManager();
         $order = $this->getDoctrine()->getRepository(Orders::class)->findByOrderId($id);
+        $employees = new Employee();
+        $employee = $this->getDoctrine()->getRepository(Employee::class)->loadByCompany($user->getId());
+//        $form = $this->createForm(EmployeesForm::class, $employees, array(
+//            'ids' => $ids
+//        ));
+//        if($form->isSubmitted() && $form->isValid())
+//        {
+//
+//            $employees->setOrders($order);
+//
+//            $em->persist($employees);
+//            $em->flush();
+//        }
+//        $form->handleRequest($request);
         $order->setStatus("Accepted");
         $em->persist($order);
         $em->flush();
+
 
         return $this->redirectToRoute('homepage');
     }
