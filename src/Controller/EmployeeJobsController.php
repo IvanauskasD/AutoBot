@@ -2,9 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Employee;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Events;
+use App\Entity\Orders;
 
 class EmployeeJobsController extends Controller
 {
@@ -16,8 +17,13 @@ class EmployeeJobsController extends Controller
      */
     public function pendingJobsAction()
     {
-
-        return $this->render('Employee/pendingJobs.html.twig');
+        $user = $this->getUser();
+        $em = $this->getDoctrine()->getManager();
+        $employeeOrders = $this->getDoctrine()->getRepository(Orders::class)->findByEmployee($user->getId());
+        dump($employeeOrders);
+        return $this->render('Employee/pendingJobs.html.twig', array(
+            'employee' => $employeeOrders)
+        );
     }
 
     /**
@@ -26,7 +32,11 @@ class EmployeeJobsController extends Controller
      * @throws \LogicException
      */
     public function currentJobsAction(){
+
+
         return $this->render('Employee/currentJobs.html.twig');
+
     }
+
 
 }

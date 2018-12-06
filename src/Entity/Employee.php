@@ -7,11 +7,16 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\AdvancedUserInterface;
+use Doctrine\Common\Collections\ArrayCollection;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\EmployeeRepository")
  */
 class Employee implements UserInterface, AdvancedUserInterface
 {
+    public function __construct()
+    {
+        $this->orders = new ArrayCollection();
+    }
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -85,6 +90,7 @@ class Employee implements UserInterface, AdvancedUserInterface
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Orders", mappedBy="employee")
+     * @ORM\JoinColumn(name="order_id", referencedColumnName="id")
      */
     private $orders;
 
@@ -190,7 +196,6 @@ class Employee implements UserInterface, AdvancedUserInterface
     {
         $this->orders = $orders;
     }
-
     /**
      * @return mixed
      */
@@ -455,6 +460,10 @@ class Employee implements UserInterface, AdvancedUserInterface
     public function isEnabled()
     {
         return $this->isIsActive();
+    }
+
+    public function __toString() {
+        return (string) $this->id;
     }
 
 }

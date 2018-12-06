@@ -10,6 +10,11 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Orders
 {
+
+//    public function __construct()
+//    {
+//        $this->employee = new Orders();
+//    }
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
