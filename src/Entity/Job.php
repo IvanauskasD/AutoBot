@@ -42,7 +42,7 @@ class Job
     private $jobTime;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\AdminJob", inversedBy="jobs")
+     * @ORM\OneToOne(targetEntity="App\Entity\AdminJob", mappedBy="jobs")
      * @ORM\JoinColumn(name="Admin_jobs", referencedColumnName="id")
      */
     private $jobs;

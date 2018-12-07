@@ -30,9 +30,30 @@ class AdminJob
     private $jobsName;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\AdminJobDes", mappedBy="jobsDes")
+     * @ORM\OneToMany(targetEntity="App\Entity\AdminJobDes", mappedBy="jobsDesc")
      */
     private $jobsDes;
+
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\AdminJob", inversedBy="jobs")
+     */
+    private $jobs;
+
+    /**
+     * @return mixed
+     */
+    public function getJobs()
+    {
+        return $this->jobs;
+    }
+
+    /**
+     * @param mixed $jobs
+     */
+    public function setJobs($jobs)
+    {
+        $this->jobs = $jobs;
+    }
 
 
     public function __construct()

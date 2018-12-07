@@ -8,22 +8,31 @@
             <th style="width: 250px">Accepted/Pending/Declined</th>
         </tr>
         <tr>
-            <td>Car1</td>
-            <td>Autoservice1</td>
-            <td style="color: green">Accepted</td>
-            <td><button class="btn"style="background-color: red;cursor: not-allowed;">Decline</button></td>
+    {% if order is not null and car is not null %}
+            {% for cars in car %}
+                {% for orders in order %}
+
+            <td>{{ cars.carId }}</td>
+            <td>{{ orders.company.companyName }}</td>
+            <td style="color: green">{{ orders.status }}</td>
+                    {% if orders.status != "Approved" and orders.status != "Canceled" %}
+            <td><button type="button" id="Service-car" onclick="location.href = '{{ path('DeclineReservation', {id: orders.id}) }}'" >Cancel</button>
+                     </td>   {% endif %}
+                {% endfor %}
+                {% endfor %}
+        {% endif %}
         </tr>
-        <tr>
-            <td>Car1</td>
-            <td>Autoservice1</td>
-            <td style="color: yellow">Pending</td>
-            <td><button class="btn"style="background-color: red"onclick="location.href = '{{ path('cancelreservation') }}'">Decline</button></td>
-        </tr>
-        <tr>
-            <td>Car1</td>
-            <td>Autoservice1</td>
-            <td id="Canceled" style="color: red">Canceled</td>
-            <td><button class="btn"style="background-color: red;"onclick="location.href = '{{ path('cancelreservation') }}'">Decline</button></td>
-        </tr>
+        {#<tr>#}
+            {#<td>Car1</td>#}
+            {#<td>Autoservice1</td>#}
+            {#<td style="color: yellow">Pending</td>#}
+            {#<td><button class="btn"style="background-color: red"onclick="location.href = '{{ path('cancelreservation') }}'">Decline</button></td>#}
+        {#</tr>#}
+        {#<tr>#}
+            {#<td>Car1</td>#}
+            {#<td>Autoservice1</td>#}
+            {#<td id="Canceled" style="color: red">Canceled</td>#}
+            {#<td><button class="btn"style="background-color: red;"onclick="location.href = '{{ path('cancelreservation') }}'">Decline</button></td>#}
+        {#</tr>#}
     </table>
 {% endblock %}

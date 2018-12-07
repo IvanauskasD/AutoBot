@@ -37,7 +37,7 @@ class Report
     private $jobTime;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Employee", inversedBy="reports")
+     * @ORM\OneToOne(targetEntity="App\Entity\Employee", inversedBy="reports")
      * @ORM\JoinColumn(name="employee_id", referencedColumnName="id")
      */
     private $employee;

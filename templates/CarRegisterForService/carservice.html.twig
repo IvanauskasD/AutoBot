@@ -41,7 +41,7 @@
                     {% endif %}
                     <td style="text-align: right">
                         {% if car.orders %}
-                            {% if car.orders.status != "Dismissed" %}
+                            {% if car.orders.status != "Dismissed" or car.order.status != "Canceled" %}
                                 <button type="button" id="Service-car" disabled onclick="location.href = '{{ path('carServices', {id: car.carId}) }}'" >Services</button>
                             {% else %}
                                 <button type="button" id="Service-car" onclick="location.href = '{{ path('carServices', {id: car.carId}) }}'" >Services</button>
@@ -89,7 +89,7 @@
 
                     <td style="text-align: right">
                         {% if car.orders %}
-                            {% if car.orders.status != "Dismissed" %}
+                            {% if car.orders.status != "Dismissed" or car.order.status != "Canceled" %}
                                 <button type="button" id="Service-car" disabled onclick="location.href = '{{ path('carServices', {id: car.carId}) }}'" >Services</button>
                                 <button type="button" id="Edit-car" disabled onclick="location.href = '{{ path('editCar', {id: car.carId}) }}'" >Edit</button>
                                 <button type="button" id="Delete-car" disabled onclick="location.href = '{{ path('deleteCar', {id: car.carId}) }}'" >Delete</button>

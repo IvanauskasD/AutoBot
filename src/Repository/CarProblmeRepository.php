@@ -19,6 +19,18 @@ class CarProblmeRepository extends ServiceEntityRepository
         parent::__construct($registry, CarProblme::class);
     }
 
+    public function findByOrderId($id)
+    {
+        return $this->createQueryBuilder('c')
+            ->addSelect('r') // to make Doctrine actually use the join
+            ->leftJoin('c.jobName', 'r')
+            ->addSelect('u') // to make Doctrine actually use the join
+            ->leftJoin('r.order', 'u')
+            ->where('c.id = :id')->setParameter('id', $id)
+            ->getQuery()
+            ->getOneOrNullResult();
+        ;
+    }
     /*
     public function findBySomething($value)
     {

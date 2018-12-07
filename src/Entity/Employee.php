@@ -95,7 +95,8 @@ class Employee implements UserInterface, AdvancedUserInterface
     private $orders;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Report", mappedBy="employee")
+     * @ORM\OneToOne(targetEntity="App\Entity\Report", mappedBy="employee")
+     * @ORM\JoinColumn(name="report_id", referencedColumnName="id")
      */
     private $reports;
 
