@@ -28,6 +28,29 @@ class CarProblme
     private $car;
 
     /**
+     * @ORM\OneToOne(targetEntity="App\Entity\Orders", mappedBy="carjob")
+     * @ORM\JoinColumn(name="order_id", referencedColumnName="id")
+     */
+    private $order;
+
+    /**
+     * @return mixed
+     */
+    public function getOrder()
+    {
+        return $this->order;
+    }
+
+    /**
+     * @param mixed $order
+     */
+    public function setOrder($order)
+    {
+        $this->order = $order;
+    }
+
+
+    /**
      * @return mixed
      */
     public function getCar()

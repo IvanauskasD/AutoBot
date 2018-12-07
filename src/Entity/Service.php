@@ -36,6 +36,50 @@ class Service
     private $serviceCategory;
 
     /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Administrator", inversedBy="service")
+     * @ORM\JoinColumn(name="admin_id", referencedColumnName="id")
+     */
+    private $administrator;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Company", inversedBy="service")
+     * @ORM\JoinColumn(name="company_id", referencedColumnName="id")
+     */
+    private $companyId;
+
+    /**
+     * @return mixed
+     */
+    public function getCompanyId()
+    {
+        return $this->companyId;
+    }
+
+    /**
+     * @param mixed $companyId
+     */
+    public function setCompanyId($companyId)
+    {
+        $this->companyId = $companyId;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAdministrator()
+    {
+        return $this->administrator;
+    }
+
+    /**
+     * @param mixed $administrator
+     */
+    public function setAdministrator($administrator)
+    {
+        $this->administrator = $administrator;
+    }
+
+    /**
      * @return mixed
      */
     public function getCarId()

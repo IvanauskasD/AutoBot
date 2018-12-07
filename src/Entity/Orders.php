@@ -25,7 +25,7 @@ class Orders
 
     /**
      * @ORM\OneToOne(targetEntity="App\Entity\Company")
-     * @ORM\JoinColumn(name="company_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="company_id", referencedColumnName="id", unique=false)
      */
     private $company;
 
@@ -63,7 +63,7 @@ class Orders
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="orders")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id", unique=false)
      */
     private $user;
 
@@ -83,6 +83,28 @@ class Orders
      * @ORM\OneToMany(targetEntity="App\Entity\DenyComment", mappedBy="order")
      */
     private $denycomment;
+
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\CarProblme", inversedBy="order")
+     * @ORM\JoinColumn(name="problem_id", referencedColumnName="id")
+     */
+    private $carjob;
+
+    /**
+     * @return mixed
+     */
+    public function getCarjob()
+    {
+        return $this->carjob;
+    }
+
+    /**
+     * @param mixed $carjob
+     */
+    public function setCarjob($carjob)
+    {
+        $this->carjob = $carjob;
+    }
 
     /**
      * @return mixed
@@ -261,7 +283,9 @@ class Orders
         $this->cost = $cost;
     }
 
-
+    public function __toString() {
+        return $this->id;
+    }
 
 
 

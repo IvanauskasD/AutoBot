@@ -18,19 +18,30 @@
         </tr>
         </thead>
 
-        {#{% for employees in employee %}#}
-            {#<td></td>#}
-            {#<td></td>#}
-            {#<td>{{ employees.car.carId }}</td>#}
-            {#<td></td>#}
-            {#<td></td>#}
-            {#<td></td>#}
-            {#<td></td>#}
-            {#<td></td>#}
-            {#<td>{{ employees.status }}</td>#}
-            {#<td></td>#}
-            {#<td></td>#}
-        {#{% endfor %}#}
+        {% for employees in employee %}
+
+        {% if employees.status == "Approved" %}
+                <td>{{ employees.carJob.jobName }}</td>
+
+                <td></td>
+                <td>{{ employees.car.carId }}</td>
+                <td></td>
+                <td>{{ employees.duration }}</td>
+                <td></td>
+                <td>N/A</td>
+                <td></td>
+                <td>{{ employees.status }}</td>
+                <td></td>
+                <td>{{ employees.cost }}</td>
+                {% if employees.status != "Dismissed" %}
+                <td><button type="button" class="btn btn-success" onclick="location.href = '{{ path('jobDetails', {id: employees.id}) }}'" >Details</button>
+                </td>
+                    <td></td>
+                <td><button type="button" class="btn btn-success" onclick="location.href = '{{ path('currentJobDetails', {id: employees.id}) }}'" >Info</button>
+                 </td>
+                {% endif %}
+            {% endif %}
+        {% endfor %}
         {#{% for employee in employees %}#}
             {#<tr>#}
                 {#<td>{{ employee.firstname }}</td>#}

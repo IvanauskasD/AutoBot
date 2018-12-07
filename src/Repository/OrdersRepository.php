@@ -59,6 +59,31 @@ class OrdersRepository extends ServiceEntityRepository
         ;
     }
 
+    public function findByUser($id)
+    {
+        return $this->createQueryBuilder('c')
+            ->addSelect('r') // to make Doctrine actually use the join
+            ->leftJoin('c.user', 'r')
+            ->addSelect('u') // to make Doctrine actually use the join
+            ->leftJoin('r.orders', 'u')
+            ->andwhere('c.user = :id')->setParameter('id', $id)
+            ->getQuery()
+            ->getResult();
+        ;
+    }
+
+    public function findByCar($id){
+        return $this->createQueryBuilder('c')
+            ->addSelect('r') // to make Doctrine actually use the join
+            ->leftJoin('c.car', 'r')
+            ->addSelect('u') // to make Doctrine actually use the join
+            ->leftJoin('r.orders', 'u')
+            ->andwhere('c.car = :id')->setParameter('id', $id)
+            ->getQuery()
+            ->getResult();
+        ;
+    }
+
     public function findCurrentByCompany($id)
     {
         return $this->createQueryBuilder('c')

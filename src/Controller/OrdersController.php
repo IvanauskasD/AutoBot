@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Car;
 use App\Entity\Orders;
 use App\Entity\Job;
+use App\Entity\CarProblme;
 use App\Entity\Employee;
 use App\Form\EmployeesForm;
 use App\Form\DurationForm;
@@ -76,7 +77,6 @@ class OrdersController extends Controller
         $user = $this->getUser();
         $em = $this->getDoctrine()->getManager();
         $order = $this->getDoctrine()->getRepository(Orders::class)->findByOrderId($id);
-
 
         $bar = new Employee();
 
