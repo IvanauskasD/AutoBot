@@ -20,6 +20,8 @@
 
         {% for employees in employee %}
             {% if employees.status != "Dismissed" and employees.status != "Approved" %}
+
+        <tr>
             <td></td>
             <td></td>
             <td>{{ employees.car.carId }}</td>
@@ -33,8 +35,10 @@
 
             <td><button type="button" class="btn btn-success" onclick="location.href = '{{ path('pendingJobList', {id: employees.id}) }}'" >Details</button>
             </td>
+        </tr>
             {% endif %}
         {% endfor %}
+
         {#{% for employee in employees %}#}
         {#<tr>#}
         {#<td>{{ employee.firstname }}</td>#}

@@ -87,6 +87,8 @@ class CarRegisterForService extends Controller
             $bars = $bar->getJobName();
             $carPro->setJobName($bar->getJobName());
             $carPro->setCar($car);
+            $em->persist($carPro);
+            $em->flush();
             $products = $companies->findByOrderNotGrouped($bars);
 
         }
@@ -114,6 +116,7 @@ class CarRegisterForService extends Controller
         $em = $this->getDoctrine()->getManager();
         $company = $em->getRepository(Company::class)->find($company_id);
         $car = $em->getRepository(Car::class)->find($car_id);
+        $carPro = $em->getRepository(CarProblme::class)->find($car_id);
         $newOrder = new Orders();
         $user = $this->getUser();
         $form = $this->createForm(TimeForm::class, $newOrder);
@@ -124,6 +127,7 @@ class CarRegisterForService extends Controller
             $newOrder->setCar($car);
             $newOrder->setUser($user);
             $newOrder->setStatus('Waiting');
+
             dump($newOrder);
             $em->persist($newOrder);
             $em->flush();

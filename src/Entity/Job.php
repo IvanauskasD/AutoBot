@@ -46,12 +46,7 @@ class Job
      * @ORM\JoinColumn(name="Admin_jobs", referencedColumnName="id")
      */
     private $jobs;
-
-    /**
-     * @ORM\OneToOne(targetEntity="App\Entity\AdminJobDes", inversedBy="jobsDesc")
-     * @ORM\JoinColumn(name="Admin_jobsDes", referencedColumnName="id")
-     */
-    private $jobsDes;
+    
 
     /**
      * @return mixed

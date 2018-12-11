@@ -1,5 +1,5 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-    {{ form_row(registration_form.jobsName) }}    {# <select id="meetup_sport" ... #}
-    {{ form_row(registration_form.jobsDes) }} {# <select id="meetup_position" ... #}
+    {{ form_start(registration_form) }}
+    {{ form_end(registration_form) }}
 {%  endblock %}
