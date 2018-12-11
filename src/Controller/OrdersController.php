@@ -163,6 +163,9 @@ class OrdersController extends Controller
         $order = $this->getDoctrine()->getRepository(Orders::class)->findByOrderId($id);
         $employees = new Employee();
         $employee = $this->getDoctrine()->getRepository(Employee::class)->loadByCompany($user->getId());
+
+        $lastQuestion = $em->getRepository(CarProblme::class)->findOneBy([], ['id' => 'desc']);
+        $lastQuestion->setOrder($order);
 //        $form = $this->createForm(EmployeesForm::class, $employees, array(
 //            'ids' => $ids
 //        ));
