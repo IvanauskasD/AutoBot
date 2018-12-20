@@ -25,10 +25,10 @@ class JobAddForm extends AbstractType
         $builder
             ->add('jobName', EntityType::class, array(
                     'class' => AdminJob::class,
-                    'label' => 'Job Name'
+                    'label' => 'Darbo pavadinimas'
             ))
             ->add('description', TextType::class, array(
-                'label' => 'Aprasymas'
+                'label' => 'Aprašymas'
             ))
             ->add('cost', TextType::class, array(
                 'label' => 'Kaina'

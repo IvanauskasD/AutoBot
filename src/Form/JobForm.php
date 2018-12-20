@@ -25,6 +25,7 @@ class JobForm extends AbstractType
 
         $builder
 ->add('jobsName', TextType::class, array(
+    'label' => ' Darbo kategorijos pavadinimas'
 ))
         ;
     }

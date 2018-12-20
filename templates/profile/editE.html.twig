@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div id ="default">
+        <h1>Keisti profilį</h1>
+        {{ form_start(form) }}
+        <label>Pavadinimas:</label> {{ form_widget(form.firstnames, {'value' : app.company.companyName }) }}<br/>
+        <label>El. Paštas:</label>  {{ form_widget(form.email, {'value' : app.company.email }) }}<br/>
+        <label>Telefonas:</label>  {{ form_widget(form.phoneNumber, {'value' : app.company.phoneNumber }) }}<br/>
+        <button class="btn btn-primary" style="width: 200px;">Keisti</button>
+        <br>
+        <a href="{{ path('profile_index') }}">Atgal</a>
+    </div>
+
+    {{ form_end(form) }}
+
+
+
+
+
+{% endblock %}

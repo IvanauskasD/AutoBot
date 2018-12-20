@@ -15,6 +15,7 @@
             <th width="200px">Trukmė</th>
         </tr>
         {% for job in jobs %}
+
             <tr>
                 <td>{{ job.jobName }}</td>
                 <td></td>
@@ -23,6 +24,8 @@
                 <td>{{ job.cost }}</td>
                 <td></td>
                 <td>{{ job.jobTime}}</td>
+                <td></td>
+                <td><button type="button" id="Delete-car" onclick="location.href = '{{ path('deleteJob', {id: job.id}) }}'" >Trinti</button></td>
             </tr>
         {% endfor %}
     </table>

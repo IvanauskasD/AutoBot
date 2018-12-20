@@ -3,31 +3,31 @@
     <div class="container">
         
             {% if (is_granted('ROLE_COMPANY')) == true %}
-            <div style="text-align:center;"><h1> Job details </h1> </div>
+            <div style="text-align:center;"><h1> Darbo detalės </h1> </div>
             <div style="height: 50px;"> </div>
                 <div class="row">
                 <div class="col-4">
                 
                 <table class="table">
                 <thead>
-                    <div style="text-align: center;"><h5> Client information </h5> </div>
+                    <div style="text-align: center;"><h5> Kliento informacija </h5> </div>
 
                 </thead>
                 <tbody>
                             <tr class="table-light">
-                            <th> Full name </th>
+                            <td> Vardas </td>
                             <td>{{order.car.user.firstnames}} {{order.car.user.lastname}} </td>
                             </tr>
                             <tr class="table-light">
-                            <th> Email </th>
+                            <td> Paštas </td>
                             <td>{{order.car.user.email}}</td>
                             </tr>
                             <tr class="table-light">
-                            <th> Phone Number </th>
+                            <td>  Telefono numeris </td>
                             <td>{{order.car.user.phoneNumber}}</td>
                             </tr>
                             <tr class="table-light">
-                                <th> Visit time </th>
+                                <td> Rezervacija </td>
                                 <td>{{order.startDate|date('Y-m-d h:m')}}</td>
                             </tr>
                             
@@ -38,32 +38,32 @@
                 <div class="col-4">
                 <table class="table">
                 <thead>
-                    <div style="text-align: center;"><h5> Car information </h5> </div>
+                    <div style="text-align: center;"><h5> Mašinos informacija </h5> </div>
 
                 </thead>
                 <tbody>
                             <tr class="table-light">
-                            <th> Car ID </th>
+                            <td> Mašinos numeriai </td>
                             <td>{{order.car.carId}}</td>
                             </tr>
                             <tr class="table-light">
-                            <th> Manufacturer </th>
+                            <td> Markė </td>
                             <td>{{order.car.maker}}</td>
                             </tr>
                             <tr class="table-light">
-                            <th> Model </th>
+                            <td> Modelis </td>
                             <td>{{order.car.model}}</td>
                             </tr>
                             <tr class="table-light">
-                            <th> Years </th>
+                            <td> Metai </td>
                             <td>{{order.car.carYear}}</td>
                             </tr>
                             <tr class="table-light">
-                            <th> Transmission </th>
+                            <td> Pavarų dėžė </td>
                             <td>{{order.car.transmission}}</td>
                             </tr>
                             <tr class="table-light">
-                            <th> Engine Volume </th>
+                            <td> Variklio tūris </td>
                             <td>{{order.car.engineVolume}}</td>
                             </tr>
                             
@@ -74,12 +74,12 @@
                 
                 <table class="table">
                 <thead>
-                    <div style="text-align: center;"><h5> Problem </h5> </div>
+                    <div style="text-align: center;"><h5> Problema </h5> </div>
 
                 </thead>
                 <tbody>
                             <tr class="table-light">
-                            <th> Category </th>
+                            <td> Category </td>
                             <td>{{order.car.carId}}</td>
                             </tr>
                             

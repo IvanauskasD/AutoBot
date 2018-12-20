@@ -28,7 +28,7 @@ class ProfileController extends Controller
         $em = $this->getDoctrine()->getManager();
         $user = $this->getUser();
         $cars = $em->getRepository(Car::class)->findAllByUserId($user->getId());
-        dump($cars);
+
         return $this->render('profile/index.html.twig',
             ['error' => null,
             'cars' => $cars

@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 {% block body %}
     <div class="container">
-    <h1 style="text-align: center"> My services </h1>
+    <h1 style="text-align: center"> Mano užsakymai </h1>
     <br>
-    <button style="float: right; margin-right: 50px; margin-bottom: 10px;" onclick="location.href = '{{ path('registerService') }}'" type="button" class="btn btn-primary">New service</button>
+    <button style="float: right; margin-right: 50px; margin-bottom: 10px;" onclick="location.href = '{{ path('registerService') }}'" type="button" class="btn btn-primary">Naujas užsakymas</button>
     
     <table class="table">
   <thead>
@@ -22,8 +22,8 @@
                 <td>{{service.serviceName}}</td>
                 <td>{{service.serviceCategory}} </td>
                 <td style="text-align: right"> 
-                <button type="button" class="btn btn-warning" onclick="location.href = '{{ path('editService', {id: service.id}) }}'" >Edit</button>
-                <button type="button" class="btn btn-danger" onclick="location.href = '{{ path('deleteService', {id: service.id}) }}'">Delete</button>
+                <button type="button" class="btn btn-warning" onclick="location.href = '{{ path('editService', {id: service.id}) }}'" >Keisti</button>
+                <button type="button" class="btn btn-danger" onclick="location.href = '{{ path('deleteService', {id: service.id}) }}'">Šalinti</button>
                 </td>
                 
                 {% set i = i + 1 %}

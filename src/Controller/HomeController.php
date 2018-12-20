@@ -31,7 +31,7 @@ class HomeController extends AbstractController
         {
             $user = $this->getUser();
             $em = $this->getDoctrine()->getManager();
-            dump($user->getId());
+
 //            $pendingOrders = $em->getRepository(Orders::class)->findWaitingByCompany($user->getId());
 //            $acceptedOrders = $em->getRepository(Orders::class)->findCurrentByCompany($user->getId());
 //            dump($pendingOrders);
