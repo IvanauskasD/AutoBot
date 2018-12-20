@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Car;
+use App\Entity\Contract;
 use App\Entity\Orders;
 use App\Entity\Job;
 use App\Entity\CarProblme;
@@ -66,7 +67,7 @@ class OrdersController extends Controller
         }
         $user = $this->getUser();
         $ids = $user->getId();
-
+        $testas = $this->getDoctrine()->getRepository(Employee::class)->loadByCompany($user->getId());
         $employees = new Employee();
         $employee = $this->getDoctrine()->getRepository(Employee::class)->loadByCompany($user->getId());
 
@@ -79,11 +80,13 @@ class OrdersController extends Controller
         $order = $this->getDoctrine()->getRepository(Orders::class)->findByOrderId($id);
 
         $bar = new Employee();
-
+        $agree = new Contract();
         if($form->isSubmitted() && $form->isValid())
         {
             $bar = $form->get('id')->getData();
             $order->setEmployee($bar);
+            $agree->setCompanyId($this->getUser());
+            $agree->setUserId($order->getUser());
 //            $employee->setOrders($order);
             $em->flush();
             dump($order);

@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 {% block body %}
     {{ form_start(car) }}
-    {{ form_row(car.carId) }}
+    {{ form_row(car.carId,{ 'label_attr': {'style': 'color:red'}})}}
     {{ form_row(car.maker) }}    {# <select id="meetup_sport" ... #}
     {{ form_row(car.model) }} {# <select id="meetup_position" ... #}
     {{ form_row(car.carYear) }}

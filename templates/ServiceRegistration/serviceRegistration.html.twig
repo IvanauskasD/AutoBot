@@ -3,11 +3,11 @@
 {% block body %}
     {{ form_start(services) }}
     <div id="default">
-        <label>Service category:</label> {{ form_widget(services.serviceCategory, {'attr': {'class': 'Job','style' : 'width: 53%'}}) }}</br>
+        <label>Serviso kategorija:</label> {{ form_widget(services.serviceCategory, {'attr': {'class': 'Job','style' : 'width: 53%'}}) }}</br>
         </br>
-        Service name: {{ form_widget(services.ServiceName, {'attr': {'class': 'Job','style' : 'width: 53%'}}) }}</br>
+        Serviso pavadinimas: {{ form_widget(services.ServiceName, {'attr': {'class': 'Job','style' : 'width: 53%'}}) }}</br>
         </br>
-        <button class="btn btn-primary">Register service</button>
+        <button class="btn btn-primary">Registruoti servisą</button>
     </div>
     
     {{ form_end(services) }}

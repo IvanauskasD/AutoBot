@@ -3,15 +3,15 @@
 {% block body %}
     
     <div id ="default">
-    <h1>Edit Profile</h1>
+    <h1>Keisti profilį</h1>
         {{ form_start(form) }}
-        <label>First name:</label> {{ form_widget(form.firstnames, {'value' : app.company.firstName }) }}<br/>
-        <label>Last name:</label>  {{ form_widget(form.lastname, {'value' : app.company.lastName }) }}<br/>
-        <label>Email:</label>  {{ form_widget(form.email, {'value' : app.company.email }) }}<br/>
-        <label>Phone Number:</label>  {{ form_widget(form.phoneNumber, {'value' : app.company.phoneNumber }) }}<br/>
-<button class="btn btn-primary" style="width: 200px;">Edit</button>
+        <label>Vardas:</label> {{ form_widget(form.firstnames, {'value' : app.user.firstnames }) }}<br/>
+        <label>Pavardė:</label>  {{ form_widget(form.lastname, {'value' : app.user.lastname }) }}<br/>
+        <label>El. Paštas:</label>  {{ form_widget(form.email, {'value' : app.user.email }) }}<br/>
+        <label>Telefonas:</label>  {{ form_widget(form.phoneNumber, {'value' : app.user.phoneNumber }) }}<br/>
+<button class="btn btn-primary" style="width: 200px;">Keisti</button>
 <br>
-     <a href="{{ path('profile_index') }}">Back to list</a>
+     <a href="{{ path('profile_index') }}">Atgal</a>
     </div>
     
     {{ form_end(form) }}
