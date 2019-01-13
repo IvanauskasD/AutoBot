@@ -17,8 +17,7 @@
 
         {% if is_granted('ROLE_USER') == true %}
         <div class="bd-search">
-            <input type="text" name="search" placeholder="search">
-            <button type="submit" name="submit-search">Paieška</button>
+
         </div>
         {%  endif %}
 
@@ -43,11 +42,11 @@
         {%  endif %}
 
         {% if is_granted('ROLE_ADMIN') == true %}
-            <a href={{ path('jobReg') }} class="navbar-brand">Registruoti darba</a>
+            <a href={{ path('jobReg') }} class="navbar-brand">Registruoti darbo kategorija</a>
             <table class="table">
                 <thead class="thead-dark">
                 <tr>
-                    <th scope="col">Job Name</th>
+                    <th scope="col">Kategorijos pavadinimas</th>
                 </tr>
                 </thead>
                 <tbody>

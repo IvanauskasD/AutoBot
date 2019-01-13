@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         
-            {% block title %}<title>Autobot system</title>{% endblock %}
+            {% block title %}<title>Autobot sistema</title>{% endblock %}
         
         {% block stylesheets %}
             <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
@@ -52,7 +52,7 @@
 
                                 <a href={{ path('usersList') }} class="navbar-brand">Vartotojai</a>
                                 <a href={{ path('agreements') }} class="navbar-brand">Sutartys</a>
-                                <a href={{ path('complaints') }} class="navbar-brand">Skundai</a>
+
                                 <li class="nav-item">
                                     <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ app.user.email  }}</a>
@@ -78,7 +78,7 @@
                                     <div class="dropdown-divider"></div>
                                     {#<a class="dropdown-item" href="/company/services">My services</a>#}
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="/logout">Log out</a>
+                                    <a class="dropdown-item" href="/logout">Atsijungti</a>
                                 </div>
                             </div>
                         </div>
@@ -89,11 +89,11 @@
                             <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ app.user.email  }}</a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ path('employeeProfile') }}">Profile</a>
+                                <a class="dropdown-item" href="{{ path('employeeProfile') }}">Profilis</a>
                                 <div class="dropdown-divider"></div>
                                 {#<a class="dropdown-item" href="/company/services">My services</a>#}
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="/logout">Log out</a>
+                                <a class="dropdown-item" href="/logout">Atsijungti</a>
                             </div>
                                 {% else %}
                         <li class="nav-item">

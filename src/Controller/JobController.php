@@ -41,6 +41,17 @@ class JobController extends Controller
     }
 
     /**
+     * @Route("/{id}/company/deleteJob", name="deleteJob")
+     */
+    public function deleteJob(Request $request, AuthorizationCheckerInterface $authorizationChecker)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->getUser();
+        $car = $this->getDoctrine()->getRepository(Job::class)->find($id);
+        $cars = $this->getDoctrine()->getRepository(Car::class)->findAllByUserId($id);
+
+    }
+    /**
      * @Route("/company/addJobs", name="addJobs")
      */
     public function addJob(Request $request, AuthorizationCheckerInterface $authChecker)
@@ -69,12 +80,29 @@ class JobController extends Controller
     {
         if ($authChecker->isGranted('ROLE_COMPANY')) {
             $em = $this->getDoctrine()->getManager();
-            $jobs = $em->getRepository(Job::class)->findAll();
+            $id = $this->getUser();
+            $jobs = $em->getRepository(Job::class)->findBy(['companyId' => $id]);
 
             return $this->render('Company/jobs.html.twig', [
                 'jobs' => $jobs,
             ]);
         }
+    }
+
+    /**
+     * @Route("/{id}/company/jobsDelete", name="deleteJob")
+     */
+    public function Delete ( AuthorizationCheckerInterface $authorizationChecker, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $jobs = $em->getRepository(Job::class)->find($id);
+
+
+
+            $em->remove($jobs);
+            $em->flush();
+        return $this->redirectToRoute('companyJobs');
     }
 
     /**

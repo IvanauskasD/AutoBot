@@ -70,13 +70,15 @@ class CarRegisterForService extends Controller
 //        $form->handleRequest($request);
         $car = $em->getRepository(Car::class)->findById($id);
         $carPro = new CarProblme();
-        dump($car);
+
         $form = $this->createFormBuilder()
             ->add('jobName', EntityType::class, array(
-                'class' => Job::class
+                'class' => Job::class,
+                'label' => 'Darbo pavadinimas'
             ))
-            ->add('submit', SubmitType::class, array('label' => 'Create Task'))
+            ->add('submit', SubmitType::class, array('label' => 'Ieškoti'))
             ->getForm();
+
 
         $form->handleRequest($request);
         $companies = $em->getRepository(Job::class);
@@ -87,6 +89,8 @@ class CarRegisterForService extends Controller
             $bars = $bar->getJobName();
             $carPro->setJobName($bar->getJobName());
             $carPro->setCar($car);
+            $em->persist($carPro);
+            $em->flush();
             $products = $companies->findByOrderNotGrouped($bars);
 
         }
@@ -94,11 +98,12 @@ class CarRegisterForService extends Controller
 
 
 
-        dump($products);
+
 
         return $this->render('CarRegisterForService/carservicelist.html.twig', [
             'companies' => $products,
             'car' => $car,
+
             'form' => $form->createView()
         ]);
     }
@@ -114,17 +119,20 @@ class CarRegisterForService extends Controller
         $em = $this->getDoctrine()->getManager();
         $company = $em->getRepository(Company::class)->find($company_id);
         $car = $em->getRepository(Car::class)->find($car_id);
+        $carPro = $em->getRepository(CarProblme::class)->find($car_id);
         $newOrder = new Orders();
         $user = $this->getUser();
         $form = $this->createForm(TimeForm::class, $newOrder);
         $form->handleRequest($request);
+
         if($form->isSubmitted() && $form->isValid())
         {
             $newOrder->setCompany($company);
             $newOrder->setCar($car);
             $newOrder->setUser($user);
             $newOrder->setStatus('Waiting');
-            dump($newOrder);
+
+
             $em->persist($newOrder);
             $em->flush();
             return $this->redirectToRoute('homepage');
@@ -134,6 +142,7 @@ class CarRegisterForService extends Controller
         $cars = $em->getRepository(Car::class)->findAllByUserId($user->getId());
         return $this->render('selectTime.html.twig', array(
             'time_form' => $form->createView(),
+
             'car' => $cars));
 //        return $this->render('profile/index.html.twig',
 //            ['error' => null,

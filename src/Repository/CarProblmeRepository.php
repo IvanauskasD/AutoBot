@@ -23,9 +23,9 @@ class CarProblmeRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('c')
             ->addSelect('r') // to make Doctrine actually use the join
-            ->leftJoin('c.jobName', 'r')
+            ->leftJoin('c.order', 'r')
             ->addSelect('u') // to make Doctrine actually use the join
-            ->leftJoin('r.order', 'u')
+            ->leftJoin('r.carjob', 'u')
             ->where('c.id = :id')->setParameter('id', $id)
             ->getQuery()
             ->getOneOrNullResult();

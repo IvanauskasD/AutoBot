@@ -3,23 +3,23 @@
 {% block body %}
     <table style="width: 70%">
         <tr>
-            <th style="width:250px">Car</th>
-            <th style="width:250px">Autoservice</th>
-            <th style="width: 250px">Accepted/Pending/Declined</th>
+            <th style="width:250px">Mašina</th>
+            <th style="width:250px">Autoservisas</th>
+            <th style="width: 250px">Priimta/Laukiama/Atmesta</th>
         </tr>
         <tr>
     {% if order is not null and car is not null %}
-            {% for cars in car %}
-                {% for orders in order %}
 
-            <td>{{ cars.carId }}</td>
+                {% for orders in order %}
+<tr>
+            <td>{{ orders.car.carId }}</td>
             <td>{{ orders.company.companyName }}</td>
             <td style="color: green">{{ orders.status }}</td>
                     {% if orders.status != "Approved" and orders.status != "Canceled" %}
             <td><button type="button" id="Service-car" onclick="location.href = '{{ path('DeclineReservation', {id: orders.id}) }}'" >Cancel</button>
-                     </td>   {% endif %}
+                     </td> </tr>  {% endif %}
                 {% endfor %}
-                {% endfor %}
+
         {% endif %}
         </tr>
         {#<tr>#}

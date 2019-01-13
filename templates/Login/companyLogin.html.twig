@@ -1,10 +1,10 @@
 {% extends 'base.html.twig' %}
-{% block title %}<title>Login</title>{% endblock %}
+{% block title %}<title>Prisijungimas</title>{% endblock %}
 {% block body %}
     <div class="text-center">
         <form class="form-signin" action="{{ path('login') }}" method="POST">
             <div style="position:fixed;right: 43%">
-                <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+                <h1 class="h3 mb-3 font-weight-normal">Prisijungti</h1>
             </div>
             <input type="text"
                    id="_username"
@@ -19,7 +19,7 @@
                    placeholder="Password"
                    required>
 
-            <button class="btn btn-sm btn-primary" style="position: absolute;top: 50%" type="submit">Sign in</button>
+            <button class="btn btn-sm btn-primary" style="position: absolute;top: 50%" type="submit">Prisijungti</button>
         </form>
     </div>
 {% endblock %}

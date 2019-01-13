@@ -23,12 +23,12 @@ class JobAddForm extends AbstractType
     {
 
         $builder
-            ->add('jobsName', EntityType::class, array(
+            ->add('jobName', EntityType::class, array(
                     'class' => AdminJob::class,
-                    'label' => 'Job Name'
+                    'label' => 'Darbo pavadinimas'
             ))
             ->add('description', TextType::class, array(
-                'label' => 'Aprasymas'
+                'label' => 'Aprašymas'
             ))
             ->add('cost', TextType::class, array(
                 'label' => 'Kaina'
@@ -36,34 +36,9 @@ class JobAddForm extends AbstractType
             ->add('jobTime', TextType::class, array(
                 'label' => 'Darbo laikas'
             ))
+            ->add('save', SubmitType::class)
         ;
 
-        $formModifier = function (FormInterface $form, AdminJob $sport = null) {
-            $positions = null === $sport ? array() : $sport->getJobsName();
 
-            $form->add('jobsDes', EntityType::class, array(
-                'class'       => AdminJobDes::class,
-                'placeholder' => '',
-                'choices'     => $positions,
-            ));
-        };
-
-        $builder->addEventListener(
-            FormEvents::PRE_SET_DATA,
-            function (FormEvent $event) use ($formModifier) {
-                // this would be your entity, i.e. SportMeetup
-                $data = $event->getData();
-
-                $formModifier($event->getForm(), $data->getJobsName());
-            }
-        );
-
-        $builder->get('jobsName')->addEventListener(
-            FormEvents::POST_SUBMIT,
-            function (FormEvent $event) use ($formModifier) {
-                $sport = $event->getForm()->getData();
-                $formModifier($event->getForm()->getParent(), $sport);
-            }
-        );
     }
 }

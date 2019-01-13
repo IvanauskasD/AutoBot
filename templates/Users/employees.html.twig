@@ -17,11 +17,6 @@
             <th></th>
             <th>
 
-                <button type="submit" name="/">Blokuoti</button>
-            <th></th>
-            <th>
-                <button type="submit" name="/">Ištrinti</button>
-            <th></th>
 
             <tbody>
             {% set i = 0 %}
@@ -29,9 +24,18 @@
         <tr>
             <th scope="row">{{i + 1}}</th>
             {% if company is not null %}
+                <td></td>
+                <td>{{ company.firstname }}</td>
+                <td></td>
+                <td>{{ company.lastname }}</td>
+                <td></td>
+                <td>{{ company.phoneNumber }}</td>
+                <td></td>
                 <td>{{company.email}}</td>
-                <button type="button" id="Delete-car" onclick="location.href = '{{ path('deleteEmployee', {id: company.id}) }}'" >Delete</button>
-                <button type="button" id="Delete-car" onclick="location.href = '{{ path('banEmployee', {id: company.id}) }}'" >Ban</button>
+                <td></td>
+                <td><button type="button" id="Delete-car" onclick="location.href = '{{ path('deleteEmployee', {id: company.id}) }}'" >Trinti</button></td>
+                <td></td>
+                <td><button type="button" id="Delete-car" onclick="location.href = '{{ path('banEmployee', {id: company.id}) }}'" >Blokuoti</button></td>
             {% endif %}
             {% set i = i + 1 %}
         </tr>
