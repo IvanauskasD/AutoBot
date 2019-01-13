@@ -43,7 +43,7 @@ class ClientListController extends Controller
         $users = $this->getDoctrine()->getManager()->getRepository(User::class)->findAll();
         $employee = $this->getDoctrine()->getManager()->getRepository(Employee::class)->findByCompany($user->getId());
 //        $orders = $this->getDoctrine()->getManager()->getRepository(Orders::class)->findByCompany($user->getId());
-        dump($employee);
+       // dump($employee);
         return $this->render('profile/userProfile.html.twig', [
             'employees' => $employee,
         ]);

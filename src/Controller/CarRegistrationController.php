@@ -56,7 +56,7 @@ class CarRegistrationController extends Controller
             $em->persist($meetup);
             $em->flush();
 
-            return $this->redirectToRoute('homepage');
+            return $this->redirectToRoute('profile_index');
         }
 
         return $this->render('CarRegistration/carRegistration.html.twig', [

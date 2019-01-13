@@ -28,7 +28,7 @@ class EmployeeJobsController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $employeeOrders = $this->getDoctrine()->getRepository(Orders::class)->findByEmployee($user->getId());
-        dump($employeeOrders);
+//        dump($employeeOrders);
         return $this->render('Employee/pendingJobs.html.twig', array(
             'employee' => $employeeOrders)
         );
@@ -48,7 +48,7 @@ class EmployeeJobsController extends Controller
         $test = new Orders();
         foreach($employeeOrders as $gg)
             $test = $gg;
-        dump($test);
+        //dump($test);
         return $this->render('Employee/currentJobs.html.twig', array(
             'employee' => $employeeOrders,
             'test' => $testux
@@ -117,7 +117,7 @@ class EmployeeJobsController extends Controller
 
 
         }
-        dump($order);
+       // dump($order);
         return $this->render('Employee/currentJobDetails.html.twig', array(
             'employee' => $order,
             'form' => $form->createView()
