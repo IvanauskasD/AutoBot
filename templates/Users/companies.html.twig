@@ -1,25 +1,27 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h2 xmlns="http://www.w3.org/1999/html">Vartotojų sąrašas</h2>
-    <button type="button" onclick="location.href = '{{ path('usersList')}}'">Atgal</button>
-    <table align="center">
-        <tr style="border-bottom: 3px solid #ddd;">
-            <th width="120px">ID</th>
+    <h2 style="color: #1b1e21; text-align: center">Vartotojų sąrašas</h2>
+    <br><br>
+    <button type="button" class="btn btn-dark" onclick="location.href = '{{ path('usersList')}}'">Atgal</button>
+    <br><br>
+    <table class="table">
+        <tr >
+            <th>#</th>
             <th></th>
-            <th width="120px">Kompanija</th>
+            <th>Kompanija</th>
             <th></th>
-            <th width="200px">Telefono numeris</th>
+            <th>Telefono numeris</th>
             <th></th>
-            <th width="200px">Elektroninis paštas</th>
+            <th>Elektroninis paštas</th>
             <th></th>
-            <th>
+            <th></th>
 
             <tbody>
             {% set i = 0 %}
             {% for company in companies %}
         <tr>
-            <th scope="row">{{i + 1}}</th>
+            <td scope="row">{{i + 1}}</td>
             {% if company is not null %}
                 <td></td>
                 <td>{{company.companyName}}</td>
@@ -28,47 +30,16 @@
                 <td></td>
                 <td>{{company.email}}</td>
                 <td></td>
-                <td><button type="button" id="Delete-car" onclick="location.href = '{{ path('deleteCompany', {id: company.id}) }}'" >Trinti</button></td>
-                <td></td>
-                <td><button type="button" id="Delete-car" onclick="location.href = '{{ path('banCompany', {id: company.id}) }}'" >Blokuoti</button></td>
+                <td>
+                    <button type="button" class="btn btn-dark" onclick="location.href = '{{ path('deleteCompany', {id: company.id}) }}'" >Trinti</button>
+                    <button type="button" class="btn btn-dark" onclick="location.href = '{{ path('banCompany', {id: company.id}) }}'" >Blokuoti</button>
+                </td>
             {% endif %}
             {% set i = i + 1 %}
         </tr>
-
-
-
         {% endfor %}
         </tbody>
-
-        <th></th>
-        {# <?php
-   if(isset($_POST['role'])) {
-     echo "selected role: ".htmlspecialchars($_POST['role']);
-   }
-   ?>#}
-        </th>
-        {# <form id="s" method="post">
-                <select name="size">
-                    <option value="small">Suspend</option>
-                    <option value="medium">Delete</option>
-                </select>
-
-            </form>#}
-
-
-        {# {% for user in users %}
-               <tr>
-                   <td>{{ employee.firstname }}</td>
-                   <td></td>
-                   <td>{{employee.lastname}}</td>
-                   <td></td>
-                   <td>{{employee.phoneNumber}}</td>
-                   <td></td>
-                   <td>{{employee.email}}</td>
-                   <td></td>
-                   <td>{{employee.position}}</td>
-               </tr>
-           {% endfor %}#}
+        </tr>
     </table>
 
 {% endblock %}

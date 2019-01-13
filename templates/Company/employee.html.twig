@@ -1,20 +1,20 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <button id="log_reg_employee"><a href="{{ path('registerEmployee') }}">Pridėti naują darbuotoją</a></button>
-
-<h2>Darbuotojų sąrašas</h2>
-<table align="center">
-    <tr style="border-bottom: 3px solid #ddd;">
-        <th width="120px">Vardas</th>
+    <button class="btn btn-dark"><a href="{{ path('registerEmployee') }}" class="btn-dark">Pridėti naują darbuotoją</a></button>
+    <br><br>
+<h2 style="color: #1b1e21; text-align: center">Darbuotojų sąrašas</h2>
+<table class="table">
+    <tr>
+        <th>Vardas</th>
         <th></th>
-        <th width="200px">Pavardė</th>
+        <th>Pavardė</th>
         <th></th>
-        <th width="200px">Tel. numeris</th>
+        <th>Tel. numeris</th>
         <th></th>
-        <th width="200px">El. paštas</th>
+        <th>El. paštas</th>
         <th></th>
-        <th width="200px">Pozicija</th>
+        <th>Pozicija</th>
     </tr>
     {% for employee in employees %}
         <tr>

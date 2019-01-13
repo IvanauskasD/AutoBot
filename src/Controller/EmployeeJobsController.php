@@ -97,11 +97,13 @@ class EmployeeJobsController extends Controller
         $em = $this->getDoctrine()->getManager();
         $order = $this->getDoctrine()->getRepository(Orders::class)->findByOrderId($id);
         $form = $this->createFormBuilder()
-            ->add('status', TextareaType::class, array(
-
+            ->add('status', TextType::class, array(
+                'label' => 'Trukmė'
             ))
-            ->add('cost', TextType::class, array())
-            ->add('submit', SubmitType::class, array('label' => 'Create Task'))
+            ->add('cost', TextType::class, array(
+                'label' => 'Kaina'
+            ))
+            ->add('submit', SubmitType::class, array('label' => 'Atnaujinti informaciją'))
             ->getForm();
         $work = new Work();
         $form->handleRequest($request);

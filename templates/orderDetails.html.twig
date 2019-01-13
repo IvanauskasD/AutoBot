@@ -3,14 +3,16 @@
     <div class="container">
         
             {% if (is_granted('ROLE_COMPANY')) == true %}
-            <div style="text-align:center;"><h1> Darbo detalės </h1> </div>
+            <div><h1 style="color: #1b1e21; text-align: center"> Darbo detalės </h1> </div>
             <div style="height: 50px;"> </div>
                 <div class="row">
                 <div class="col-4">
                 
                 <table class="table">
                 <thead>
-                    <div style="text-align: center;"><h5> Kliento informacija </h5> </div>
+                    <div style="text-align: center;">
+                        <h5 style="color: #1b1e21"> Kliento informacija </h5>
+                    </div>
 
                 </thead>
                 <tbody>
@@ -19,7 +21,7 @@
                             <td>{{order.car.user.firstnames}} {{order.car.user.lastname}} </td>
                             </tr>
                             <tr class="table-light">
-                            <td> Paštas </td>
+                            <td> El. paštas </td>
                             <td>{{order.car.user.email}}</td>
                             </tr>
                             <tr class="table-light">
@@ -38,7 +40,9 @@
                 <div class="col-4">
                 <table class="table">
                 <thead>
-                    <div style="text-align: center;"><h5> Mašinos informacija </h5> </div>
+                    <div style="text-align: center;">
+                        <h5 style="color: #1b1e21"> Mašinos informacija </h5>
+                    </div>
 
                 </thead>
                 <tbody>
@@ -74,7 +78,9 @@
                 
                 <table class="table">
                 <thead>
-                    <div style="text-align: center;"><h5> Problema </h5> </div>
+                    <div style="text-align: center;">
+                        <h5 style="color: #1b1e21"> Problema </h5>
+                    </div>
 
                 </thead>
                 <tbody>
@@ -91,26 +97,22 @@
             </div>
             <div style="height: 30px;"></div>
             {% if order.status == "Waiting" %}
+                <div class="row">
+                <div class="col-5"></div>
+                <div class="col-2" style="text-align: center">
+                {{ form_start(form) }}
+                {{ form_end(form) }}
+                </div>
+                <div class="col-5"></div>
+                </div>
             <div class="row">
                 <div class="col-4"></div>
                 <div class="col-2" style="text-align: center;">
-                <button type="button" class="btn btn-success" onclick="location.href = '{{ path('orderAccept', {id: order.id}) }}'">Accept</button>
+                <button type="button" class="btn btn-success" onclick="location.href = '{{ path('orderAccept', {id: order.id}) }}'">Priimti</button>
                 </div>
                 <div class="col-2" style="text-align: center;">
-                <button type="button" class="btn btn-danger" onclick="location.href = '{{ path('orderDeny', {id: order.id}) }}'" >Dismiss</button>
+                <button type="button" class="btn btn-danger" onclick="location.href = '{{ path('orderDeny', {id: order.id}) }}'">Atmesti</button>
                 </div>
-                <div class="col-4"></div>
-                {{ form_start(form) }}
-                {{ form_end(form) }}
-            </div>
-            <div style="height: 50px;"></div>
-            {% elseif order.status == "Accepted" %}
-                <div class="row">
-                <div class="col-4"></div>
-                <div class="col-4" style="text-align: center;">
-                <button type="button" class="btn btn-success" onclick="location.href = '{{ path('orderFinish', {id: order.id}) }}'" >Finish</button>
-                </div>
-                
                 <div class="col-4"></div>
             </div>
             <div style="height: 50px;"></div>

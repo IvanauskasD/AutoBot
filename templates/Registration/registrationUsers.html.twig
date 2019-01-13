@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col"></div>
             <div class="col">
-                <h1>Klientų registracija</h1>
+                <h1 style="color: #1b1e21; text-align: center">Klientų registracija</h1>
                 <div style="color: red">{{ error }} </div>
                 <div id="default">
                     {{ form_start(registration_form) }}
@@ -17,7 +17,7 @@
                     Tel. numeris: {{ form_widget(registration_form.phoneNumber, {'attr': {'class': 'User'}}) }}</br>
                     Slaptažodis: {{ form_widget(registration_form.plainPassword.first, {'attr': {'class': 'User'}}) }}</br>
                     Pakartoti slaptažodį: {{ form_widget(registration_form.plainPassword.second, {'attr': {'class': 'User'}}) }}</br>
-                    <button class="btn btn-primary">Išsaugoti</button>
+                    <button class="btn btn-dark">Registruoti</button>
                     {{ form_end(registration_form) }}
                 </div>
                 {{ form(registration_form) }}

@@ -2,22 +2,33 @@
 
 {% block body %}
 <div class="container">
-    <h3>Kliento profilis</h3>
-    <div id = "user">
-        <b>Vardas:</b> {{ app.user.firstNames  }}<br/>
-        <b>Pavardė:</b> {{ app.user.lastName }}<br/>
-        <b>El. paštas:</b> {{ app.user.email }} <br/>
-        <b>Tel. numeris:</b> {{ app.user.phoneNumber }}<br/>
-        <button type="button" id="Edit-profile" onclick="location.href = '{{ path('profile_edit', {id: app.user.id}) }}'" >Edit profile</button>
-        {#<button type="button" id="Edit-profile" onclick="location.href = '{{ path('profile_edit', {id: app.user.id}) }}'" >Redaguoti</button>#}
-        {#<br/>#}
-        {#<button type="button" id="Edit-profile" onclick="location.href = '{{ path('changePassword') }}'" >Change password</button>#}
-        {#<br/>#}
-        <br/>
-        <button type="button" id="Edit-profile" onclick="location.href = '{{ path('CarRegistration') }}'" >Pridėti mašiną</button>
-        {#<button type="button" id="Edit-profile" onclick="location.href = '{{ path('feedback') }}'" >Feedback</button>#}
-        {#<button type="button" id="Edit-profile" onclick="location.href = '{{ path('carservice') }}'" >Car registration for service</button>#}
-        {#<button type="button" id="Edit-profile" onclick="location.href = '{{ path('reservation') }}'" >Reservation</button>#}
+    <h3 style="color: #1b1e21; text-align: center">Kliento profilis</h3>
+    <br><br>
+    <table class="table">
+        <tr>
+            <th>Vardas:</th>
+            <td>{{ app.user.firstNames  }}</td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>Pavardė:</th>
+            <td>{{ app.user.lastName  }}</td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>El. paštas:</th>
+            <td>{{ app.user.email }}</td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>Telefono numeris:</th>
+            <td>{{ app.user.phoneNumber }}</td>
+            <td></td>
+        </tr>
+    </table>
+        <button type="button" class="btn btn-dark" onclick="location.href = '{{ path('profile_edit', {id: app.user.id}) }}'" >Redaguoti profilį</button>
+        <br><br>
+        <button type="button" class="btn btn-dark" onclick="location.href = '{{ path('CarRegistration') }}'" >Pridėti mašiną</button>
         <br/>
         <br/>
         <br/>

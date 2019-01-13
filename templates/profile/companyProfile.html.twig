@@ -1,94 +1,36 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Profilis</h1>
-    <div id="user" style="font-weight: bold">
-        Pavadinimas: {{ app.user.companyName  }}<br/>
-        El. paštas: {{ app.user.email  }}<br/>
-        Telefono numeris: {{ app.user.phoneNumber }}<br/>
-        Miestas: {{ app.user.city }}<br/>
-        Adresas: {{ app.user.adress  }}<br/>
-
+    <h1 style="color: #1b1e21; text-align: center">Profilis</h1>
+    <br><br>
+        <table class="table">
+            <tr>
+                <th>Pavadinimas:</th>
+                <td>{{ app.user.companyName  }}</td>
+                <td></td>
+            </tr>
+            <tr>
+                <th>El. paštas:</th>
+                <td>{{ app.user.email  }}</td>
+                <td></td>
+            </tr>
+            <tr>
+                <th>Telefono numeris:</th>
+                <td>{{ app.user.phoneNumber }}</td>
+                <td></td>
+            </tr>
+            <tr>
+                <th>Miestas:</th>
+                <td>{{ app.user.city }}</td>
+                <td></td>
+            </tr>
+            <tr>
+                <th>Adresas:</th>
+                <td>{{ app.user.adress  }}</td>
+                <td></td>
+            </tr>
+        </table>
         <br/>
     <br/>
-
-
-        <h2>Client list</h2>
-        <table align="center">
-            <tr style="border-bottom: 3px solid #ddd;">
-                <th width="80px">User ID</th>
-                <th></th>
-                <th width="120px">Fullname</th>
-                <th></th>
-                <th width="200px">Email</th>
-                <th></th>
-                <th width="200px">Phone Number</th>
-            </tr>
-            {% for order in orders %}
-                <tr>
-                    <td>{{ order.car.user.id }}</td>
-                    <td></td>
-                    <td>{{order.car.user.firstnames}} {{order.car.user.lastname}}</td>
-                    <td></td>
-                    <td>{{order.car.user.email}}</td>
-                    <td></td>
-                    <td>{{order.car.user.phoneNumber}}</td>
-                    <td style="text-align: right"><button type="button" class="btn btn-info" onclick="location.href = '{{ path('orderDetails', {id: order.id}) }}'"  >Details</button></td>
-                </tr>
-            {% endfor %}
-        </table>
-            {#Kompanijos profiliui#}
-
-
-
-            {#<h2>Darbuotojų sąrašas</h2>#}
-            {#<table align="center">#}
-                {#<tr style="border-bottom: 3px solid #ddd;">#}
-                    {#<th scope="row">Vardas</th>#}
-                    {#<th></th>#}
-                    {#<th scope="row">Pavardė</th>#}
-                    {#<th></th>#}
-                    {#<th scope="row">Tel. numeris</th>#}
-                    {#<th></th>#}
-                    {#<th scope="row">Pozicija</th>#}
-                {#</tr>#}
-                {#{% for employee in employees %}#}
-                        {#<tr>#}
-                            {#<td>{{ employee.firstname }}</td>#}
-                            {#<td></td>#}
-                            {#<td>{{employee.lastname}}</td>#}
-                            {#<td></td>#}
-                            {#<td>{{employee.email}}</td>#}
-                            {#<td></td>#}
-                            {#<td>{{employee.position}}</td>#}
-                        {#</tr>#}
-                {#{% endfor %}#}
-            {#</table>#}
-        {#<button id="log_reg_employee"><a href="{{ path('registerEmployee') }}">Pridėti naują darbuotoją</a></button>#}
-            {#<h2>Client list</h2>#}
-            {#<table align="center">#}
-                {#<tr style="border-bottom: 3px solid #ddd;">#}
-                    {#<th width="120px">Firstname</th>#}
-                    {#<th></th>#}
-                    {#<th width="200px">LastName</th>#}
-                    {#<th></th>#}
-                    {#<th width="200px">Phone Number</th>#}
-                    {#<th></th>#}
-                    {#<th width="200px">Role</th>#}
-                {#</tr>#}
-                {#{% for employee in employees %}#}
-                        {#<tr>#}
-                            {#<td>{{ employee.firstname }}</td>#}
-                            {#<td></td>#}
-                            {#<td>{{employee.lastname}}</td>#}
-                            {#<td></td>#}
-                            {#<td>{{employee.email}}</td>#}
-                            {#<td></td>#}
-                            {#<td>{{employee.position}}</td>#}
-                        {#</tr>#}
-                {#{% endfor %}#}
-            {#</table>#}
-        {#<button id="log_reg_employee"><a href="{{ path('registerEmployee') }}">Register employee</a></button>#}
-    </div>
 
 {% endblock %}

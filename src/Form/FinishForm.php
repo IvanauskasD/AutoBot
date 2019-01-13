@@ -18,18 +18,20 @@ class FinishForm extends AbstractType
     {
         $builder
             ->add('defectDescription', TextareaType::class, [
-                'label' => 'Desc'
+                'label' => 'Defektų aprašymas'
             ])
             ->add('workComments', TextareaType::class, [
-                'label' => 'Comm'
+                'label' => 'Komentarai'
             ])
             ->add('diagnosticResults', TextareaType::class, [
-                'label' => 'Diag Res'
+                'label' => 'Diagnostikos rezultatai'
             ])
             ->add('jobTime', TextType::class, [
-                'label' => 'Job Time'
+                'label' => 'Darbo laikas'
             ])
-            ->add('save', SubmitType::class)
+            ->add('save', SubmitType::class, [
+                'label' => 'Išsaugoti'
+            ])
         ;
         ;
     }

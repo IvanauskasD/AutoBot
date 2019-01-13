@@ -7,6 +7,7 @@ use App\Entity\Service;
 use Doctrine\DBAL\Types\FloatType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -27,7 +28,7 @@ class JobAddForm extends AbstractType
                     'class' => AdminJob::class,
                     'label' => 'Darbo pavadinimas'
             ))
-            ->add('description', TextType::class, array(
+            ->add('description', TextareaType::class, array(
                 'label' => 'Aprašymas'
             ))
             ->add('cost', TextType::class, array(
@@ -36,7 +37,6 @@ class JobAddForm extends AbstractType
             ->add('jobTime', TextType::class, array(
                 'label' => 'Darbo laikas'
             ))
-            ->add('save', SubmitType::class)
         ;
 
 

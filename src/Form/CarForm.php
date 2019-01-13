@@ -21,10 +21,11 @@ class CarForm extends AbstractType
     {
         $builder
             ->add('carId', TextType::class, array(
-                'label' => 'carId'))
+                'label' => 'Mašinos ID'))
             ->add('maker', EntityType::class, array(
                 'class'       => Maker::class,
                 'placeholder' => '',
+                'label' => 'Markė'
             ))
             ->add('carYear', ChoiceType::class, array(
                 'choices' => array(
@@ -48,25 +49,25 @@ class CarForm extends AbstractType
                     '2017' => '2017',
                     '2018' => '2018'
                 ),
-                'label' => 'carYear'
+                'label' => 'Metai'
             ))
             ->add('carBody', ChoiceType::class, array(
                 'choices' => array(
-                    'Hecbekas' => 'Hecbekas',
+                    'Hečbekas' => 'Hečbekas',
                     'Sedanas' => 'Sedanas',
                     'Universalas' => 'Universalas',
                 ),
-                'label' => 'carBody'
+                'label' => 'Kėbulo tipas'
             ))
             ->add('transmission', ChoiceType::class, array(
                 'choices' => array(
-                    'Mechanine' => 'Hecbekas',
-                    'Automatine' => 'Sedanas'
+                    'Mechaninė' => 'Mechaninė',
+                    'Automatinė' => 'Automatinė'
                 ),
-                'label' => 'transmission'
+                'label' => 'Pavarų dėžė'
             ))
             ->add('engineVolume', TextType::class, array(
-                'label' => 'engineVolume'))
+                'label' => 'Variklio tūris'))
         ;
 
         $formModifier = function (FormInterface $form, Maker $sport = null) {
@@ -76,6 +77,7 @@ class CarForm extends AbstractType
                 'class'       => Model::class,
                 'placeholder' => '',
                 'choices'     => $positions,
+                'label' => 'Modelis'
             ));
         };
 

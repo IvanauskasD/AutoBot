@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col"></div>
             <div class="col-5">
-                <h1>Darbuotojo registracija</h1>
+                <h1 style="color: #1b1e21; text-align: center">Darbuotojo registracija</h1>
                 <div style="color: red">
                     {#{% for message in error %}#}
                         {#{{ message }}<br>#}
@@ -22,7 +22,7 @@
                     Darbo pozicija: {{ form_widget(registration_form.position, {'attr': {'class': 'Employee'}}) }}</br>
                     Slaptažodis: {{ form_widget(registration_form.plainPassword.first, {'attr': {'class': 'Employee'}}) }}</br>
                     Pakartoti slaptažodį: {{ form_widget(registration_form.plainPassword.second, {'attr': {'class': 'Employee'}}) }}</br>
-                    <button class="btn btn-primary">Išsaugoti</button>
+                    <button class="btn btn-dark">Registruoti</button>
                     {{ form_end(registration_form) }}
                 </div>
             </div>

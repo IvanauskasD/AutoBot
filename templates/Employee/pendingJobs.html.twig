@@ -1,22 +1,16 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <table id="table-current-jobs"class="table" align="center">
-        <thead class="thead-dark">
+    <table class="table" align="center">
         <tr>
 
             <th></th>
             <th scope="col">Mašina</th>
             <th></th>
-            <th scope="col">Informacija</th>
+            <th style="width: 250px">Priimta/Laukiama/Atmesta</th>
             <th></th>
-            <th scope="col">Priimta</th>
-            <th></th>
-            <th scope="col">Atmesta</th>
-            <th></th>
-            <th scope="col">Daugiau detalių</th>
+            <th scope="col"></th>
         </tr>
-        </thead>
 
         {% for employees in employee %}
             {% if employees.status != "Dismissed" and employees.status != "Approved" %}
@@ -28,12 +22,7 @@
             <td></td>
             <td>{{ employees.status }}</td>
             <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-
-            <td><button type="button" class="btn btn-success" onclick="location.href = '{{ path('pendingJobList', {id: employees.id}) }}'" >Details</button>
+            <td><button type="button" class="btn btn-dark" onclick="location.href = '{{ path('pendingJobList', {id: employees.id}) }}'" >Detaliau</button>
             </td>
         </tr>
             {% endif %}

@@ -1,35 +1,14 @@
 {% extends 'base.html.twig' %}
 {% block body %}
     <div class="container">
-        {#<div class="row">#}
-            {#<div class="col-2">#}
-                {#<h5 style="text-align: left"> Your car: </h5>#}
-                {#ID: {{car.carId}}#}
-                {#<br>#}
-                {#Manufacturer: {{car.maker}}#}
-                {#<br>#}
-                {#Model: {{car.model}}#}
-                {#<br>#}
-                {#Year: {{car.carYear}}#}
 
-            {#</div>#}
-            {#<div class="col-4">#}
-                {#<h5 style="text-align: left"> Malfunction: </h5>#}
-                {#Category: {{car.serviceCategory}}#}
-                {#<br>#}
-                {#Service: {{car.serviceName}}#}
-                {#<br>#}
-            {#</div>#}
-            {#<div class="col-6">#}
-
-            {#</div>#}
-        {#</div>#}
+        <div id="default">
         {{ form_start(form) }}
         {{ form_end(form) }}
+        </div>
 
 
-
-        <h1 style="text-align: center"> Autoservisai, kurie gali sutvarkyti problemą </h1>
+        <h1 style="color: #1b1e21; text-align: center"> Autoservisai, kurie gali sutvarkyti problemą </h1>
         <br>
 
         <table class="table">
@@ -46,12 +25,13 @@
             {% set i = 0 %}
             {% for company in companies %}
                 <tr>
-                    <th scope="row">{{i + 1}}</th>
+                    <td scope="row">{{i + 1}}</td>
                     <td>{{company.companyId.companyName}}</td>
                     <td>{{company.companyId.email}}</td>
                     <td>{{company.companyId.phoneNumber}}</td>
                     {% if car is not null %}
-                    <td style="text-align: right"><button type="button" class="btn btn-info" onclick="location.href = '{{ path('RegisterCarService', {car_id: car.carId, company_id: company.companyId.id}) }}'"  >Užsakyti paslaugą</button></td>
+                    <td>
+                        <button type="button" class="btn btn-dark" onclick="location.href = '{{ path('RegisterCarService', {car_id: car.carId, company_id: company.companyId.id}) }}'"  >Užsakyti paslaugą</button></td>
                         {% endif %}
                     {% set i = i + 1 %}
                 </tr>

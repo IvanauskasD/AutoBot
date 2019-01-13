@@ -2,16 +2,18 @@
 
 {% block body %}
 
-        <h2>Klientų sąrašas</h2>
-        <table align="center">
-            <tr style="border-bottom: 3px solid #ddd;">
-                <th width="80px">#</th>
+        <h2 style="color: #1b1e21; text-align: center">Klientų sąrašas</h2>
+        <br><br>
+        <table class="table">
+            <tr>
+                <th>#</th>
                 <th></th>
-                <th width="200px">Klientas</th>
+                <th>Klientas</th>
                 <th></th>
-                <th width="200px">El. paštas</th>
+                <th>El. paštas</th>
                 <th></th>
-                <th width="200px">Telefono numeris</th>
+                <th>Telefono numeris</th>
+                <th></th>
             </tr>
             {% for order in orders %}
                 <tr>
@@ -22,7 +24,7 @@
                     <td>{{order.car.user.email}}</td>
                     <td></td>
                     <td>{{order.car.user.phoneNumber}}</td>
-                    <td style="text-align: right"><button type="button" class="btn btn-info" onclick="location.href = '{{ path('orderDetails', {id: order.id}) }}'"  >Detaliau</button></td>
+                    <td><button type="button" class="btn btn-dark" onclick="location.href = '{{ path('orderDetails', {id: order.id}) }}'" >Detaliau</button></td>
                 </tr>
             {% endfor %}
         </table>
