@@ -29,10 +29,6 @@
                            <a href={{ path('homepage') }} class="navbar-brand">Pagrindinis</a>
             <ul class="nav navbar-nav ml-auto">
                         {% if is_granted('ROLE_USER') %}
-      {#<button type="button" id="Edit-profile" onclick="location.href = '{{ path('feedback') }}'" >Feedback</button>#}
-        {#<button type="button" id="Edit-profile" onclick="location.href = '{{ path('carservice') }}'" >Car registration for service</button>#}
-        {#<button type="button" id="Edit-profile" onclick="location.href = '{{ path('reservation') }}'" >Reservation</button>#}
-                                <a href={{ path('feedback') }} class="navbar-brand">Atsiliepimai</a>
                                 <a href={{ path('carservice') }} class="navbar-brand">Registruoti į autoservisą</a>
                                 <a href={{ path('reservations') }} class="navbar-brand">Rezervacijos</a>
                             <li class="nav-item dropdown">
@@ -51,23 +47,18 @@
                             {% elseif is_granted('ROLE_ADMIN') %}
 
                                 <a href={{ path('usersList') }} class="navbar-brand">Vartotojai</a>
-                                <a href={{ path('agreements') }} class="navbar-brand">Sutartys</a>
 
                                 <li class="nav-item">
                                     <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ app.user.email  }}</a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    {#<a class="dropdown-item" href="{{ path('companyProfile') }}">Profilis</a>#}
-                                    {#<div class="dropdown-divider"></div>#}
-                                    {#<a class="dropdown-item" href="/company/services">My services</a>#}
-                                    <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="/logout">Atsijungti</a>
                                 </div>
 
                                 {% elseif is_granted('ROLE_COMPANY') %}
 
                                 {#<a href={{ path('homepage') }} class="navbar-brand">Home</a>#}
-                                <a href={{ path('partsPrice') }} class="navbar-brand">Detalių savikaina</a>
+                                <a href={{ path('partsPrice') }} class="navbar-brand">Klientų rezervacijos</a>
                                 <a href={{ path('employee') }} class="navbar-brand">Darbuotojai</a>
                                 <a href={{ path('companyJobs') }} class="navbar-brand">Atliekami darbai</a>
                                 <li class="nav-item">
@@ -75,8 +66,6 @@
                                 <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ app.user.email  }}</a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ path('companyProfile') }}">Profilis</a>
-                                    <div class="dropdown-divider"></div>
-                                    {#<a class="dropdown-item" href="/company/services">My services</a>#}
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="/logout">Atsijungti</a>
                                 </div>
@@ -90,8 +79,6 @@
                             <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ app.user.email  }}</a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ path('employeeProfile') }}">Profilis</a>
-                                <div class="dropdown-divider"></div>
-                                {#<a class="dropdown-item" href="/company/services">My services</a>#}
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="/logout">Atsijungti</a>
                             </div>
@@ -145,7 +132,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col"> </div>
-                    <div class="col">Made by AutoBot team </div>
+                    <div class="col" style="text-align: center">Made by AutoBot team</div>
                     <div class="col"> </div>
                 </div>
 

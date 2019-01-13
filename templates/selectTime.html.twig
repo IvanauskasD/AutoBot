@@ -2,9 +2,9 @@
 {% block body %}
     {{ form_start(time_form) }}
     <div id="default">
-        Rezervacijos laikas: {{ form_widget(time_form.startDate, {'attr': {'class': 'Order'}}) }}</br>
-        </br>
-        <button class="btn btn-primary">Rezervacijos laikas</button>
+        Rezervacijos laikas:<br><br>
+        {{ form_widget(time_form.startDate, {'attr': {'class': 'Order'}}) }}</br>
+        <button class="btn btn-dark">Rezervacijos laikas</button>
     </div>
     {{ form_end(time_form) }}
 {% endblock %}

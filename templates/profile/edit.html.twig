@@ -2,22 +2,20 @@
 
 {% block body %}
     
-    <div id ="default">
-    <h1>Keisti profilį</h1>
+
+    <h1 style="color: #1b1e21; text-align: center">Keisti profilį</h1>
+    <br><br>
+    <div id="default">
         {{ form_start(form) }}
         <label>Vardas:</label> {{ form_widget(form.firstnames, {'value' : app.user.firstnames }) }}<br/>
         <label>Pavardė:</label>  {{ form_widget(form.lastname, {'value' : app.user.lastname }) }}<br/>
         <label>El. Paštas:</label>  {{ form_widget(form.email, {'value' : app.user.email }) }}<br/>
         <label>Telefonas:</label>  {{ form_widget(form.phoneNumber, {'value' : app.user.phoneNumber }) }}<br/>
-<button class="btn btn-primary" style="width: 200px;">Keisti</button>
-<br>
-     <a href="{{ path('profile_index') }}">Atgal</a>
+    <button class="btn btn-dark">Keisti</button>
+<br><br>
+        <button type="button" class="btn btn-dark" onclick="location.href = '{{ path('profile_index')}}'">Atgal</button>
     </div>
     
     {{ form_end(form) }}
-
-   
-
-
 
     {% endblock %}

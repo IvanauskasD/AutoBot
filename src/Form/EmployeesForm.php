@@ -42,13 +42,10 @@ class EmployeesForm extends AbstractType
                         ->addSelect('u') // to make Doctrine actually use the join
                         ->leftJoin('r.company', 'u')
                         ->andwhere('c.company = :id')->setParameter('id', $id);
-
                 }
-
             ))
-            ->add('save', SubmitType::class)
-
-
+            ->add('save', SubmitType::class, array(
+                'label' => 'Priskirti darbuotoją'))
         ;
 
     }

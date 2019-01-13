@@ -6,9 +6,8 @@
             <th scope="col">Mašinos numeris</th>
             <th scope="col">Markė</th>
             <th scope="col">Modelis</th>
-            <th scope="col">Rezervacija</th>
-            <th scope="col">Darbo atlikimo procentas</th>
-            <th scope="col">Komentaras</th>
+            <th scope="col">Kaina</th>
+            <th scope="col">Užtruktas laikas</th>
             <th scope="col">Statusas</th>
             <th> </th>
         </tr>
@@ -20,9 +19,6 @@
                     <td>{{ car.carId }}</td>
                     <td>{{ car.maker}}</td>
                     <td>{{ car.model}}</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
 
 
                     {% if car.orders.cost and car.orders.duration != null %}
@@ -73,10 +69,7 @@
                     {% else %}
                         <td></td>
                     {% endif %}
-                    <td>{{ car.orders.cost|default('N/A')}}</td>
-
-                    <td>{{ car.orders.duration|default('N/A')}}</td>
-
+                    <td></td>
                     {% if car.orders %}
                         {% if car.orders.status == "Accepted" %}
                             <td style="color: green;">{{  car.orders.status}}</td>

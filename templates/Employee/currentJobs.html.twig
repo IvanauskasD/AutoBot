@@ -1,43 +1,39 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <table class="table" align="center">
-        <thead class="thead-dark">
-        <tr style="border-bottom: 3px solid #ddd;">
+    <table class="table">
+        <tr>
             <th scope="col">Darbo pavadinimas</th>
             <th></th>
             <th scope="col">Mašina</th>
             <th></th>
-            <th scope="col">Aprašymas</th>
+            <th scope="col">Užtrukta laiko (val.)</th>
             <th></th>
-            <th scope="col">Komentarai</th>
+            <th scope="col">Preliminari kaina (eur.)</th>
             <th></th>
             <th scope="col">Statusas</th>
             <th></th>
+
             <th scope="col"></th>
         </tr>
-        </thead>
 
         {% for employees in employee %}
 
         {% if employees.status == "Approved" %}
             <tr>
                 <td>{{ test.jobName }}</td>
-
                 <td></td>
                 <td>{{ employees.car.carId }}</td>
                 <td></td>
-                {#<td>{{ employees.duration }}</td>#}
+                <td>{{ employees.duration }}</td>
                 <td></td>
-                <td></td>
-                <td></td>
+                <td>{{ employees.cost }}</td>
                 <td></td>
                 <td>{{ employees.status }}</td>
                 <td></td>
-                {#<td>{{ employees.cost }}</td>#}
                 {% if employees.status != "Dismissed" %}
-                <td><button type="button" class="btn btn-success" onclick="location.href = '{{ path('jobDetails', {id: employees.id}) }}'" >Detalės</button>
-                    {#<button type="button" class="btn btn-success" onclick="location.href = '{{ path('currentJobDetails', {id: employees.id}) }}'" >Informacija</button>#}
+                <td><button type="button" class="btn btn-dark" onclick="location.href = '{{ path('jobDetails', {id: employees.id}) }}'" >Detalės</button>
+                    <button type="button" class="btn btn-dark" onclick="location.href = '{{ path('currentJobDetails', {id: employees.id}) }}'" >Informacija</button>
                  </td>
                     </tr>
                 {% endif %}

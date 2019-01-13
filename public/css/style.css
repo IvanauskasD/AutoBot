@@ -25,6 +25,7 @@ time, mark, audio, video {
     font-size:100%;
     vertical-align:baseline;
     background:transparent;
+    color: #1b1e21;
 }
 
 body {
@@ -117,7 +118,7 @@ a{
 
 body {
     background-color: darkslateblue;
-	
+
 }
 
 
@@ -209,7 +210,7 @@ header .nav-login a:hover{
 .main-container h2 {
     font-family: arial;
     font-size: 40px;
-    color: #111;
+    color: #1b1e21;
     line-height: 50px;
     text-align: center;
 }
@@ -222,12 +223,12 @@ header .nav-login a:hover{
 }
 
 th {
-    background-color: #4CAF50;
+    background-color: #32383e;
     color: white;
 }
 
 #mainHeader{
-    background-color: #4CAF50;
+    background-color: #32383e;
 }
 
 /*signup.php*/
@@ -462,9 +463,8 @@ div[id=default]{
     color: black;
     font-weight: bold;
     text-align: left;
-    position: absolute;
+    font-size: 18px;
     margin-left: 20px;
-    top:100px;
 }
 tr{
     border-bottom: 1px solid #ddd;

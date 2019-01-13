@@ -89,7 +89,7 @@ class OrdersController extends Controller
             $agree->setUserId($order->getUser());
 //            $employee->setOrders($order);
             $em->flush();
-            dump($order);
+//            dump($order);
         }
 
 

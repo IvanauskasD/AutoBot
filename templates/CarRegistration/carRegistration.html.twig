@@ -1,7 +1,8 @@
 {% extends 'base.html.twig' %}
 {% block body %}
+    <div id="default">
     {{ form_start(car) }}
-    {{ form_row(car.carId,{ 'label_attr': {'style': 'color:red'}})}}
+    {{ form_row(car.carId,{ 'label_attr': {'style': 'color:black'}})}}
     {{ form_row(car.maker) }}    {# <select id="meetup_sport" ... #}
     {{ form_row(car.model) }} {# <select id="meetup_position" ... #}
     {{ form_row(car.carYear) }}
@@ -10,9 +11,10 @@
     {{ form_row(car.engineVolume) }}
 
 
-    <button class="btn btn-primary">Išsaugoti</button>
+    <button class="btn btn-dark">Išsaugoti</button>
     {{ form_end(car) }}
 
+    </div>
     <script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
     <script>
         var $espece = $('#car_form_maker');

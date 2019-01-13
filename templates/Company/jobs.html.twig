@@ -1,18 +1,19 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <button id="log_reg_employee"><a href="{{ path('addJobs') }}">Pridėti naują darbą</a></button>
-
-    <h2>Atliekami darbai</h2>
-    <table align="center">
-        <tr style="border-bottom: 3px solid #ddd;">
-            <th width="120px">Pavadinimas</th>
+    <button class="btn btn-dark"><a href="{{ path('addJobs') }}" class="btn-dark">Pridėti naują darbą</a></button>
+    <br><br>
+    <h2 style="color: #1b1e21; text-align: center">Atliekami darbai</h2>
+    <table class="table">
+        <tr>
+            <th>Pavadinimas</th>
             <th></th>
-            <th width="200px">Aprašymas</th>
+            <th>Aprašymas</th>
             <th></th>
-            <th width="200px">Kaina</th>
+            <th>Kaina</th>
             <th></th>
-            <th width="200px">Trukmė</th>
+            <th>Trukmė</th>
+            <th></th>
         </tr>
         {% for job in jobs %}
 
@@ -24,8 +25,7 @@
                 <td>{{ job.cost }}</td>
                 <td></td>
                 <td>{{ job.jobTime}}</td>
-                <td></td>
-                <td><button type="button" id="Delete-car" onclick="location.href = '{{ path('deleteJob', {id: job.id}) }}'" >Trinti</button></td>
+                <td><button type="button" class="btn btn-dark" onclick="location.href = '{{ path('deleteJob', {id: job.id}) }}'" >Trinti</button></td>
             </tr>
         {% endfor %}
     </table>

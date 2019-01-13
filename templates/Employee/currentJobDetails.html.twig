@@ -1,6 +1,10 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    <div id="default">
     {{ form_start(form) }}
     {{ form_end(form) }}
+
+    <button type="button" class="btn btn-dark" onclick="location.href = '{{ path('currentJobs')}}'">Atgal</button>
+    </div>
 {% endblock %}

@@ -6,7 +6,8 @@
         <div class="row">
             <div class="col"></div>
             <div class="col-5">
-                <h3>Darbu kategorijos registracija</h3>
+                <h3 style="color: #1b1e21; text-align: center">Darbų kategorijos registracija</h3>
+                <br><br>
                 <div style="color: red">
                     {#{% for message in error %}#}
                     {#{{ message }}<br>#}
@@ -15,7 +16,7 @@
                 <div id="default">
                     {{ form_start(jobs_form) }}
                     {{ form_row(jobs_form.jobsName) }}
-                    <button class="btn btn-primary">Išsaugoti</button>
+                    <button class="btn btn-dark">Išsaugoti</button>
                     {{ form_end(jobs_form) }}
                 </div>
             </div>

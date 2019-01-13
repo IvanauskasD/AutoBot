@@ -2,9 +2,9 @@
 {% block title %}<title>Prisijungimas</title>{% endblock %}
 {% block body %}
     <div class="text-center">
-        <form class="form-signin" action="{{ path('login') }}" method="POST">
-            <div style="position:fixed;right: 39%">
-                <h1 class="h3 mb-3 font-weight-normal">Prašome prisijungti</h1>
+        <form action="{{ path('login') }}" method="POST">
+            <div style="position:fixed;right: 40%">
+                <h3 style="color: #1b1e21; text-align: center">Prašome prisijungti</h3>
             </div>
             <input type="text"
                    id="_username"
@@ -19,8 +19,7 @@
                    placeholder="Slaptažodis"
                    required>
 
-            <button class="btn btn-lg btn-primary" style="position: absolute;top: 47%;width: 20%;left: 42%" type="submit">Prisijungti</button>
-            {#<a style="position: absolute;top: 55%;left: 42%" href='{{ path('resetPassword') }}'>Reset password?</a>#}
+            <button class="btn btn-dark" style="position: absolute;top: 47%;width: 20%;left: 42%" type="submit">Prisijungti</button>
         </form>
     </div>
 

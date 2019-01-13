@@ -3,23 +3,25 @@
     <div class="container">
 
     {% if (is_granted('ROLE_EMPLOYEE')) == true %}
-        <div style="text-align:center;"><h1> Darbo detalės </h1> </div>
+        <div><h1 style="color: #1b1e21; text-align: center"> Darbo detalės </h1> </div>
         <div style="height: 50px;"> </div>
         <div class="row">
             <div class="col-4">
 
                 <table class="table">
                     <thead>
-                    <div style="text-align: center;"><h5> Kliento informacija </h5> </div>
+                    <div style="text-align: center;">
+                        <h5 style="color: #1b1e21"> Kliento informacija </h5>
+                    </div>
 
                     </thead>
                     <tbody>
                     <tr class="table-light">
-                        <td> Vardas </td>
+                        <td> Vardas Pavardė </td>
                         <td>{{order.car.user.firstnames}} {{order.car.user.lastname}} </td>
                     </tr>
                     <tr class="table-light">
-                        <td> Paštas </td>
+                        <td> El. paštas </td>
                         <td>{{order.car.user.email}}</td>
                     </tr>
                     <tr class="table-light">
@@ -38,7 +40,9 @@
             <div class="col-4">
                 <table class="table">
                     <thead>
-                    <div style="text-align: center;"><h5> Mašinos informacija </h5> </div>
+                    <div style="text-align: center;">
+                        <h5 style="color: #1b1e21"> Mašinos informacija </h5>
+                    </div>
 
                     </thead>
                     <tbody>
@@ -74,12 +78,14 @@
 
                 <table class="table">
                     <thead>
-                    <div style="text-align: center;"><h5> Problema </h5> </div>
+                    <div style="text-align: center;">
+                        <h5 style="color: #1b1e21"> Problema </h5>
+                    </div>
 
                     </thead>
                     <tbody>
                     <tr class="table-light">
-                        <td> Kategorija </td>
+                        <td> Pavadinimas </td>
                         <td>{{order.car.carId}}</td>
                     </tr>
 
@@ -94,7 +100,7 @@
         <div class="row">
             <div class="col-4"></div>
             <div class="col-4" style="text-align: center;">
-                <button type="button" class="btn btn-success" onclick="location.href = '{{ path('jobFinished', {id: order.id}) }}'" >Baigti</button>
+                <button type="button" class="btn btn-dark" onclick="location.href = '{{ path('jobFinished', {id: order.id}) }}'" >Baigti</button>
             </div>
 
             <div class="col-4"></div>

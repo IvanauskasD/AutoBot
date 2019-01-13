@@ -1,10 +1,13 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h2 xmlns="http://www.w3.org/1999/html">Vartotojų sąrašas</h2>
-    <button type="button" id="Delete-car" onclick="location.href = '{{ path('showUsers') }}'" >Klientai</button>
-    <button type="button" id="Delete-car" onclick="location.href = '{{ path('showCompanies') }}'" >Autoservisai</button>
-    <button type="button" id="Delete-car" onclick="location.href = '{{ path('showEmployees') }}'" >Darbuotojai</button>
+    <h2 style="color: #1b1e21; text-align: center">Vartotojų sąrašas</h2>
+    <br><br>
+    <div style="text-align: center">
+    <button type="button" class="btn btn-dark" onclick="location.href = '{{ path('showUsers') }}'" >Klientai</button>
+    <button type="button" class="btn btn-dark" onclick="location.href = '{{ path('showCompanies') }}'" >Autoservisai</button>
+    <button type="button" class="btn btn-dark" onclick="location.href = '{{ path('showEmployees') }}'" >Darbuotojai</button>
+    </div>
         {# <form id="s" method="post">
                 <select name="size">
                     <option value="small">Suspend</option>

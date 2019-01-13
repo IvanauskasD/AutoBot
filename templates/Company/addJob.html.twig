@@ -1,5 +1,14 @@
 {% extends 'base.html.twig' %}
 {% block body %}
+<div class="container">
+    <div id="default" class="col-sm-10">
     {{ form_start(registration_form) }}
+    Darbo pavadinimas: {{ form_widget(registration_form.jobName, {'attr': {'class': 'Job'}}) }}</br>
+    Aprašymas: {{ form_widget(registration_form.description, {'attr': {'class': 'Job'}}) }}</br>
+    Kaina: {{ form_widget(registration_form.cost, {'attr': {'class': 'Job'}}) }}</br>
+    Darbo laikas: {{ form_widget(registration_form.jobTime, {'attr': {'class': 'Job'}}) }}</br>
+    <button class="btn btn-dark">Registruoti</button>
     {{ form_end(registration_form) }}
+    </div>
+</div>
 {%  endblock %}

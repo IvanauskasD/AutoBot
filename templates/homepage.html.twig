@@ -9,7 +9,7 @@
         <div class="row">
             <div class="col"></div>
             {% if (is_granted('ROLE_USER') == false and is_granted('ROLE_COMPANY') == false and is_granted('ROLE_EMPLOYEE') == false and is_granted('ROLE_ADMIN') == false) %}
-                <div class="col-13"><h1 style="font-size: 70px">Autoservisų paieškos sistema</h1></div>
+                <div class="col-13"><h1 style="font-size: 70px; color:#1b1e21;">Autoservisų paieškos sistema</h1></div>
             {% endif %}
             <div class="col"></div>
 
@@ -21,30 +21,27 @@
         </div>
         {%  endif %}
 
+        {% if is_granted('ROLE_COMPANY') == true %}
+
+            <div style="text-align: center">
+                <h1 style="font-size: 70px; color:#1b1e21;">Sveiki atvykę į autoservisų paieškos sistemą</h1>
+            </div>
+
+        {% endif %}
         {% if is_granted('ROLE_EMPLOYEE') == true %}
 
-                <table class="table" align="center">
-                    <thead class="thead-dark">
-
-                    <tr style="border-bottom: 3px solid #ddd;">
-                        <th scope="col">Užsakymo pavadinimas</th>
-                        <th></th>
-                        <th scope="col">Mašina</th>
-                        <th></th>
-                        <th scope="col">Telefono numeris</th>
-                        <th></th>
-                        <th scope="col">Darbo statusas(%)</th>
-                    </tr>
-                    </thead>
-                </table>
-            <a href={{ path('currentJobs') }} class="btn-more-options" id="btn-current-orders">Daugiau parinkčių</a>
+            <div style="text-align: center">
+                <h1 style="font-size: 70px; color:#1b1e21;">Sveiki atvykę į autoservisų paieškos sistemą</h1>
+            </div>
 
         {%  endif %}
 
         {% if is_granted('ROLE_ADMIN') == true %}
-            <a href={{ path('jobReg') }} class="navbar-brand">Registruoti darbo kategorija</a>
+            <button class="btn btn-dark"><a href={{ path('jobReg') }} class="btn-dark">Registruoti darbo kategoriją</a></button>
+            <br><br>
+            <h2 style="color: #1b1e21; text-align: center">Esamos darbų kategorijos</h2>
             <table class="table">
-                <thead class="thead-dark">
+                <thead>
                 <tr>
                     <th scope="col">Kategorijos pavadinimas</th>
                 </tr>
