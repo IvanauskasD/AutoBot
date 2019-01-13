@@ -14,7 +14,7 @@
             <th></th>
             <th scope="col">Statusas</th>
             <th></th>
-            <th scope="col">Daugiau_button</th>
+            <th scope="col"></th>
         </tr>
         </thead>
 
@@ -27,18 +27,17 @@
                 <td></td>
                 <td>{{ employees.car.carId }}</td>
                 <td></td>
-                <td>{{ employees.duration }}</td>
+                {#<td>{{ employees.duration }}</td>#}
                 <td></td>
-                <td>N/A</td>
+                <td></td>
+                <td></td>
                 <td></td>
                 <td>{{ employees.status }}</td>
                 <td></td>
-                <td>{{ employees.cost }}</td>
+                {#<td>{{ employees.cost }}</td>#}
                 {% if employees.status != "Dismissed" %}
                 <td><button type="button" class="btn btn-success" onclick="location.href = '{{ path('jobDetails', {id: employees.id}) }}'" >Detalės</button>
-                </td>
-                    <td></td>
-                <td><button type="button" class="btn btn-success" onclick="location.href = '{{ path('currentJobDetails', {id: employees.id}) }}'" >Informacija</button>
+                    {#<button type="button" class="btn btn-success" onclick="location.href = '{{ path('currentJobDetails', {id: employees.id}) }}'" >Informacija</button>#}
                  </td>
                     </tr>
                 {% endif %}

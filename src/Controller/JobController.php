@@ -108,9 +108,20 @@ class JobController extends Controller
     /**
      * @Route("/company/parts", name="partsPrice")
      */
-    public function parts()
+    public function parts(AuthorizationCheckerInterface $authorizationChecker)
     {
-        return $this->render('Company/parts.html.twig');
+        if (!$authorizationChecker->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
+            return $this->redirectToRoute('homepage');
+        }
+
+        $user = $this->getUser();
+        $orders = $this->getDoctrine()->getManager()->getRepository(Orders::class)->findByCompany($user->getId());
+
+//        $orders = $this->getDoctrine()->getManager()->getRepository(Orders::class)->findByCompany($user->getId());
+
+        return $this->render('Company/parts.html.twig', [
+            'orders' => $orders
+        ]);
     }
 
 }

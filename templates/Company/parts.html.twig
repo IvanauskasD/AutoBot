@@ -1,19 +1,32 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1 style="text-align: center;">NEVEIKIA FUNKCIJA</h1>
-    <h2>Detalės</h2>
-    <table align="center">
-        <tr style="border-bottom: 3px solid #ddd;">
-            <th width="120px">Pavadinimas</th>
-            <th></th>
-            <th width="200px">Kaina</th>
-            <th></th>
-        </tr>
-        {#{% for employee in employees %}#}
-        {#<tr>#}
-        {#<td>{{ employee.firstname }}</td>#}
-        {#<td></td>#}
-        {#{% endfor %}#}
-    </table>
+
+        <h2>Klientų sąrašas</h2>
+        <table align="center">
+            <tr style="border-bottom: 3px solid #ddd;">
+                <th width="80px">#</th>
+                <th></th>
+                <th width="200px">Klientas</th>
+                <th></th>
+                <th width="200px">El. paštas</th>
+                <th></th>
+                <th width="200px">Telefono numeris</th>
+            </tr>
+            {% for order in orders %}
+                <tr>
+                    <td>{{ order.id }}</td>
+                    <td></td>
+                    <td>{{order.car.user.firstnames}} {{order.car.user.lastname}}</td>
+                    <td></td>
+                    <td>{{order.car.user.email}}</td>
+                    <td></td>
+                    <td>{{order.car.user.phoneNumber}}</td>
+                    <td style="text-align: right"><button type="button" class="btn btn-info" onclick="location.href = '{{ path('orderDetails', {id: order.id}) }}'"  >Detaliau</button></td>
+                </tr>
+            {% endfor %}
+        </table>
+
+    </div>
+
 {% endblock %}

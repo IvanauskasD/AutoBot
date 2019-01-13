@@ -166,7 +166,7 @@ class SignupCompanyController extends AbstractController
             $em->persist($employee);
             $em->flush();
 
-            return $this->redirectToRoute('companyProfile');
+            return $this->redirectToRoute('employee');
         }
 
         return $this->render('Registration/registrationEmployee.html.twig', array(

@@ -135,7 +135,7 @@ class CarRegisterForService extends Controller
 
             $em->persist($newOrder);
             $em->flush();
-            return $this->redirectToRoute('homepage');
+            return $this->redirectToRoute('reservations');
         }
         $em = $this->getDoctrine()->getManager();
 
