@@ -96,6 +96,10 @@ class UsersListController extends Controller
                 return $this->redirectToRoute('showUsers');
     }
 
+
+
+
+
     /**
      * @Route("/{id}/deleteCompany", name="deleteCompany")
      */
@@ -132,6 +136,8 @@ class UsersListController extends Controller
         $em->flush();
         return $this->redirectToRoute('showUsers');
     }
+
+
 
     /**
      * @Route("/{id}/banCompany", name="banCompany")

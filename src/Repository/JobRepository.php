@@ -22,7 +22,7 @@ class JobRepository extends ServiceEntityRepository
     public function findById($value)
     {
         return $this->createQueryBuilder('c')
-            ->where('c.id = :value')->setParameter('value', $value)
+            ->where('c.companyId = :value')->setParameter('value', $value)
             ->getQuery()
             ->getOneOrNullResult();
         ;
@@ -31,10 +31,10 @@ class JobRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('c')
             ->addSelect('r') // to make Doctrine actually use the join
-            ->leftJoin('c.jobName', 'r')
+            ->leftJoin('c.companyId', 'r')
             ->addSelect('u') // to make Doctrine actually use the join
-            ->leftJoin('r.company', 'u')
-            ->andwhere('c.company = :id')->setParameter('id', $id)
+            ->leftJoin('r.job', 'u')
+            ->andwhere('c.id = :id')->setParameter('id', $id)
             ->getQuery()
             ->getResult();
         ;

@@ -8,6 +8,7 @@
         <b>Pavardė:</b> {{ app.user.lastName }}<br/>
         <b>El. paštas:</b> {{ app.user.email }} <br/>
         <b>Tel. numeris:</b> {{ app.user.phoneNumber }}<br/>
+        <button type="button" id="Edit-profile" onclick="location.href = '{{ path('profile_edit', {id: app.user.id}) }}'" >Edit profile</button>
         {#<button type="button" id="Edit-profile" onclick="location.href = '{{ path('profile_edit', {id: app.user.id}) }}'" >Redaguoti</button>#}
         {#<br/>#}
         {#<button type="button" id="Edit-profile" onclick="location.href = '{{ path('changePassword') }}'" >Change password</button>#}
@@ -26,7 +27,7 @@
                 <th scope="col">Mašinos numeris</th>
                 <th scope="col">Markė</th>
                 <th scope="col">Modelis</th>
-                <th> </th>
+
             </tr>
             </thead>
             <tbody>

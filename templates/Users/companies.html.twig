@@ -7,9 +7,7 @@
         <tr style="border-bottom: 3px solid #ddd;">
             <th width="120px">ID</th>
             <th></th>
-            <th width="120px">Vardas</th>
-            <th></th>
-            <th width="200px">Pavardė</th>
+            <th width="120px">Kompanija</th>
             <th></th>
             <th width="200px">Telefono numeris</th>
             <th></th>
@@ -17,21 +15,22 @@
             <th></th>
             <th>
 
-                <button type="submit" name="/">Blokuoti</button>
-            <th></th>
-            <th>
-                <button type="submit" name="/">Ištrinti</button>
-            <th></th>
-
             <tbody>
             {% set i = 0 %}
             {% for company in companies %}
         <tr>
             <th scope="row">{{i + 1}}</th>
             {% if company is not null %}
+                <td></td>
+                <td>{{company.companyName}}</td>
+                <td></td>
+                <td>{{company.phoneNumber}}</td>
+                <td></td>
                 <td>{{company.email}}</td>
-                <button type="button" id="Delete-car" onclick="location.href = '{{ path('deleteCompany', {id: company.id}) }}'" >Delete</button>
-                <button type="button" id="Delete-car" onclick="location.href = '{{ path('banCompany', {id: company.id}) }}'" >Ban</button>
+                <td></td>
+                <td><button type="button" id="Delete-car" onclick="location.href = '{{ path('deleteCompany', {id: company.id}) }}'" >Trinti</button></td>
+                <td></td>
+                <td><button type="button" id="Delete-car" onclick="location.href = '{{ path('banCompany', {id: company.id}) }}'" >Blokuoti</button></td>
             {% endif %}
             {% set i = i + 1 %}
         </tr>

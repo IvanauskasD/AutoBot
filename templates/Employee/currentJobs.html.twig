@@ -21,7 +21,8 @@
         {% for employees in employee %}
 
         {% if employees.status == "Approved" %}
-                <td>{{ employees.carJob.jobName }}</td>
+            <tr>
+                <td>{{ test.jobName }}</td>
 
                 <td></td>
                 <td>{{ employees.car.carId }}</td>
@@ -34,11 +35,12 @@
                 <td></td>
                 <td>{{ employees.cost }}</td>
                 {% if employees.status != "Dismissed" %}
-                <td><button type="button" class="btn btn-success" onclick="location.href = '{{ path('jobDetails', {id: employees.id}) }}'" >Details</button>
+                <td><button type="button" class="btn btn-success" onclick="location.href = '{{ path('jobDetails', {id: employees.id}) }}'" >Detalės</button>
                 </td>
                     <td></td>
-                <td><button type="button" class="btn btn-success" onclick="location.href = '{{ path('currentJobDetails', {id: employees.id}) }}'" >Info</button>
+                <td><button type="button" class="btn btn-success" onclick="location.href = '{{ path('currentJobDetails', {id: employees.id}) }}'" >Informacija</button>
                  </td>
+                    </tr>
                 {% endif %}
             {% endif %}
         {% endfor %}

@@ -26,6 +26,7 @@ class EmployeeJobsController extends Controller
     {
         $user = $this->getUser();
         $em = $this->getDoctrine()->getManager();
+
         $employeeOrders = $this->getDoctrine()->getRepository(Orders::class)->findByEmployee($user->getId());
         dump($employeeOrders);
         return $this->render('Employee/pendingJobs.html.twig', array(
@@ -43,13 +44,14 @@ class EmployeeJobsController extends Controller
         $user = $this->getUser();
         $em = $this->getDoctrine()->getManager();
         $employeeOrders = $this->getDoctrine()->getRepository(Orders::class)->findByEmployee($user->getId());
-        $testux = $this->getDoctrine()->getRepository(CarProblme::class)->findAll();
+        $testux = $this->getDoctrine()->getRepository(CarProblme::class)->findOneBy([], ['id' => 'desc']);
         $test = new Orders();
         foreach($employeeOrders as $gg)
             $test = $gg;
         dump($test);
         return $this->render('Employee/currentJobs.html.twig', array(
-            'employee' => $employeeOrders
+            'employee' => $employeeOrders,
+            'test' => $testux
         ));
 
     }
