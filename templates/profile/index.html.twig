@@ -48,92 +48,12 @@
                     <td>{{ car.carId }}</td>
                     <td>{{ car.maker}}</td>
                     <td>{{ car.model}}</td>
-                    {#<td>{{ car.carYear}}</td>#}
-                    {#{% if car.orders.cost and car.orders.duration != null %}#}
-                    {#<td>{{ car.orders.cost}}</td>#}
-                    {#<td>{{ car.orders.duration}}</td>#}
-                        {#{% endif %}#}
-                    {#{% if car.orders %}#}
-                    {#{% if car.orders.status == "Accepted" %}#}
-                        {#<td style="color: green;">{{  car.orders.status}}</td>#}
-                        {#{% elseif car.orders.status == "Waiting" %}#}
-                        {#<td style="color: #ffbf00;">{{  car.orders.status}}</td>#}
-                        {#{% elseif car.orders.status == "Dismissed" %}#}
-                        {#<td style="color: red;">{{  car.orders.status}}</td>#}
-                        {#{% elseif car.orders.status == "Finished" %}#}
-                        {#<td style="color: green;">{{car.orders.status}}</td>#}
-                    {#{% endif %}#}
 
-                        {#{% else %}#}
-                        {#<td>Not registered</td>#}
-                    {#{% endif %}#}
-                    {#<td style="text-align: right">#}
-                    {#{% if car.orders %}#}
-                        {#{% if car.orders.status != "Dismissed" %}#}
-                            {#<button type="button" id="Service-car" disabled onclick="location.href = '{{ path('carServices', {id: car.carId}) }}'" >Services</button>#}
-                            {#{% else %}#}
-                            {#<button type="button" id="Service-car" onclick="location.href = '{{ path('carServices', {id: car.carId}) }}'" >Services</button>#}
-                        {#{% endif %}#}
-                        {#{% else %}#}
-                            {#<button type="button" id="Service-car" onclick="location.href = '{{ path('carServices', {id: car.carId}) }}'" >Services</button>#}
-                    {#{% endif %}#}
-
-                        {#<button type="button" id="Edit-car" onclick="location.href = '{{ path('editCar', {id: car.carId}) }}'" >Edit</button>#}
-                        {#<button type="button" id="Delete-car" onclick="location.href = '{{ path('deleteCar', {id: car.carId}) }}'" >Delete</button>#}
-                    {#</td>#}
-               {# </tr>#}
-                {#{% else %}#}
-                {#<tr>#}
-                    {#<td>{{ car.carId }}</td>#}
-                    {#<td>{{ car.maker}}</td>#}
-                    {#<td>{{ car.model}}</td>#}
-                    {#{% if car.orders %}#}
-                    {#{% if car.orders.status == "Accepted" or car.orders.status == "Finished" %}#}
-                    {#<td>{{ car.orders.startDate|date('Y-m-d h:m')}}</td>#}
-                        {#{% else %}#}
-                            {#<td>{{ car.orders.startDate|date('')}}</td>#}
-                            {#{% endif %}#}
-                            {#{% else %}#}
-                            {#<td></td>#}
-                            {#{% endif %}#}
-                        {#<td>{{ car.orders.cost|default('N/A')}}</td>#}
-
-                        {#<td>{{ car.orders.duration|default('N/A')}}</td>#}
-
-                    {#{% if car.orders %}#}
-                    {#{% if car.orders.status == "Accepted" %}#}
-                        {#<td style="color: green;">{{  car.orders.status}}</td>#}
-                        {#{% elseif car.orders.status == "Waiting" %}#}
-                        {#<td style="color: #ffbf00;">{{  car.orders.status}}</td>#}
-                        {#{% elseif car.orders.status == "Dismissed" %}#}
-                        {#<td style="color: red;">{{  car.orders.status}}</td>#}
-                        {#{% elseif car.orders.status == "Finished" %}#}
-                        {#<td>{{  car.orders.status}}</td>#}
-                    {#{% endif %}#}
-
-                        {#{% else %}#}
-                        {#<td>Not registered</td>#}
-                    {#{% endif %}#}
-
-                    {#{% if car.orders %}#}
-                        {#{% if car.orders.status != "Dismissed" %}#}
-                            {#<button type="button" id="Service-car" disabled onclick="location.href = '{{ path('carServices', {id: car.carId}) }}'" >Services</button>#}
-                            {#{% else %}#}
-                            {#<button type="button" id="Service-car" onclick="location.href = '{{ path('carServices', {id: car.carId}) }}'" >Services</button>#}
-                        {#{% endif %}#}
-                        {#{% else %}#}
-                            {#<button type="button" id="Service-car" onclick="location.href = '{{ path('carServices', {id: car.carId}) }}'" >Services</button>#}
-                    {#{% endif %}#}
-
-                {#<td style="width: 400px"><button type="button" id="Edit-car" onclick="location.href = '{{ path('editCar', {id: car.carId}) }}'" >Redaguoti</button>#}
-                {#<button type="button" id="Delete-car" onclick="location.href = '{{ path('deleteCar', {id: car.carId}) }}'" >Ištrinti</button></td>#}
                 </tr>
-                {#{% endif %}#}
             {% endfor %}
             </tbody>
         </table>
         <br/>
-    </div>
     </div>
 {% endblock %}
 

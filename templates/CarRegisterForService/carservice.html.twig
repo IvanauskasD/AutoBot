@@ -44,15 +44,15 @@
                     <td style="text-align: right">
                         {% if car.orders %}
                             {% if car.orders.status != "Dismissed" or car.order.status != "Canceled" %}
-                                <button type="button" id="Service-car" disabled onclick="location.href = '{{ path('carServices', {id: car.carId}) }}'" >Paslauga</button>
+                                <button type="button" class="btn btn-dark" disabled onclick="location.href = '{{ path('carServices', {id: car.carId}) }}'" >Paslauga</button>
                             {% else %}
-                                <button type="button" id="Service-car" onclick="location.href = '{{ path('carServices', {id: car.carId}) }}'" >Paslauga</button>
+                                <button type="button" class="btn btn-dark" onclick="location.href = '{{ path('carServices', {id: car.carId}) }}'" >Paslauga</button>
                             {% endif %}
                         {% else %}
-                            <button type="button" id="Service-car" onclick="location.href = '{{ path('carServices', {id: car.carId}) }}'" >Paslauga</button>
+                            <button type="button" class="btn btn-dark" onclick="location.href = '{{ path('carServices', {id: car.carId}) }}'" >Paslauga</button>
                         {% endif %}
 
-                        <button type="button" id="Delete-car" onclick="location.href = '{{ path('deleteCar', {id: car.carId}) }}'" >Trinti</button>
+                        <button type="button" class="btn btn-dark" onclick="location.href = '{{ path('deleteCar', {id: car.carId}) }}'" >Trinti</button>
                     </td>
                 </tr>
             {% else %}
@@ -88,15 +88,15 @@
                     <td style="text-align: right">
                         {% if car.orders %}
                             {% if car.orders.status != "Dismissed" or car.order.status != "Canceled" %}
-                                <button type="button" id="Service-car" disabled onclick="location.href = '{{ path('carServices', {id: car.carId}) }}'" >Paslauga</button>
-                                <button type="button" id="Delete-car" disabled onclick="location.href = '{{ path('deleteCar', {id: car.carId}) }}'" >Trinti</button>
+                                <button type="button" class="btn btn-dark" disabled onclick="location.href = '{{ path('carServices', {id: car.carId}) }}'" >Paslauga</button>
+                                <button type="button" class="btn btn-dark" disabled onclick="location.href = '{{ path('deleteCar', {id: car.carId}) }}'" >Trinti</button>
                             {% else %}
-                                <button type="button" id="Service-car" onclick="location.href = '{{ path('carServices', {id: car.carId}) }}'" >Paslauga</button>
-                                <button type="button" id="Delete-car" onclick="location.href = '{{ path('deleteCar', {id: car.carId}) }}'" >Trinti</button>
+                                <button type="button" class="btn btn-dark" onclick="location.href = '{{ path('carServices', {id: car.carId}) }}'" >Paslauga</button>
+                                <button type="button" class="btn btn-dark" onclick="location.href = '{{ path('deleteCar', {id: car.carId}) }}'" >Trinti</button>
                             {% endif %}
                         {% else %}
-                            <button type="button" id="Service-car" onclick="location.href = '{{ path('carServices', {id: car.carId}) }}'" >Paslauga</button>
-                            <button type="button" id="Delete-car" onclick="location.href = '{{ path('deleteCar', {id: car.carId}) }}'" >Trinti</button>
+                            <button type="button" class="btn btn-dark" onclick="location.href = '{{ path('carServices', {id: car.carId}) }}'" >Paslauga</button>
+                            <button type="button" class="btn btn-dark" onclick="location.href = '{{ path('deleteCar', {id: car.carId}) }}'" >Trinti</button>
                         {% endif %}
 
 

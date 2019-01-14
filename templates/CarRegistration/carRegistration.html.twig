@@ -1,6 +1,9 @@
 {% extends 'base.html.twig' %}
 {% block body %}
     <div id="default">
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-8">
     {{ form_start(car) }}
     {{ form_row(car.carId,{ 'label_attr': {'style': 'color:black'}})}}
     {{ form_row(car.maker) }}    {# <select id="meetup_sport" ... #}
@@ -13,7 +16,9 @@
 
     <button class="btn btn-dark">Išsaugoti</button>
     {{ form_end(car) }}
-
+                </div>
+                    <div class="col-2"></div>
+                    </div>
     </div>
     <script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
     <script>

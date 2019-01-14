@@ -15,9 +15,11 @@
                 <th>Telefono numeris</th>
                 <th></th>
             </tr>
+            {% set i = 0 %}
             {% for order in orders %}
                 <tr>
-                    <td>{{ order.id }}</td>
+                    {%  if order.status == "Waiting" %}
+                        <td scope="row">{{i + 1}}</td>
                     <td></td>
                     <td>{{order.car.user.firstnames}} {{order.car.user.lastname}}</td>
                     <td></td>
@@ -26,6 +28,8 @@
                     <td>{{order.car.user.phoneNumber}}</td>
                     <td><button type="button" class="btn btn-dark" onclick="location.href = '{{ path('orderDetails', {id: order.id}) }}'" >Detaliau</button></td>
                 </tr>
+                {% endif %}
+                {% set i = i + 1 %}
             {% endfor %}
         </table>
 

@@ -34,6 +34,7 @@ class EmployeesForm extends AbstractType
         $id = $options['ids'];
         $builder
             ->add('id', EntityType::class, array(
+                'label' => "Darbuotojo ID",
                 'class'        => Employee::class, //This existed usually in (AppBundle\Entity\Person)
                 'query_builder' => function (EmployeeRepository $er) use($id) {
                     return $er->createQueryBuilder('c')

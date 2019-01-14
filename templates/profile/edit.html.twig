@@ -6,6 +6,9 @@
     <h1 style="color: #1b1e21; text-align: center">Keisti profilį</h1>
     <br><br>
     <div id="default">
+    <div class="row">
+    <div class="col-2"></div>
+    <div class="col-8">
         {{ form_start(form) }}
         <label>Vardas:</label> {{ form_widget(form.firstnames, {'value' : app.user.firstnames }) }}<br/>
         <label>Pavardė:</label>  {{ form_widget(form.lastname, {'value' : app.user.lastname }) }}<br/>
@@ -14,6 +17,9 @@
     <button class="btn btn-dark">Keisti</button>
 <br><br>
         <button type="button" class="btn btn-dark" onclick="location.href = '{{ path('profile_index')}}'">Atgal</button>
+    <div>
+        <div class="col-2"></div>
+    </div>
     </div>
     
     {{ form_end(form) }}
